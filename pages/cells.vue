@@ -1,11 +1,11 @@
 <template>
-  <main class="bg-gray-900 text-white">
+  <main class="text-white">
     <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 md:px-8">
-      <h2 class="text-3xl font-bold sm:text-4xl">Our Cells</h2>
+      <h2 class="text-3xl font-bold sm:text-4xl text-black">Our Cells</h2>
       <section
         class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 md:grid-cols-3"
       >
-        <a href="#" class="group relative block bg-black">
+        <div href="#" class="group relative block bg-black rounded-lg h-72">
           <img
             alt="Developer"
             src="~/static/images/cells.jpeg"
@@ -17,26 +17,19 @@
               object-cover
               opacity-75
               transition-opacity
+              rounded-lg
               group-hover:opacity-50
             "
           />
 
           <div class="relative p-8">
-            <p
-              class="
-                text-sm
-                font-medium
-                uppercase
-                tracking-widest
-                text-pink-500
-              "
-            >
+            <p class="text-sm font-medium uppercase tracking-widest text-white">
               PANAFSTRAG
             </p>
 
             <p class="text-2xl font-bold text-white">Cell 1</p>
 
-            <div class="mt-64">
+            <div class="mt-20">
               <div
                 class="
                   translate-y-8
@@ -53,9 +46,9 @@
               </div>
             </div>
           </div>
-        </a>
+        </div>
 
-        <a href="#" class="group relative block bg-black">
+        <div href="#" class="group relative block bg-black rounded-lg h-72">
           <img
             alt="Developer"
             src="~/static/images/cells.jpeg"
@@ -67,26 +60,19 @@
               object-cover
               opacity-75
               transition-opacity
+              rounded-lg
               group-hover:opacity-50
             "
           />
 
           <div class="relative p-8">
-            <p
-              class="
-                text-sm
-                font-medium
-                uppercase
-                tracking-widest
-                text-pink-500
-              "
-            >
+            <p class="text-sm font-medium uppercase tracking-widest text-white">
               PANAFSTRAG
             </p>
 
             <p class="text-2xl font-bold text-white">Cell 2</p>
 
-            <div class="mt-64">
+            <div class="mt-20">
               <div
                 class="
                   translate-y-8
@@ -104,9 +90,9 @@
               </div>
             </div>
           </div>
-        </a>
+        </div>
 
-        <a href="#" class="group relative block bg-black">
+        <div href="#" class="group relative block bg-black rounded-lg h-72">
           <img
             alt="Developer"
             src="~/static/images/cells.jpeg"
@@ -115,6 +101,7 @@
               inset-0
               h-full
               w-full
+              rounded-lg
               object-cover
               opacity-75
               transition-opacity
@@ -123,21 +110,13 @@
           />
 
           <div class="relative p-8">
-            <p
-              class="
-                text-sm
-                font-medium
-                uppercase
-                tracking-widest
-                text-pink-500
-              "
-            >
+            <p class="text-sm font-medium uppercase tracking-widest text-white">
               PANAFSTRAG
             </p>
 
             <p class="text-2xl font-bold text-white">Cell 3</p>
 
-            <div class="mt-64">
+            <div class="mt-20">
               <div
                 class="
                   translate-y-8
@@ -154,14 +133,15 @@
               </div>
             </div>
           </div>
-        </a>
+        </div>
 
-        <a href="#" class="group relative block bg-black">
+        <div href="#" class="group relative block bg-black rounded-lg h-72">
           <img
             alt="Developer"
             src="~/static/images/cells.jpeg"
             class="
               absolute
+              rounded-lg
               inset-0
               h-full
               w-full
@@ -173,21 +153,13 @@
           />
 
           <div class="relative p-8">
-            <p
-              class="
-                text-sm
-                font-medium
-                uppercase
-                tracking-widest
-                text-pink-500
-              "
-            >
+            <p class="text-sm font-medium uppercase tracking-widest text-white">
               PANAFSTRAG
             </p>
 
             <p class="text-2xl font-bold text-white">Cell 4</p>
 
-            <div class="mt-64">
+            <div class="mt-20">
               <div
                 class="
                   translate-y-8
@@ -203,9 +175,9 @@
               </div>
             </div>
           </div>
-        </a>
+        </div>
 
-        <a href="#" class="group relative block bg-black">
+        <div href="#" class="group relative block bg-black rounded-lg h-72">
           <img
             alt="Developer"
             src="~/static/images/cells.jpeg"
@@ -214,6 +186,7 @@
               inset-0
               h-full
               w-full
+              rounded-lg
               object-cover
               opacity-75
               transition-opacity
@@ -222,21 +195,13 @@
           />
 
           <div class="relative p-8">
-            <p
-              class="
-                text-sm
-                font-medium
-                uppercase
-                tracking-widest
-                text-pink-500
-              "
-            >
+            <p class="text-sm font-medium uppercase tracking-widest text-white">
               PANAFSTRAG
             </p>
 
             <p class="text-2xl font-bold text-white">Cell 5</p>
 
-            <div class="mt-64">
+            <div class="mt-20">
               <div
                 class="
                   translate-y-8
@@ -253,16 +218,16 @@
               </div>
             </div>
           </div>
-        </a>
+        </div>
 
-        <a href="#" class="group relative block bg-black">
+        <div href="#" class="group relative block bg-black rounded-lg h-72">
           <img
             alt="Developer"
             src="~/static/images/cells.jpeg"
             class="
               absolute
               inset-0
-              h-full
+              h-full rounded-lg
               w-full
               object-cover
               opacity-75
@@ -272,21 +237,13 @@
           />
 
           <div class="relative p-8">
-            <p
-              class="
-                text-sm
-                font-medium
-                uppercase
-                tracking-widest
-                text-pink-500
-              "
-            >
+            <p class="text-sm font-medium uppercase tracking-widest text-white">
               PANAFSTRAG
             </p>
 
             <p class="text-2xl font-bold text-white">Cell 6</p>
 
-            <div class="mt-64">
+            <div class="mt-20">
               <div
                 class="
                   translate-y-8
@@ -300,26 +257,19 @@
               </div>
             </div>
           </div>
-        </a>
+        </div>
       </section>
     </div>
-    <section class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 md:px-8">
+    <section class="mx-auto max-w-screen-xl px-4 sm:px-6 md:px-8">
       <!-- <h1 class="text-center text-3xl font-medium font-sans">
         Duties Of Board Members
       </h1> -->
-      <section class="bg-gray-900 text-white">
+      <section class="text-white">
         <div class="max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
           <div class="max-w-xl">
-            <h2 class="text-3xl font-bold sm:text-4xl">
+            <h2 v-if="boardResponsibilities" class="text-3xl font-bold sm:text-4xl text-black">
               Duties Of Board Members
             </h2>
-
-            <!-- <p class="mt-4 text-gray-300">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
-              dolores iure fugit totam iste obcaecati. Consequatur ipsa quod
-              ipsum sequi culpa delectus, cumque id tenetur quibusdam, quos fuga
-              minima.
-            </p> -->
           </div>
 
           <div
@@ -331,200 +281,38 @@
               lg:grid-cols-3
             "
           >
-            <div class="flex items-start">
-              <span class="flex-shrink-0 rounded-lg bg-gray-800 p-4">
-                <svg
-                  class="h-5 w-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                  <path
-                    d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-                  ></path>
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                  ></path>
-                </svg>
-              </span>
+            <section
+              v-for="responsibility in boardResponsibilities"
+              :key="responsibility._id"
+            >
+              <div class="flex items-start">
+                <span class="section-color flex-shrink-0 rounded-lg p-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="27"
+                    height="27"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#5bc747"
+                    stroke-width="1.5"
+                    stroke-linecap="butt"
+                    stroke-linejoin="bevel"
+                  >
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                    ></polygon>
+                  </svg>
+                </span>
 
-              <div class="ml-4">
-                <!-- <h2 class="text-lg font-bold">Lorem, ipsum dolor.</h2> -->
+                <div class="ml-4">
+                  <!-- <h2 class="text-lg font-bold">Lorem, ipsum dolor.</h2> -->
 
-                <p class="mt-1 text-sm text-gray-300">
-                  To uphold the principles and objectives of PANAFSTRAG and
-                  conform with the Code of Ethics at all times.
-                </p>
+                  <p class="mt-1 text-sm text-justify text-black">
+                    {{ responsibility.description }}
+                  </p>
+                </div>
               </div>
-            </div>
-
-            <div class="flex items-start">
-              <span class="flex-shrink-0 rounded-lg bg-gray-800 p-4">
-                <svg
-                  class="h-5 w-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                  <path
-                    d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-                  ></path>
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                  ></path>
-                </svg>
-              </span>
-
-              <div class="ml-4">
-                <!-- <h2 class="text-lg font-bold">Lorem, ipsum dolor.</h2> -->
-
-                <p class="mt-1 text-sm text-gray-300">
-                  Not to engage in any activity or conduct that will bring the
-                  Organisation and/or its members to disrepute.
-                </p>
-              </div>
-            </div>
-
-            <div class="flex items-start">
-              <span class="flex-shrink-0 rounded-lg bg-gray-800 p-4">
-                <svg
-                  class="h-5 w-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                  <path
-                    d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-                  ></path>
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                  ></path>
-                </svg>
-              </span>
-
-              <div class="ml-4">
-                <!-- <h2 class="text-lg font-bold">Lorem, ipsum dolor.</h2> -->
-
-                <p class="mt-1 text-sm text-gray-300">
-                  Not to enter into an arrangement, contract or agreement with
-                  any persons or organizations on behalf of the organization
-                  without the authority of the Cell Leader/ Language Group
-                  Leaders/ Team Board Members as the case may be.
-                </p>
-              </div>
-            </div>
-
-            <div class="flex items-start">
-              <span class="flex-shrink-0 rounded-lg bg-gray-800 p-4">
-                <svg
-                  class="h-5 w-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                  <path
-                    d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-                  ></path>
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                  ></path>
-                </svg>
-              </span>
-
-              <div class="ml-4">
-                <!-- <h2 class="text-lg font-bold">Lorem, ipsum dolor.</h2> -->
-
-                <p class="mt-1 text-sm text-gray-300">
-                  Not to use the name or resource of the Organisation for
-                  private gain.
-                </p>
-              </div>
-            </div>
-
-            <div class="flex items-start">
-              <span class="flex-shrink-0 rounded-lg bg-gray-800 p-4">
-                <svg
-                  class="h-5 w-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                  <path
-                    d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-                  ></path>
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                  ></path>
-                </svg>
-              </span>
-
-              <div class="ml-4">
-                <!-- <h2 class="text-lg font-bold">Lorem, ipsum dolor.</h2> -->
-
-                <p class="mt-1 text-sm text-gray-300">
-                  To be willing to volunteer skills, profession or service in
-                  furtherance of the objectives of the Organisation.
-                </p>
-              </div>
-            </div>
-
-            <div class="flex items-start">
-              <span class="flex-shrink-0 rounded-lg bg-gray-800 p-4">
-                <svg
-                  class="h-5 w-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                  <path
-                    d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-                  ></path>
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                  ></path>
-                </svg>
-              </span>
-
-              <div class="ml-4">
-                <!-- <h2 class="text-lg font-bold">Lorem, ipsum dolor.</h2> -->
-
-                <p class="mt-1 text-sm text-gray-300">
-                  To promptly declare any conflict of interest or membership
-                  disqualification factor to the Cell Leader/ Language Group
-                  Leaders/ Team Board Members as the case may be.
-                </p>
-              </div>
-            </div>
+            </section>
           </div>
         </div>
       </section>
@@ -535,29 +323,86 @@
 <script>
 export default {
   name: "cells",
-    scrollToTop: true,
-     loading: false,
+  scrollToTop: true,
+  loading: false,
   data() {
     return {
+      boardResponsibilities: [],
       title: "Pan Africa Cells",
+      description:
+        "Pan Africa; Original thinking, research help add to human knowledge",
+      image:
+        "https://res.cloudinary.com/marquis/image/upload/v1668940037/enagoshtazxadezqqjrj.png",
     };
+  },
+  created() {
+    this.getBoardResponsibilities();
   },
   head() {
     return {
-      title: this.title,
       meta: [
         {
-          hid: "description",
-          name: "description",
-          content:
-            "Pan Africa &#8211; Original thinking, research help add to human knowledge",
+          hid: "twitter:title",
+          name: "twitter:title",
+          content: this.title,
+        },
+        {
+          hid: "twitter:description",
+          name: "twitter:description",
+          content: this.description,
+        },
+        {
+          hid: "twitter:image",
+          name: "twitter:image",
+          content: this.image,
+        },
+        {
+          hid: "twitter:image:alt",
+          name: "twitter:image:alt",
+          content: this.title,
+        },
+        {
+          hid: "og:title",
+          property: "og:title",
+          content: this.title,
+        },
+        {
+          hid: "og:description",
+          property: "og:description",
+          content: this.description,
+        },
+        {
+          hid: "og:image",
+          property: "og:image",
+          content: this.image,
+        },
+        {
+          hid: "og:image:secure_url",
+          property: "og:image:secure_url",
+          content: this.image,
+        },
+        {
+          hid: "og:image:alt",
+          property: "og:image:alt",
+          content: this.title,
         },
       ],
     };
   },
+  methods: {
+    async getBoardResponsibilities() {
+      let res = await this.$axios.get(
+        "https://panafrica-website.herokuapp.com/api/panAfrica/responsibilities"
+      );
+      this.boardResponsibilities = res.data;
+    },
+  },
 };
 </script>
 
-<style>
+<style scoped>
+.section-color {
+  background-color: #ecfcec;
+}
 </style>
 

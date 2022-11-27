@@ -5,15 +5,12 @@
     <!-- Panelbear -->
     <script
       async
-      src="https://cdn.panelbear.com/analytics.js?site=5H3rwXKUlSH"
-    ></script>
+      src="https://www.googletagmanager.com/gtag/js?id={{ ENV.googleAnalyticsId }}"></script>
     <script>
-      window.panelbear =
-        window.panelbear ||
-        function () {
-          (window.panelbear.q = window.panelbear.q || []).push(arguments);
-        };
-      panelbear("config", { site: "5H3rwXKUlSH" });
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ ENV.googleAnalyticsId }}')
     </script>
   </head>
   <body {{BODY_ATTRS}}>

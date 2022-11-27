@@ -1,20 +1,12 @@
 <template>
-  <!--
-  This component uses @tailwindcss/forms
-
-  yarn add @tailwindcss/forms
-  npm install @tailwindcss/forms
-
-  plugins: [require('@tailwindcss/forms')]
--->
-
-  <footer aria-label="Site Footer" class="bg-gray-900">
+  <footer aria-label="Site Footer" class="bg-black">
     <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
       <div class="lg:flex lg:gap-8">
         <div>
-          <span class="block h-10 w-32 rounded-lg bg-gray-700">
+          <img class="h-10 w-10 objct-cover" src="~/static/icon.png" />
+          <!-- <span class="block h-10 w-32 rounded-lg bg-gray-700">
 
-          </span>
+          </span> -->
         </div>
 
         <div
@@ -23,12 +15,11 @@
           <div class="col-span-2">
             <div>
               <h2 class="text-2xl font-bold text-white">
-                Get the latest news!
+                Dont miss updates from us!
               </h2>
 
               <p class="mt-6 text-gray-400">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse
-                non cupiditate quae nam molestias.
+                Subscribe to our news letter and never miss our latest news.
               </p>
             </div>
           </div>
@@ -37,12 +28,15 @@
             <form class="w-full text-white">
               <label for="email" class="sr-only"> Email </label>
 
-              <div class="border border-white/10 p-2 sm:flex sm:items-center">
+              <div class="p-2 sm:flex sm:items-center">
                 <input
                   class="
+                  ring-1
+                  ring-gray-500
                     h-12
                     w-full
                     border-none
+                    outline-none
                     bg-transparent
                     p-3
                     text-sm
@@ -61,7 +55,7 @@
                     mt-1
                     h-12
                     w-full
-                    bg-red-700
+                    bg-green-400
                     px-6
                     py-3
                     text-sm
@@ -77,21 +71,6 @@
               </div>
             </form>
           </div>
-
-          <!-- <div class="col-span-2 border-t border-white/10 pt-6 sm:col-span-1">
-            <p class="font-bold text-white">Services</p>
-
-            <nav
-              aria-label="Footer Nav"
-              class="mt-6 flex flex-col space-y-4 text-sm text-gray-300"
-            >
-              <a class="inline-block" href=""> 1on1 Coaching </a>
-              <a class="inline-block" href=""> Company Review </a>
-              <a class="inline-block" href=""> Accounts Review </a>
-              <a class="inline-block" href=""> HR Consulting </a>
-              <a class="inline-block" href=""> SEO Optimisation </a>
-            </nav>
-          </div> -->
 
           <div class="col-span-2 border-t border-white/10 pt-6 sm:col-span-1">
             <p class="font-bold text-white">Company</p>

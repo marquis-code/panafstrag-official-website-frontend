@@ -2,7 +2,14 @@
   <main class="min-h-500">
     <section class="bg-opacity-100 bg-black">
       <main
-        class="background w-full h-full bg-blend-overlay pt-16 bg-opacity-70 bg-black"
+        class="
+          background
+          w-full
+          h-full
+          bg-blend-overlay
+          pt-16
+          bg-opacity-70 bg-black
+        "
       >
         <carousel></carousel>
       </main>
@@ -25,12 +32,14 @@
         Coordinator and Administrative/Support Sta.
       </p>
     </section>
-    <!-- <board-members></board-members> -->
-    <section class="bg-gray-900 text-white">
-      <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+
+    <section class="section-color text-white">
+      <div class="mx-auto max-w-screen-xl px-4 py-20 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center">
-          <h2 class="text-3xl font-bold sm:text-4xl">Our Team</h2>
-          <nuxt-link to="/board-members" class="flex justify-end items-end"
+          <h2 class="text-3xl text-black font-bold sm:text-4xl">Our Team</h2>
+          <nuxt-link
+            to="/board-members"
+            class="flex justify-end items-end text-black"
             >View More
             <span
               aria-hidden="true"
@@ -40,242 +49,136 @@
             </span></nuxt-link
           >
         </div>
-        <section
-          class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+        <main
+          class="
+            mt-8
+            grid grid-cols-1
+            gap-10
+            md:grid-cols-2
+            lg:grid-cols-3
+            h-full
+            w-full
+          "
         >
-          <article
-            class="
-              overflow-hidden
-              rounded-lg
-              border border-gray-100
-              shadow-sm
-              dark:border-gray-800 dark:shadow-gray-700/25
-            "
-          >
-            <img
-              alt="Office"
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-              class="h-56 w-full object-cover"
-            />
+          <section v-for="member in boardMembers" :key="member._id">
+            <article
+              v-if="loading"
+              class="
+                overflow-hidden
+                rounded-md
+                shadow-md
+                dark:border-gray-800 dark:shadow-gray-700/25
+                p-4
+                max-w-sm
+                w-full
+                mx-auto
+              "
+            >
+              <div class="animate-pulse flex flex-col space-x-4">
+                <div
+                  class="
+                    bg-slate-700
+                    h-40
+                    w-full
+                    px-0
+                    mx-0
+                    rounded-tr-md rounded-tl-md
+                  "
+                ></div>
+                <div class="flex-1 space-y-3 py-3">
+                  <div
+                    class="h-3 w-1/2 pl-0 -ml-4 bg-slate-700 rounded-full"
+                  ></div>
+                  <div
+                    class="h-3 w-1/2 pl-0 -ml-4 bg-slate-700 rounded-full"
+                  ></div>
+                  <div
+                    class="h-3 w-1/2 pl-0 -ml-4 bg-slate-700 rounded-full"
+                  ></div>
+                  <div
+                    class="h-3 w-1/4 pl-0 -ml-4 bg-slate-700 rounded-full"
+                  ></div>
+                </div>
+              </div>
+            </article>
 
-            <div class="p-4 sm:p-6">
-              <a href="#">
-                <h3 class="text-lg font-medium text-gray-900 dark:text-white">
-                  Prof. António Luís Jorge Gumbe
-                  <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. -->
-                </h3>
-              </a>
+            <article
+              v-else
+              class="
+                overflow-hidden
+                rounded-md
+                shadow-md
+                dark:shadow-gray-700/25
+                h-96
+              "
+            >
+              <img
+                alt="Office"
+                :src="member.avatar"
+                class="h-56 w-full object-cover"
+              />
 
-              <p
-                class="
-                  mt-2
-                  text-sm
-                  leading-relaxed
-                  text-gray-500
-                  line-clamp-3
-                  dark:text-gray-400
-                "
-              >
-                University of Angola
-              </p>
+              <div class="p-4 sm:p-6">
+                <a href="#">
+                  <h3 class="text-lg font-medium text-black">
+                    {{ member.name }}
+                  </h3>
+                </a>
 
-              <p
-                class="
-                  mt-2
-                  text-sm
-                  leading-relaxed
-                  text-gray-500
-                  line-clamp-3
-                  dark:text-gray-400
-                "
-              >
-                gumbe.jorge@gmail.com
-              </p>
-
-              <nuxt-link
-                :to="'/board-members/' + id"
-                class="
-                  group
-                  mt-4
-                  inline-flex
-                  items-center
-                  gap-1
-                  text-sm
-                  font-medium
-                  text-blue-600
-                "
-              >
-                Read Bio
-
-                <span
-                  aria-hidden="true"
-                  class="block transition group-hover:translate-x-0.5"
+                <p
+                  class="
+                    mt-2
+                    text-sm
+                    leading-relaxed
+                    text-gray-500
+                    line-clamp-3
+                    dark:text-gray-800
+                  "
                 >
-                  &rarr;
-                </span>
-              </nuxt-link>
-            </div>
-          </article>
-          <article
-            class="
-              overflow-hidden
-              rounded-lg
-              border border-gray-100
-              shadow-sm
-              dark:border-gray-800 dark:shadow-gray-700/25
-            "
-          >
-            <img
-              alt="Office"
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-              class="h-56 w-full object-cover"
-            />
+                  {{ member.university }}
+                </p>
 
-            <div class="p-4 sm:p-6">
-              <a href="#">
-                <h3 class="text-lg font-medium text-gray-900 dark:text-white">
-                  Eduardo Lourenço Viana
-                  <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. -->
-                </h3>
-              </a>
+                <div v-for="eachEmail in member.email" :key="eachEmail">
+                  <p
+                    class="
+                      mt-2
+                      text-sm
+                      leading-relaxed
+                      text-gray-500
+                      line-clamp-3
+                      dark:text-gray-800
+                    "
+                  >
+                    {{ eachEmail }}
+                  </p>
+                </div>
 
-              <p
-                class="
-                  mt-2
-                  text-sm
-                  leading-relaxed
-                  text-gray-500
-                  line-clamp-3
-                  dark:text-gray-400
-                "
-              >
-                Marioza & Viana- Advogados Associados, Brazil.
-              </p>
-
-              <p
-                class="
-                  mt-2
-                  text-sm
-                  leading-relaxed
-                  text-gray-500
-                  line-clamp-3
-                  dark:text-gray-400
-                "
-              >
-                lourencoviana1@gmail.com
-              </p>
-
-              <nuxt-link
-                :to="'/board-members/' + id"
-                class="
-                  group
-                  mt-4
-                  inline-flex
-                  items-center
-                  gap-1
-                  text-sm
-                  font-medium
-                  text-blue-600
-                "
-              >
-                Read Bio
-
-                <span
-                  aria-hidden="true"
-                  class="block transition group-hover:translate-x-0.5"
+                <nuxt-link
+                  :to="'/board-members/' + member._id"
+                  class="
+                    group
+                    mt-4
+                    inline-flex
+                    items-center
+                    gap-1
+                    text-sm
+                    font-medium
+                    text-green-600
+                  "
                 >
-                  &rarr;
-                </span>
-              </nuxt-link>
-            </div>
-          </article>
-          <article
-            class="
-              overflow-hidden
-              rounded-lg
-              border border-gray-100
-              shadow-sm
-              dark:border-gray-800 dark:shadow-gray-700/25
-            "
-          >
-            <img
-              alt="Office"
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-              class="h-56 w-full object-cover"
-            />
+                  Read Bio
 
-            <div class="p-4 sm:p-6">
-              <a href="#">
-                <h3 class="text-lg font-medium text-gray-900 dark:text-white">
-                  Prof. Solomon Negash
-                  <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. -->
-                </h3>
-              </a>
-
-              <p
-                class="
-                  mt-2
-                  text-sm
-                  leading-relaxed
-                  text-gray-500
-                  line-clamp-3
-                  dark:text-gray-400
-                "
-              >
-                Kennesaw State University
-              </p>
-
-              <p
-                class="
-                  mt-2
-                  text-sm
-                  leading-relaxed
-                  text-gray-500
-                  line-clamp-3
-                  dark:text-gray-400
-                "
-              >
-                560 Parliament Garden Way NW, Mail Drop #0405 Kennesaw, GA 30144
-              </p>
-
-              <p
-                class="
-                  mt-2
-                  text-sm
-                  leading-relaxed
-                  text-gray-500
-                  line-clamp-3
-                  dark:text-gray-400
-                "
-              >
-                snegash@kennesaw.edu.
-              </p>
-
-              <nuxt-link
-               :to="'/board-members/' + id"
-                class="
-                  group
-                  mt-4
-                  inline-flex
-                  items-center
-                  gap-1
-                  text-sm
-                  font-medium
-                  text-blue-600
-                "
-              >
-                Read Bio
-
-                <span
-                  aria-hidden="true"
-                  class="block transition group-hover:translate-x-0.5"
-                >
-                  &rarr;
-                </span>
-              </nuxt-link>
-            </div>
-          </article>
-        </section>
+                  <span
+                    aria-hidden="true"
+                    class="block transition group-hover:translate-x-0.5"
+                  >
+                    &rarr;
+                  </span>
+                </nuxt-link>
+              </div>
+            </article>
+          </section>
+        </main>
       </div>
     </section>
   </main>
@@ -283,32 +186,98 @@
 
 <script>
 import Carousel from "@/components/Carousel.vue";
-// import BoardMembers from "@/pages/board-members.vue";
 export default {
   name: "home",
   scrollToTop: true,
-   loading: false,
+  loading: true,
   components: {
     Carousel,
-    // BoardMembers,
+  },
+
+  mounted() {
+    this.getBoardMembers();
   },
   data() {
     return {
+      boardMembers: [],
+      loading: true,
       title: "Home",
+      description:
+        "Pan Africa; Original thinking, research help add to human knowledge",
+      image:
+        "https://res.cloudinary.com/marquis/image/upload/v1668940037/enagoshtazxadezqqjrj.png",
     };
   },
   head() {
     return {
-      title: this.title,
       meta: [
         {
-          hid: "description",
-          name: "description",
-          content:
-            "Pan Africa &#8211; Original thinking, research help add to human knowledge",
+          hid: "twitter:title",
+          name: "twitter:title",
+          content: this.title,
+        },
+        {
+          hid: "twitter:description",
+          name: "twitter:description",
+          content: this.description,
+        },
+        {
+          hid: "twitter:image",
+          name: "twitter:image",
+          content: this.image,
+        },
+        {
+          hid: "twitter:image:alt",
+          name: "twitter:image:alt",
+          content: this.title,
+        },
+        {
+          hid: "og:title",
+          property: "og:title",
+          content: this.title,
+        },
+        {
+          hid: "og:description",
+          property: "og:description",
+          content: this.description,
+        },
+        {
+          hid: "og:image",
+          property: "og:image",
+          content: this.image,
+        },
+        {
+          hid: "og:image:secure_url",
+          property: "og:image:secure_url",
+          content: this.image,
+        },
+        {
+          hid: "og:image:alt",
+          property: "og:image:alt",
+          content: this.title,
         },
       ],
     };
+  },
+  methods: {
+    async getBoardMembers() {
+      await this.$axios
+        .get(
+          "https://panafrica-website.herokuapp.com/api/panAfrica/board-member"
+        )
+        .then((res) => {
+          this.loading = true;
+          this.boardMembers = res.data;
+          res.data.splice(3);
+          setTimeout(() => {
+            this.loading = false;
+          }, 3000);
+        })
+        .catch((error) => {
+          console.log(error);
+          this.loading = false;
+        });
+    },
   },
 };
 </script>
@@ -317,6 +286,10 @@ export default {
 .background {
   background-image: url("~/static/images/volunteering.jpeg");
   background-size: cover;
+}
+
+.section-color {
+  background-color: #ecfcec;
 }
 </style>
 

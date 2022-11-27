@@ -1,29 +1,34 @@
 <template>
-  <main>
-    <section class="text-white">
-      <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold sm:text-4xl text-black">
-          Reports and Policies Briefs
-        </h2>
-        <section
-          class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
-        >
-          <div v-for="report in reports" :key="report._id">
-            <article
-              class="rounded-lg shadow-lg transition h-56 ring-1 ring-gray-50"
-            >
-              <div class="rounded-[10px] bg-white p-4 !pt-20 sm:p-6 space-y-3">
-                <div href="#">
-                  <h3 class="mt-0.5 text-sm font-medium text-gray-900">
-                    <!-- {{ report.title }} -->
+  <main class="text-white">
+    <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+      <h1 class="text-start text-3xl font-medium font-sans text-black py-6">
+        Our Archives
+      </h1>
+      <section class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div v-for="archive in archives" :key="archive._id">
+          <article
+            class="flex bg-white transition shadow-xl h-60 ring-1 ring-gray-50 rounded-md"
+          >
+
+            <div class="flex flex-1 flex-col justify-between">
+              <div
+                class="
+                  border-l border-gray-900/10
+                  p-4
+                  sm:border-l-transparent sm:p-6
+                "
+              >
+                <a href="#">
+                  <h3 class="font-bold uppercase text-gray-900">
                     {{
-                      report.title && report.title.length > 100
-                        ? report.title.slice(0, 100) + "..."
-                        : report.title
+                      archive.title && archive.title.length > 100
+                        ? archive.title.slice(0, 100) + "..."
+                        : archive.title
                     }}
                   </h3>
-                </div>
-                <div class="flex items-center space-x-2">
+                </a>
+
+                <div class="flex items-center space-x-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -47,48 +52,56 @@
                     <line x1="8" y1="2" x2="8" y2="6"></line>
                     <line x1="3" y1="10" x2="21" y2="10"></line>
                   </svg>
-                  <time
-                    datetime="2022-10-10"
-                    class="block text-xs text-gray-500"
-                  >
-                    {{ report.publicationDate }}
-                  </time>
-                </div>
-
-                <div class="mt-4 flex flex-wrap gap-1">
                   <span
                     class="
-                      whitespace-nowrap
-                      cursor-pointer
-                      rounded-lg
-                      px-3
-                      py-2.5
-                      text-xs text-white
-                      bg-green-400
-                      hover:bg-green-500
+                      mt-2
+                      text-center text-sm
+                      leading-relaxed
+                      text-gray-400
+                      line-clamp-3
                     "
+                    >{{ archive.publicationDate }}</span
                   >
-                    download
-                  </span>
                 </div>
               </div>
-            </article>
-          </div>
-        </section>
-      </div>
-    </section>
+              <div class="sm:flex sm:items-end sm:justify-end">
+                <nuxt-link
+                  :to="'/archives/' + archive._id"
+                  class="
+                    block
+                    bg-green-400
+                    px-5
+                    py-3
+                    text-center text-xs
+                    rounded-tl-md
+                    rounded-br-md
+                    font-bold
+                    uppercase
+                    text-white
+                    transition
+                    hover:bg-green-600
+                  "
+                >
+                  Read More
+                </nuxt-link>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
   </main>
 </template>
 
 <script>
 export default {
-  name: "reports",
+  name: "Archives",
   scrollToTop: true,
   loading: false,
   data() {
     return {
-      reports: [],
-      title: "Reports and policies briefs",
+      archives: [],
+      title: "Pan Africa Archives",
       description:
         "Pan Africa; Original thinking, research help add to human knowledge",
       image:
@@ -147,19 +160,15 @@ export default {
     };
   },
   created() {
-    this.getReports();
+    this.getArchives();
   },
   methods: {
-    async getReports() {
-      try {
-        let res = await this.$axios.get(
-          "https://panafrica-website.herokuapp.com/api/panAfrica/reports"
-        );
-        this.reports = res.data;
-      } catch (error) {
-        console.log(error);
-      }
-    },
+    async getArchives() {
+      let res = await this.$axios.get(
+        "https://panafrica-website.herokuapp.com/api/panAfrica/archives"
+      );
+      this.archives = res.data;
+    }
   },
 };
 </script>

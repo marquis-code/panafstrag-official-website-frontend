@@ -7,7 +7,7 @@
     class="h-96"
   >
     <div
-     class="slide"
+     class="slide z-0"
       v-for="(slide, index) in carouselContents"
       :key="index"
       :index="index + 1"
