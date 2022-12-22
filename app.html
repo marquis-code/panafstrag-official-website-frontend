@@ -5,13 +5,23 @@
     <!-- Panelbear -->
     <script
       async
-      src="https://www.googletagmanager.com/gtag/js?id={{ ENV.googleAnalyticsId }}"></script>
+      src="https://www.googletagmanager.com/gtag/js?id=G-H6J4DPKEBF"
+    ></script>
     <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-H6J4DPKEBF");
+    </script>
+    <!-- <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', '{{ ENV.googleAnalyticsId }}')
-    </script>
+    </script> -->
   </head>
   <body {{BODY_ATTRS}}>
     {{APP}}

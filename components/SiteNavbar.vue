@@ -10,12 +10,12 @@
     "
   >
     <section
-      class="container mx-auto p-4 py-6 flex justify-between items-center"
+      class="container mx-auto px-2 py-3 flex justify-between items-center"
     >
       <h1 class="text-2xl font-medium">
-        <nuxt-link class="flex items-center space-x-3" to="/"
-          ><img class="h-10 w-10 objct-cover" src="~/static/icon.png" />
-          <span class="text-md">PANAFSTRAG</span></nuxt-link
+        <nuxt-link class="flex items-center space-x-2" to="/">
+          <img class="h-10 w-10 objct-cover" src="~/static/icon.png" />
+          <span class="text-sm md:text-md">PANAFSTRAG</span></nuxt-link
         >
       </h1>
       <div>
@@ -24,16 +24,51 @@
           id="mobile-open-button"
           class="text-3xl sm:hidden focus:outline-none"
         >
-          <span v-if="showDropdown === false">&#9776;</span>
+          <span v-if="showDropdown === false"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="23"
+              height="23"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="square"
+              stroke-linejoin="bevel"
+            >
+              <path d="M21 9.5H7M21 4.5H3M21 14.5H3M21 19.5H7" /></svg
+          ></span>
           <span
             v-if="showDropdown === true"
-            class="h-2 w-2 text-white font-medium font-mono"
-            >X</span
+            class="h-2 w-2 text-white font-medium"
           >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="23"
+              height="23"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="square"
+              stroke-linejoin="bevel"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </span>
         </button>
 
         <nav
-          class="hidden sm:flex justify-between items-center space-x-8 text-sm"
+          class="
+            hidden
+            sm:flex
+            justify-between
+            items-center
+            md:space-x-6
+            lg:space-x-8
+            text-sm
+          "
           aria-label="main"
         >
           <div
@@ -47,131 +82,32 @@
           >
             <nuxt-link
               to="/"
+              :class="[isHome ? 'text-green-500' : '']"
               class="
                 uppercase
                 hover:opacity-90 hover:text-green-500
                 font-light
                 text-xs
+                select-none
               "
               >Home</nuxt-link
             >
           </div>
-          <!-- <div
-            class="
-              uppercase
-              transition
-              ease-in
-              delay-100
-              hover:-translate-y-1 hover:scale-110
-              duration-300
-            "
-          >
-            <nuxt-link
-              to="/about-us"
-              class="hover:opacity-90 hover:text-green-500 font-light text-xs"
-              >About Us</nuxt-link
+
+          <!-- <div class="inline-flex items-stretch bg-white"> -->
+          <b-dropdown id="dropdown-divider" text="About us" class="">
+            <b-dropdown-item-button @click="handleBoardMembers()"
+              >Board Members</b-dropdown-item-button
             >
-          </div> -->
-
-          <div class="inline-flex items-stretch bg-white">
-            <a href.prevent="#" class="text-sm text-white bg-black cursor-pointer" @click="switchDropdown"> About Us </a>
-
-            <div class="relative" v-if="dropdown">
-              <a
-                href="#"
-                type="button"
-                class="
-                  inline-flex
-                  border-none
-                  outline-none
-                  h-full
-                  items-center
-                  justify-center
-                  text-gray-600
-                "
-              >
-                <span class="sr-only">About Us</span>
-                <!-- <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="bg-black"
-                  width="23"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1"
-                  stroke-linecap="square"
-                  stroke-linejoin="bevel"
-                >
-                  <path d="M6 9l6 6 6-6" />
-                </svg> -->
-              </a>
-
-              <div
-                class="
-                  absolute
-                  right-0
-                  z-10
-                  mt-4
-                  w-56
-                  origin-top-right
-                  rounded-md
-                  border border-gray-100
-                  bg-white
-                  shadow-lg
-                "
-                role="menu"
-              >
-                <div class="p-2">
-                  <button
-                     @click="handleBoardMembers()"
-                    class="
-                      block
-                      rounded-lg
-                      px-4
-                      py-2
-                      text-sm text-gray-500
-                      hover:bg-gray-50 hover:text-gray-700
-                    "
-                    role="menuitem"
-                  >
-                    Our Board Members
-                  </button>
-
-                  <button
-                    @click="handleCells()"
-                    class="
-                      block
-                      rounded-lg
-                      px-4
-                      py-2
-                      text-sm text-gray-500
-                      hover:bg-gray-50 hover:text-gray-700
-                    "
-                    role="menuitem"
-                  >
-                    Cells & Responsibilities
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- <div
-            class="
-              uppercase
-              transition
-              ease-in
-              delay-100
-              hover:-translate-y-1 hover:scale-110
-              duration-300
-            "
-          >
-            <nuxt-link
-              to="/cells"
-              class="hover:opacity-90 hover:text-green-500 font-light text-xs"
-              >Cells & Responsibilities</nuxt-link
+            <b-dropdown-divider></b-dropdown-divider>
+            <b-dropdown-item-button @click="handleMiniCellsDropdown()"
+              >PANAFSTRAG Cells</b-dropdown-item-button
             >
-          </div> -->
+            <b-dropdown-divider></b-dropdown-divider>
+            <b-dropdown-item-button @click="handleObjectivesDropdown()"
+              >PANAFSTRAG Objeectives</b-dropdown-item-button
+            >
+          </b-dropdown>
           <div
             class="
               uppercase
@@ -184,6 +120,7 @@
           >
             <nuxt-link
               to="/programmes"
+              :class="[isProgramActive ? 'text-green-500' : '']"
               class="hover:opacity-90 hover:text-green-500 font-light text-xs"
               >Programme</nuxt-link
             >
@@ -196,15 +133,18 @@
               delay-100
               hover:-translate-y-1 hover:scale-110
               duration-300
+              select-none
             "
           >
             <nuxt-link
-              to="/reports"
+              :class="[isArchiveActive ? 'text-green-500' : '']"
+              to="/archives"
               class="hover:opacity-90 hover:text-green-500 font-light text-xs"
-              >Reports and Policies Briefs</nuxt-link
+              >Archives</nuxt-link
             >
           </div>
-           <div
+          <div
+            @click="handleSidebarRadio"
             class="
               uppercase
               transition
@@ -212,12 +152,14 @@
               delay-100
               hover:-translate-y-1 hover:scale-110
               duration-300
+              select-none
             "
           >
-            <nuxt-link
-              to="/archives"
+            <a
+              :class="[isRadioActive ? 'text-green-500' : '']"
+              href="https://panafstragradio.com/"
               class="hover:opacity-90 hover:text-green-500 font-light text-xs"
-              >Archives</nuxt-link
+              >Radio</a
             >
           </div>
         </nav>
@@ -225,6 +167,7 @@
         <div
           v-if="showDropdown"
           class="
+            md:hidden
             flex
             absolute
             top-0
@@ -235,191 +178,282 @@
             justify-between
             bg-black
             text-white
+            select-none
           "
         >
           <div class="px-4 py-6">
             <!-- <span class="block h-10 w-32 rounded-lg bg-gray-200"></span> -->
 
             <nav aria-label="Main Nav" class="mt-14 flex flex-col space-y-4">
-              <nuxt-link
-                to="/"
+              <button
+                @click="handleHome()"
+                :class="[isHome ? 'bg-gray-100' : '']"
                 class="
                   flex
                   items-center
                   rounded-lg
-                  bg-gray-100
                   px-4
                   py-3
                   text-gray-700
+                  focus:outline-none focus:ring focus:ring-gray-100
                 "
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 opacity-75"
-                  fill="none"
+                  width="29"
+                  height="29"
                   viewBox="0 0 24 24"
+                  fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  stroke-width="1"
+                  stroke-linecap="square"
+                  stroke-linejoin="bevel"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
+                  <path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9" />
+                  <path d="M9 22V12h6v10M2 10.6L12 2l10 8.6" />
                 </svg>
 
-                <span
-                  @click="toggleDropdown()"
-                  class="ml-3 text-sm font-medium"
-                >
-                  Home
-                </span>
-              </nuxt-link>
+                <span class="ml-3 text-sm font-medium select-none"> HOME</span>
+              </button>
 
-              <nuxt-link
-                to="/about-us"
+              <button
+                @click="handleAboutUs()"
+                :class="[isAboutUs ? 'bg-gray-100' : '']"
                 class="
                   flex
                   items-center
                   rounded-lg
                   px-4
                   py-3
-                  text-gray-500
-                  hover:bg-gray-100 hover:text-gray-700
+                  text-gray-700
+                  focus:outline-none focus:ring focus:ring-gray-100
                 "
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 opacity-75"
-                  fill="none"
+                  width="29"
+                  height="29"
                   viewBox="0 0 24 24"
+                  fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  stroke-width="1.5"
+                  stroke-linecap="square"
+                  stroke-linejoin="bevel"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
                     d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
                   />
                 </svg>
 
-                <span
-                  @click="toggleDropdown()"
-                  class="ml-3 text-sm font-medium"
+                <span class="ml-3 text-sm uppercase font-medium select-none">
+                  ABOUT US</span
                 >
-                  About Us</span
-                >
-              </nuxt-link>
+              </button>
 
-              <nuxt-link
-                to="/cells"
+              <button
+                @click="handleCells()"
+                :class="[isCells ? 'bg-gray-100' : '']"
                 class="
                   flex
                   items-center
                   rounded-lg
                   px-4
                   py-3
-                  text-gray-500
-                  hover:bg-gray-100 hover:text-gray-700
+                  text-gray-700
+                  focus:outline-none focus:ring focus:ring-gray-100
                 "
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 opacity-75"
-                  fill="none"
+                  width="29"
+                  height="29"
                   viewBox="0 0 24 24"
+                  fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  stroke-width="1"
+                  stroke-linecap="square"
+                  stroke-linejoin="bevel"
                 >
+                  <circle cx="12" cy="12" r="3"></circle>
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                  />
+                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+                  ></path>
                 </svg>
 
-                <span
-                  @click="toggleDropdown()"
-                  class="ml-3 text-sm font-medium"
-                >
+                <span class="ml-3 text-sm font-medium select-none">
                   CELLS & RESPONSIBILITIES
                 </span>
-              </nuxt-link>
+              </button>
 
-              <nuxt-link
-                to="/programme"
+              <button
+                @click="handleProgrammes()"
+                :class="[isProgramActive ? 'bg-gray-100' : '']"
                 class="
                   flex
                   items-center
                   rounded-lg
                   px-4
                   py-3
-                  text-gray-500
-                  hover:bg-gray-100 hover:text-gray-700
+                  text-gray-700
+                  focus:outline-none focus:ring focus:ring-gray-100
                 "
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 opacity-75"
-                  fill="none"
+                  width="29"
+                  height="29"
                   viewBox="0 0 24 24"
+                  fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  stroke-width="1.5"
+                  stroke-linecap="square"
+                  stroke-linejoin="bevel"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                  />
+                    d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
+                  ></path>
                 </svg>
-
-                <span
-                  @click="toggleDropdown()"
-                  class="ml-3 text-sm font-medium"
-                >
+                <span class="ml-3 text-sm font-medium select-none">
                   PROGRAMMES
                 </span>
-              </nuxt-link>
+              </button>
 
-              <nuxt-link
-                to="/reports"
+              <button
+                @click="handleBoardMobileMembers()"
+                :class="[isMobileBoardMembersActive ? 'bg-gray-100' : '']"
                 class="
                   flex
                   items-center
                   rounded-lg
                   px-4
                   py-3
-                  text-gray-500
-                  hover:bg-gray-100 hover:text-gray-700
+                  text-gray-700
+                  focus:outline-none focus:ring focus:ring-gray-100
                 "
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 opacity-75"
-                  fill="none"
+                  width="29"
+                  height="29"
                   viewBox="0 0 24 24"
+                  fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  stroke-width="1.5"
+                  stroke-linecap="square"
+                  stroke-linejoin="bevel"
+                >
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span class="ml-3 text-sm font-medium select-none">
+                  BOARD MEMBERS
+                </span>
+              </button>
+
+              <!-- <button
+                @click="handleReports()"
+                :class="[isReportActive ? 'bg-gray-100' : '']"
+                class="
+                  flex
+                  items-center
+                  rounded-lg
+                  px-4
+                  py-3
+                  text-gray-700
+                  focus:outline-none focus:ring focus:ring-gray-100
+                "
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="23"
+                  height="23"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1"
+                  stroke-linecap="square"
+                  stroke-linejoin="bevel"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                    d="M13 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V9l-7-7z"
                   />
+                  <path d="M13 3v6h6" />
                 </svg>
 
-                <span
-                  @click="toggleDropdown()"
-                  class="ml-3 text-sm font-medium"
-                >
+                <span class="ml-3 text-sm font-medium select-none">
                   REPORTS AND POLICIES BRIEFS
                 </span>
-              </nuxt-link>
+              </button> -->
+
+              <button
+                @click="handleArchives()"
+                :class="[isArchiveActive ? 'bg-gray-100' : '']"
+                class="
+                  flex
+                  items-center
+                  rounded-lg
+                  px-4
+                  py-3
+                  text-gray-700
+                  focus:outline-none focus:ring focus:ring-gray-100
+                "
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="29"
+                  height="29"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1"
+                  stroke-linecap="square"
+                  stroke-linejoin="bevel"
+                >
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z"
+                  />
+                  <path d="M14 3v5h5M16 13H8M16 17H8M10 9H8" />
+                </svg>
+
+                <span class="ml-3 text-sm font-medium select-none">
+                  ARCHIVES
+                </span>
+              </button>
+
+              <button
+                @click="handleRadioRedirection"
+                :class="[isRadioActive ? 'bg-gray-100' : '']"
+                class="
+                  flex
+                  items-center
+                  rounded-lg
+                  px-4
+                  py-3
+                  text-gray-700
+                  focus:outline-none focus:ring focus:ring-gray-100
+                "
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="29"
+                  height="29"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="square"
+                  stroke-linejoin="bevel"
+                >
+                  <circle cx="12" cy="12" r="2"></circle>
+                  <path
+                    d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"
+                  ></path>
+                </svg>
+
+                <span class="pl-3">TV/radio</span>
+              </button>
             </nav>
           </div>
         </div>
@@ -434,7 +468,16 @@ export default {
   data() {
     return {
       showDropdown: false,
-      dropdown: false
+      dropdown: false,
+      active: true,
+      isHome: false,
+      isProgramActive: false,
+      isReportActive: false,
+      isArchiveActive: false,
+      isRadioActive: false,
+      isMobileBoardMembersActive: false,
+      isAboutUs: false,
+      isCells: false,
     };
   },
   methods: {
@@ -444,14 +487,115 @@ export default {
     switchDropdown() {
       this.dropdown = !this.dropdown;
     },
-    handleBoardMembers(){
+    handleBoardMembers() {
       this.$router.push({ path: "/board-members" });
       this.switchDropdown();
     },
-    handleCells(){
+    handleMiniCellsDropdown() {
       this.$router.push({ path: "/cells" });
       this.switchDropdown();
-    }
+    },
+    handleObjectivesDropdown() {
+      this.$router.push({ path: "/about-us" });
+      this.switchDropdown();
+    },
+    handleHome() {
+      this.$router.push({ path: "/" });
+      this.toggleDropdown();
+    },
+    handleAboutUs() {
+      this.$router.push({ path: "/about-us" });
+      this.toggleDropdown();
+    },
+    handleCells() {
+      this.$router.push({ path: "/cells" });
+      this.toggleDropdown();
+    },
+    handleProgrammes() {
+      this.$router.push({ path: "/programmes" });
+      this.toggleDropdown();
+    },
+    handleBoardMobileMembers() {
+      this.$router.push({ path: "/board-members" });
+      this.toggleDropdown();
+    },
+    handleReports() {
+      this.$router.push({ path: "/reports" });
+      this.toggleDropdown();
+    },
+    handleArchives() {
+      this.$router.push({ path: "/archives" });
+      this.toggleDropdown();
+    },
+
+    handleSidebarRadio() {
+      this.isRadioActive = true;
+      this.isHome = false;
+      this.isProgramActive = false;
+      this.isMobileBoardMembersActive = false;
+      this.isReportActive = false;
+      this.isArchiveActive = false;
+      this.isRadioActive = false;
+      this.isAboutUs = false;
+      this.isCells = false;
+    },
+    handleRadioRedirection() {
+      window.location.href = "https://panafstragradio.com";
+    },
+  },
+  watch: {
+    $route: {
+      handler(value) {
+        if (value.fullPath === "/") {
+          this.isHome = true;
+          this.dropdown = false;
+        } else {
+          this.isHome = false;
+        }
+
+        if (value.fullPath === "/programmes") {
+          this.isProgramActive = true;
+          this.dropdown = false;
+        } else {
+          this.isProgramActive = false;
+        }
+
+        if (value.fullPath === "/board-members") {
+          this.isMobileBoardMembersActive = true;
+          this.dropdown = false;
+        } else {
+          this.isMobileBoardMembersActive = false;
+        }
+
+        if (value.fullPath === "/reports") {
+          this.isReportActive = true;
+          this.dropdown = false;
+        } else {
+          this.isReportActive = false;
+        }
+
+        if (value.fullPath === "/archives") {
+          this.isArchiveActive = true;
+          this.dropdown = false;
+        } else {
+          this.isArchiveActive = false;
+        }
+
+        if (value.fullPath === "/about-us") {
+          this.isAboutUs = true;
+          this.dropdown = false;
+        } else {
+          this.isAboutUs = false;
+        }
+        if (value.fullPath === "/cells") {
+          this.isCells = true;
+          this.dropdown = false;
+        } else {
+          this.isCells = false;
+        }
+      },
+      immediate: true,
+    },
   },
 };
 </script>

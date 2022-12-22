@@ -1,4 +1,6 @@
 const axios = require("axios");
+require("dotenv").config();
+// import axios from 'axios'
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: "static",
@@ -8,7 +10,7 @@ export default {
   exclude: ["catalog/", "blog-*/", "*.html"],
   head: {
     title: "Original thinking, research help add to human knowledge",
-    titleTemplate: "Pan Africa | %s",
+    titleTemplate: "PANAFSTRAG | %s",
     meta: [
       { charset: "utf-8" },
       {
@@ -27,16 +29,16 @@ export default {
         name: "twitter:card",
         content: "summary_large_image",
       },
-      { hid: "twitter:site", name: "twitter:site", content: "@panafrica" },
+      { hid: "twitter:site", name: "twitter:site", content: "@panafstrag" },
       {
         hid: "twitter:url",
         name: "twitter:url",
-        content: "https://panafrica.netlify.app/",
+        content: "https://panafstrag.netlify.app/",
       },
       {
         hid: "twitter:title",
         name: "twitter:title",
-        content: "Pan Africa official website",
+        content: "PANAFSTRAG official website",
       },
       {
         hid: "twitter:description",
@@ -55,12 +57,12 @@ export default {
       {
         hid: "og:url",
         property: "og:url",
-        content: "https://panafrica.netlify.app/",
+        content: "https://panafstrag.netlify.app/",
       },
       {
         hid: "og:title",
         property: "og:title",
-        content: "Pan Africa official website",
+        content: "PANAFSTRAG official website",
       },
       {
         hid: "og:description",
@@ -91,10 +93,21 @@ export default {
       {
         hid: "canonical",
         rel: "canonical",
-        href: `https://panafrica.netlify.app/`,
+        href: `https://panafstrag.netlify.app/`,
+      },
+      {
+        rel: "stylesheet",
+        href: 'https://fonts.googleapis.com/css?family=Oxygen&display=swap"',
       },
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
     ],
+  },
+  bootstrapVue: {
+    icons: true,
+    bootstrapCSS: true, // here you can disable automatic bootstrapCSS in case you are loading it yourself using sass
+    bootstrapVueCSS: true, // CSS that is specific to bootstrapVue components can also be disabled. That way you won't load css for modules that you don't use
+    componentPlugins: [], // Here you can specify which components you want to load and use
+    directivePlugins: [], // Here you can specify which directives you want to load and use. Look into official docs to get a list of what's available
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -105,7 +118,11 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ["~/plugins/bootstrap.js", "~/plugins/youtube.client.js"],
+  plugins: [
+    "~/plugins/bootstrap-vue.client",
+    "~/plugins/youtube.client.js",
+    { src: "~/plugins/vue-datepicker", ssr: false },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -116,33 +133,108 @@ export default {
     "@nuxtjs/tailwindcss",
     "vue-ssr-carousel/nuxt",
     "@nuxtjs/google-analytics",
+    "@nuxtjs/moment",
     "@nuxt/image",
+    [
+      "@nuxtjs/google-fonts",
+      {
+        families: {
+          Roboto: true,
+          "Josefin+Sans": true,
+          Lato: [100, 300],
+          Raleway: {
+            wght: [100, 400],
+            ital: [100],
+          },
+        },
+      },
+    ],
   ],
+  googleAnalytics: {
+    id: "UA-4362322022",
+    // dev: false,
+  },
+  publicRuntimeConfig: {
+    googleAnalytics: {
+      id: process.env.GOOGLE_ANALYTICS_ID,
+    },
+  },
+  webfontloader: {
+    google: {
+      families: ["Lato:400,700"], //Loads Lato font with weights 400 and 700
+    },
+  },
+  maintenance: {
+    enabled: !!process.env.MAINTENANCE_MODE, // If given truthy value, activate maintenance mode on startup
+    path: "/maintenance", // maintenance fallback content routing
+    matcher: /^\/user/, // Path to be in maintenance mode (regex)
+  },
+  toast: {
+    position: "top-center",
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    "bootstrap-vue/nuxt",
+    "@nuxtjs/toast",
+    ["@nuxtjs/dotenv"],
+    "nuxt-webfontloader",
+    "nuxt-maintenance-mode",
+    [
+      "nuxt-sweetalert2",
+      {
+        confirmButtonColor: "#000000",
+      },
+    ],
+    [
+      "nuxt-imagemin",
+      {
+        optipng: { optimizationLevel: 5 },
+        gifsicle: { optimizationLevel: 2 },
+      },
+    ],
+    // [
+    //   "nuxt-social-meta",
+    //   {
+    //     title:
+    //       "Pan Africa | Original thinking, research help add to human knowledge",
+    //     description:
+    //       "Pan Africa, Original thinking, research help add to human knowledge",
+    //     url: "https://www.panafrica.org",
+    //     img: "/static/panafricalogo.png",
+    //     locale: "en-US",
+    //     twitter: "@panafrica",
+    //     themeColor: "#1B2432",
+    //   },
+    // ],
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
     // https://go.nuxtjs.dev/pwa
     "@nuxtjs/pwa",
-    "bootstrap-vue/nuxt",
     "@nuxtjs/sitemap",
     "@nuxtjs/auth",
     // "@nuxtjs/i18n",
   ],
+  moment: {
+    timezone: true,
+  },
 
+  sweetalert: {
+    confirmButtonColor: "#41b882",
+    cancelButtonColor: "#ff7674",
+  },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     proxy: true,
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: "https://panafrica-website.herokuapp.com/api",
+    baseURL: "https://panafstrag.onrender.com/api",
   },
 
   sitemap: {
-    hostname: "https://panafrica.netlify.app/",
-    exclude: ["/admin/**", "/admin"],
+    hostname: "https://panafstrag.netlify.app/",
+    exclude: ["/admin/**", "/admin", "/login"],
     routes: async () => {
-      let baseURL = "https://panafrica-website.herokuapp.com/api";
+      let baseURL = "https://panafstrag.onrender.com/api";
       let { data } = await axios.get(`${baseURL}/panAfrica/board-member`);
       return data.map((eachBoardMember) => `/watch/${eachBoardMember._id}`);
     },
@@ -161,7 +253,7 @@ export default {
   pwa: {
     meta: {
       title: "PANAFSTRAG",
-      author: "marquis-codes",
+      author: "panafstrag website",
     },
     manifest: {
       name: "PANAFSTRAG",
@@ -182,7 +274,7 @@ export default {
   },
   serverMiddleware: [{ path: "/", handler: "~/servermiddleware/seo.js" }],
   router: {
-    middleware: ["myMiddleware"],
+    middleware: ["auth"],
   },
 
   // layoutTransition: {
@@ -195,10 +287,6 @@ export default {
   //   mode: "in-out",
   //   appear: true,
   // },
-  bootstrapVue: {
-    bootstrapCSS: false,
-    icons: true,
-  },
   module: {
     rules: [
       {
@@ -211,7 +299,19 @@ export default {
     googleAnalyticsId: process.env.GOOGLE_ANALYTICS_ID,
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    babel: {
+      compact: true,
+    },
+    // extend(config, ctx) {
+    //   if (ctx.isClient) {
+    //     config.resolve.alias["vue$"] = "vue/dist/vue.esm.js";
+    //   }
+    // },
+  },
+  generate: {
+    fallback: true,
+  },
   auth: {
     localStorage: false,
     strategies: {

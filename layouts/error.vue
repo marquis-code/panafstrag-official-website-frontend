@@ -47,24 +47,40 @@
         </h1>
 
         <p class="mt-4 text-gray-500">We can't find that page.</p>
-        <a
-          href="#"
-          class="
-            mt-6
-            inline-block
-            rounded
-            bg-indigo-600
-            px-5
-            py-3
-            text-sm
-            font-medium
-            text-white
-            hover:bg-indigo-700
-            focus:outline-none focus:ring
-          "
-        >
-          Go Back Home
-        </a>
+        <div>
+          <nuxt-link
+            to="/"
+            class="
+              mt-3
+              inline-block
+              rounded
+              bg-green-500
+              px-6
+              py-2
+              text-sm
+              font-medium
+              text-white
+              hover:bg-green-700
+              focus:outline-none focus:ring
+            "
+          >
+            Go Back Home
+          </nuxt-link>
+        </div>
+        <div class="mt-3">
+          <span>Still having issues?</span>
+          <a
+            class="text-green-500 underline"
+            :href="
+              'mailto:' +
+              'panafstraginternational@gmail.com?subject=I found a broken link!&body=Hey Admin,%0D%0A%0D%0AI found a broken link on your site. The page was supposed to be at' +
+              ' ' +
+              'panafrica.com' +
+              currentURL
+            "
+            >Contact Adminstrator</a
+          >
+        </div>
       </div>
     </div>
   </main>
@@ -73,6 +89,12 @@
 <script>
 export default {
   name: "error",
+  layout: "errorLayout",
+  computed: {
+    currentURL: function () {
+      return this.$route.fullPath;
+    },
+  },
 };
 </script>
 

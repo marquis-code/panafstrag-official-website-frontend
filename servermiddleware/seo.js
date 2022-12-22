@@ -1,8 +1,20 @@
-export default (req, res, next) => {
-  if (req.path == "/oldpage1") {
-    res.redirect(301, "/page1");
-    return;
-  }
+// export default (req, res, next) => {
+//   if (req.path == "/oldpage1") {
+//     res.redirect(301, "/page1");
+//     return;
+//   }
 
-  next();
+//   next();
+// };
+
+const redirects = require("../301.json");
+module.exports = function (req, res, next) {
+  const redirect = redirects.find((r) => r.from === req.url);
+  if (redirect) {
+    console.log(`redirect: ${redirect.from} => ${redirect.to}`);
+    res.writeHead(301, { Location: redirect.to });
+    res.end();
+  } else {
+    next();
+  }
 };

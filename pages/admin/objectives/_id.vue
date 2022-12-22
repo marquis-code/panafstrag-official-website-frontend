@@ -1,0 +1,154 @@
+<template>
+  <section class="">
+    <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      <button
+        @click="goBack()"
+        class="
+          outline-none
+          mt-2
+          border
+          bg-gray-200
+          text-black
+          px-3
+          py-1
+          rounded-md
+          text-sm
+        "
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="23"
+          height="23"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#747070"
+          stroke-width="2"
+          stroke-linecap="square"
+          stroke-linejoin="bevel"
+        >
+          <path d="M19 12H6M12 5l-7 7 7 7" />
+        </svg>
+      </button>
+      <h2 class="text-xl my-6 font-medium text-black">Update objective</h2>
+      <div
+        class="
+          md:bg-white md:p-7 md:w-9/12
+          shadow-md
+          rounded-md
+          border
+          mt-4
+          p-3
+          mb-6
+        "
+      >
+        <form @submit.prevent="handleSubmit" action="" class="space-y-6 w-full">
+          <div>
+            <label class="sr-only" for="description">Description</label>
+            <textarea
+              class="w-full rounded-lg border outline-none p-3 text-sm"
+              placeholder="Enter objectives description here..."
+              rows="8"
+              id="description"
+              v-model="form.description"
+            ></textarea>
+          </div>
+
+          <div class="mt-3 flex justify-end items-center">
+            <button
+              :disabled="loading"
+              type="submit"
+              :class="[loading ? 'cursor-not-allowed opacity-20' : '']"
+              class="
+                inline-flex
+                items-center
+                justify-center
+                rounded-lg
+                bg-black
+                px-3
+                py-2
+                w-full
+                md:w-3/12
+                text-white
+              "
+            >
+              <span class="font-medium">
+                {{ loading ? "processing..." : "Continue" }}</span
+              >
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="ml-3 h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script>
+export default {
+  name: "archives",
+  layout: "admin",
+  data() {
+    return {
+      form: {
+        description: "",
+      },
+      loading: false,
+    };
+  },
+  created() {
+    this.fetchObjective();
+  },
+  methods: {
+    resetForm() {
+      this.form.description = null;
+    },
+    goBack() {
+      this.$router.go(-1);
+    },
+    async handleSubmit() {
+      this.loading = true;
+      try {
+        await this.$axios.put(
+          `https://panafstrag.onrender.com/api/panAfrica/objective/${this.$route.params.id}`,
+          this.form
+        );
+        this.$toast.success("Objective was successfully updated").goAway(1500);
+        this.$router.push("/admin/objectives");
+        this.loading = false;
+      } catch (error) {
+        this.$toast.error(error.response.data.errorMessage).goAway(1500);
+        this.loading = false;
+      }
+    },
+    async fetchObjective() {
+      try {
+        let response = await this.$axios.get(
+          `https://panafstrag.onrender.com/api/panAfrica/objective/${this.$route.params.id}`
+        );
+        this.form = response.data;
+      } catch (error) {
+        this.$toast
+          .error("Something went wrong, please try again.")
+          .goAway(1500);
+      }
+    },
+  },
+};
+</script>
+
+<style>
+</style>

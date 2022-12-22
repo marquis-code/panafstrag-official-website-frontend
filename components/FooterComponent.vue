@@ -1,12 +1,9 @@
 <template>
-  <footer aria-label="Site Footer" class="bg-black">
+  <footer v-if="$nuxt.isOnline" aria-label="Site Footer" class="bg-black">
     <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
       <div class="lg:flex lg:gap-8">
         <div>
-          <img class="h-10 w-10 objct-cover" src="~/static/icon.png" />
-          <!-- <span class="block h-10 w-32 rounded-lg bg-gray-700">
-
-          </span> -->
+          <img class="h-8 w-10 objct-cover" src="~/static/icon.png" />
         </div>
 
         <div
@@ -25,23 +22,25 @@
           </div>
 
           <div class="col-span-2 lg:col-span-3 lg:flex lg:items-end">
-            <form class="w-full text-white">
+            <form
+              @submit.prevent="handleSubscription"
+              class="w-full text-white"
+            >
               <label for="email" class="sr-only"> Email </label>
 
-              <div class="p-2 sm:flex sm:items-center">
+              <div class="p-2 space-y-3 md:space-y-0 sm:flex sm:items-center">
                 <input
+                  v-model="form.email"
                   class="
-                  ring-1
-                  ring-gray-500
+                    rounded
                     h-12
                     w-full
-                    border-none
+                    border
                     outline-none
+                    border-gray-300
                     bg-transparent
                     p-3
                     text-sm
-                    font-medium
-                    uppercase
                     tracking-widest
                     placeholder-gray-400
                   "
@@ -51,11 +50,14 @@
                 />
 
                 <button
+                  :disabled="loading"
+                  type="submit"
+                  :class="[loading ? 'cursor-not-allowed opacity-20' : '']"
                   class="
-                    mt-1
                     h-12
                     w-full
                     bg-green-400
+                    rounded
                     px-6
                     py-3
                     text-sm
@@ -64,52 +66,112 @@
                     tracking-wide
                     sm:ml-4 sm:mt-0 sm:w-auto sm:flex-shrink-0
                   "
-                  type="submit"
                 >
-                  Sign Up
+                  {{ loading ? "processing..." : "Sign up" }}
                 </button>
               </div>
             </form>
           </div>
 
           <div class="col-span-2 border-t border-white/10 pt-6 sm:col-span-1">
-            <p class="font-bold text-white">Company</p>
+            <p class="font-bold text-white">SECRETARIAT</p>
 
             <nav class="mt-6 flex flex-col space-y-4 text-sm text-gray-300">
-              <a class="inline-block" href=""> About </a>
-              <a class="inline-block" href=""> Meet the Team </a>
-              <a class="inline-block" href=""> History </a>
-              <a class="inline-block" href=""> Careers </a>
+              <a class="inline-block" href="">
+                302,Iju Road Agege, Iju Lagos, Nigeria.
+              </a>
             </nav>
           </div>
 
           <div class="col-span-2 border-t border-white/10 pt-6 sm:col-span-1">
-            <p class="font-bold text-white">Helpful Links</p>
+            <p class="font-bold text-white">PHONE NUMBER</p>
 
             <nav class="mt-6 flex flex-col space-y-4 text-sm text-gray-300">
-              <a class="inline-block" href=""> Contact </a>
-              <a class="inline-block" href=""> FAQs </a>
-              <a class="inline-block" href=""> Live Chat </a>
+              <div class="flex items-center space-x-2" href="">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="23"
+                  height="23"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1"
+                  stroke-linecap="square"
+                  stroke-linejoin="bevel"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path>
+                </svg>
+                <a href="https://wa.me/2348056210960">+234-8056210960</a>
+              </div>
+              <div class="flex items-center space-x-2" href="">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="23"
+                  height="23"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1"
+                  stroke-linecap="square"
+                  stroke-linejoin="bevel"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path>
+                </svg>
+                <a href="https://wa.me/2348055177436">+234-8055177436</a>
+              </div>
             </nav>
           </div>
 
           <div class="col-span-2 border-t border-white/10 pt-6 sm:col-span-1">
-            <p class="font-bold text-white">Legal</p>
+            <p class="font-bold text-white">EMAIL ADDRESS</p>
 
             <nav class="mt-6 flex flex-col space-y-4 text-sm text-gray-300">
-              <a class="inline-block" href=""> Accessibility </a>
-              <a class="inline-block" href=""> Returns Policy </a>
-              <a class="inline-block" href=""> Refund Policy </a>
-              <a class="inline-block" href=""> Hiring Statistics </a>
-            </nav>
-          </div>
-
-          <div class="col-span-2 border-t border-white/10 pt-6 sm:col-span-1">
-            <p class="font-bold text-white">Downloads</p>
-
-            <nav class="mt-6 flex flex-col space-y-4 text-sm text-gray-300">
-              <a class="inline-block" href=""> Marketing Calendar </a>
-              <a class="inline-block" href=""> SEO Infographics </a>
+              <div class="flex items-center space-x-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="23"
+                  height="23"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1"
+                  stroke-linecap="square"
+                  stroke-linejoin="bevel"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  ></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <a href="mailto:panafstraginternational@gmail.com"
+                  >panafstraginternational@gmail.com</a
+                >
+              </div>
+              <div class="flex items-center space-x-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="23"
+                  height="23"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1"
+                  stroke-linecap="square"
+                  stroke-linejoin="bevel"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  ></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <a href="mailto:isholawilliams@gmail.com"
+                  >isholawilliams@gmail.com</a
+                >
+              </div>
             </nav>
           </div>
 
@@ -177,50 +239,6 @@
                 />
               </svg>
             </a>
-
-            <!-- <a
-              class="hover:opacity-75"
-              href=""
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span class="sr-only"> GitHub </span>
-
-              <svg
-                class="h-6 w-6"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a> -->
-
-            <!-- <a
-              class="hover:opacity-75"
-              href=""
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span class="sr-only"> Dribbble </span>
-
-              <svg
-                class="h-6 w-6"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a> -->
           </div>
         </div>
       </div>
@@ -240,9 +258,9 @@
               lg:justify-end
             "
           >
-            <a href=""> Terms & Conditions </a>
-            <a href=""> Privacy Policy </a>
-            <a href=""> Cookies </a>
+            <a href="#"> Terms & Conditions </a>
+            <a href="#"> Privacy Policy </a>
+            <a href="#"> Cookies </a>
           </nav>
         </div>
       </div>
@@ -253,6 +271,37 @@
 <script>
 export default {
   name: "Footer",
+  data() {
+    return {
+      loading: false,
+      form: {
+        email: "",
+      },
+    };
+  },
+  methods: {
+    resetForm() {
+      this.form.email = "";
+    },
+    async handleSubscription() {
+      this.loading = true;
+      try {
+        let payload = {
+          email: this.form.email,
+        };
+        await this.$axios
+          .post("https://panafstrag.onrender.com/api/admin/subscribe", payload)
+          .then(() => {
+            this.$toast.success("Subscription was successful").goAway(1500);
+            this.resetForm();
+            this.loading = false;
+          });
+      } catch (error) {
+        this.$toast.error(error.response.data.errorMessage).goAway(1500);
+        this.loading = false;
+      }
+    },
+  },
 };
 </script>
 
