@@ -128,7 +128,7 @@ import VideoPlayer from "nuxt-video-player";
 require("nuxt-video-player/src/assets/css/main.css");
 export default {
   scrollToTop: true,
-  auth: false,
+  // auth: false,
   components: {
     VideoPlayer,
   },

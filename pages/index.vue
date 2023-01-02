@@ -38,7 +38,7 @@
 import Carousel from "@/components/Carousel.vue";
 export default {
   name: "home",
-  auth: false,
+  // auth: false,
   scrollToTop: true,
   components: {
     Carousel,

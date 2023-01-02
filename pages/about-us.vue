@@ -31,7 +31,7 @@
       </svg>
     </button>
     <hr />
-     <h2 v-if="$nuxt.isOnline" class="text-xl font-medium my-6 text-gray-500">
+    <h2 v-if="$nuxt.isOnline" class="text-xl font-medium my-6 text-gray-500">
       PANAFSTRAG Objectives
     </h2>
     <div v-if="$nuxt.isOffline" class="text-gray-500 text-base relative">
@@ -113,13 +113,13 @@
 
         <div class="sm:ml-8">
           <p class="mt-1 text-gray-700 text-base text-black">
-            In the 21st century, civil society movements in favour of stability,
+            In the 21st century, Civil Society Movements in favour of stability,
             safety and development face many challenges: not only wars and arms
             proliferation climate change but also human rights violations,
             discrimination, hate and ignorance, emergencies, and abuse of the
             earth resources. Millions are now mobilizing to oppose the process
             of globalization and inequality, which breeds conflicts of all
-            kinds. What is needed is a globalisation of safety and stability
+            kinds. What is needed is a globalization of safety and stability
             that promote human values and sustainable solution for political and
             socio-economic development
           </p>
@@ -134,7 +134,7 @@
 export default {
   name: "about-us",
   scrollToTop: true,
-  auth: false,
+  // auth: false,
   data() {
     return {
       objectives: [],
@@ -209,7 +209,9 @@ export default {
         this.objectives = res.data;
         this.loading = false;
       } catch (error) {
-        this.$toast.error("Something went wrong, please try again.").goAway(1500);
+        this.$toast
+          .error("Something went wrong, please try again.")
+          .goAway(1500);
       }
     },
     goBack() {

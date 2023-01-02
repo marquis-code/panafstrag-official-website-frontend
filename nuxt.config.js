@@ -232,7 +232,7 @@ export default {
 
   sitemap: {
     hostname: "https://panafstrag.netlify.app/",
-    exclude: ["/admin/**", "/admin", "/login"],
+    exclude: ["/admin/**", "/admin", "/login", "/otp-verification"],
     routes: async () => {
       let baseURL = "https://panafstrag.onrender.com/api";
       let { data } = await axios.get(`${baseURL}/panAfrica/board-member`);
@@ -273,9 +273,9 @@ export default {
     id: "G-02WFDSB2TF",
   },
   serverMiddleware: [{ path: "/", handler: "~/servermiddleware/seo.js" }],
-  router: {
-    middleware: ["auth"],
-  },
+  // router: {
+  //   middleware: ["auth"],
+  // },
 
   // layoutTransition: {
   //   name: "fade",

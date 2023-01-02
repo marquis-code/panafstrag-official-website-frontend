@@ -115,7 +115,7 @@
               "
             >
               <p class="text-sm sm:text-md text-white">
-                Soft Diplomacy, Africana Public Institutions Representation and
+                Soft Power Diplomacy, Africana Public Institutions Representation and
                 Liaisons. All Media, ETC and Awareness Campaign: “I am an
                 Africana” Establishing PANAFSTRAG TV/RADIO by 2024
               </p>
@@ -339,7 +339,7 @@
 <script>
 export default {
   name: "cells",
-  auth: false,
+  // auth: false,
   scrollToTop: true,
   data() {
     return {

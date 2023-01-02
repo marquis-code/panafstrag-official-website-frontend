@@ -211,7 +211,7 @@
 export default {
   name: "programme",
   scrollToTop: true,
-  auth: false,
+  // auth: false,
   data() {
     return {
       isOpen: true,
@@ -303,34 +303,55 @@ export default {
 
     timeFrame(program) {
       let startDay = this.$moment(program.startDate)
-        .format("YYYY-MM-Do")
+        .format("YYYY-MMMM-Do")
         .split("-")[2];
       let endDay = this.$moment(program.endDate)
-        .format("YYYY-MM-Do")
+        .format("YYYY-MMMM-Do")
         .split("-")[2];
+      let month = this.$moment(program.endDate)
+        .format("YYYY-MMMM-Do")
+        .split("-")[1];
       let year = this.$moment(program.endDate)
         .format("YYYY-MM-DD")
         .split("-")[0];
-      return `${startDay} to ${endDay}, ${year}`;
+      if (startDay === endDay) {
+        return `${endDay}, ${month}, ${year}`;
+      }
+      return `${startDay} to ${endDay}, ${month}, ${year}`;
     },
   },
   computed: {
     recentProgrammes() {
       return this.programmes.filter((p) => {
-        this.starting_date = p?.startDate || new Date();
-        this.ending_date = p?.endDate || new Date();
+        this.starting_date = p?.startDate;
+        this.ending_date = p?.endDate;
         let endDate = this.$moment(p.endDate)
           .format("YYYY-MM-DD")
           .split("-")[0];
         let currentDate = this.$moment(new Date())
           .format("YYYY-MM-DD")
           .split("-")[0];
+        console.log(currentDate - endDate)
         return Number(currentDate) - Number(endDate) <= 2;
       });
     },
   },
 };
 </script>
-
+    <!-- archivedProgrammes() {
+      return this.programmes.filter((p) => {
+        this.starting_date = p.startDate;
+        this.ending_date = p.endDate;
+        let endDate = this.$moment(p.endDate)
+          .format("YYYY-MM-DD")
+          .split("-")[0];
+          console.log(endDate)
+        let currentDate = this.$moment(new Date())
+          .format("YYYY-MM-DD")
+          .split("-")[0];
+          console.log(currentDate)
+        return currentDate - endDate >= 2;
+      });
+    }, -->
 <style>
 </style>

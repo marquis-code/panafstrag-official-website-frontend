@@ -95,17 +95,37 @@
           </div>
 
           <!-- <div class="inline-flex items-stretch bg-white"> -->
-          <b-dropdown id="dropdown-divider" text="About us" class="">
-            <b-dropdown-item-button @click="handleBoardMembers()"
-              >Board Members</b-dropdown-item-button
+          <b-dropdown
+            id="dropdown-divider"
+            class="text-sm"
+            toggle-class="text-decoration-none"
+            no-caret
+            variant="link"
+            size="sm"
+          >
+            <template #button-content>
+              <span
+                class="
+                  uppercase
+                  hover:opacity-90 hover:text-green-500
+                  font-light
+                  text-xs
+                  select-none
+                  text-white
+                "
+                >ABOUT US</span
+              >
+            </template>
+            <b-dropdown-item @click="handleBoardMembers()"
+              >Board Members</b-dropdown-item
             >
             <b-dropdown-divider></b-dropdown-divider>
-            <b-dropdown-item-button @click="handleMiniCellsDropdown()"
-              >PANAFSTRAG Cells</b-dropdown-item-button
+            <b-dropdown-item @click="handleMiniCellsDropdown()"
+              >PANAFSTRAG Cells</b-dropdown-item
             >
             <b-dropdown-divider></b-dropdown-divider>
-            <b-dropdown-item-button @click="handleObjectivesDropdown()"
-              >PANAFSTRAG Objeectives</b-dropdown-item-button
+            <b-dropdown-item @click="handleObjectivesDropdown()"
+              >PANAFSTRAG OBJECTIVES</b-dropdown-item
             >
           </b-dropdown>
           <div
@@ -192,9 +212,8 @@
                   flex
                   items-center
                   rounded-lg
-                  px-4
-                  py-3
-                  text-gray-700
+                  p-3
+                  text-gray-500
                   focus:outline-none focus:ring focus:ring-gray-100
                 "
               >
@@ -223,9 +242,8 @@
                   flex
                   items-center
                   rounded-lg
-                  px-4
-                  py-3
-                  text-gray-700
+                  p-3
+                  text-gray-500
                   focus:outline-none focus:ring focus:ring-gray-100
                 "
               >
@@ -257,9 +275,8 @@
                   flex
                   items-center
                   rounded-lg
-                  px-4
-                  py-3
-                  text-gray-700
+                  p-3
+                  text-gray-500
                   focus:outline-none focus:ring focus:ring-gray-100
                 "
               >
@@ -292,9 +309,8 @@
                   flex
                   items-center
                   rounded-lg
-                  px-4
-                  py-3
-                  text-gray-700
+                  p-3
+                  text-gray-500
                   focus:outline-none focus:ring focus:ring-gray-100
                 "
               >
@@ -325,9 +341,8 @@
                   flex
                   items-center
                   rounded-lg
-                  px-4
-                  py-3
-                  text-gray-700
+                  p-3
+                  text-gray-500
                   focus:outline-none focus:ring focus:ring-gray-100
                 "
               >
@@ -351,42 +366,6 @@
                   BOARD MEMBERS
                 </span>
               </button>
-
-              <!-- <button
-                @click="handleReports()"
-                :class="[isReportActive ? 'bg-gray-100' : '']"
-                class="
-                  flex
-                  items-center
-                  rounded-lg
-                  px-4
-                  py-3
-                  text-gray-700
-                  focus:outline-none focus:ring focus:ring-gray-100
-                "
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="23"
-                  height="23"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1"
-                  stroke-linecap="square"
-                  stroke-linejoin="bevel"
-                >
-                  <path
-                    d="M13 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V9l-7-7z"
-                  />
-                  <path d="M13 3v6h6" />
-                </svg>
-
-                <span class="ml-3 text-sm font-medium select-none">
-                  REPORTS AND POLICIES BRIEFS
-                </span>
-              </button> -->
-
               <button
                 @click="handleArchives()"
                 :class="[isArchiveActive ? 'bg-gray-100' : '']"
@@ -394,9 +373,8 @@
                   flex
                   items-center
                   rounded-lg
-                  px-4
-                  py-3
-                  text-gray-700
+                  p-3
+                  text-gray-500
                   focus:outline-none focus:ring focus:ring-gray-100
                 "
               >
@@ -429,9 +407,8 @@
                   flex
                   items-center
                   rounded-lg
-                  px-4
-                  py-3
-                  text-gray-700
+                  p-3
+                  text-gray-500
                   focus:outline-none focus:ring focus:ring-gray-100
                 "
               >

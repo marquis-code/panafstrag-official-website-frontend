@@ -151,7 +151,7 @@
 export default {
   name: "Archives",
   scrollToTop: true,
-  auth: false,
+  // auth: false,
   data() {
     return {
       programmes: [],
@@ -260,7 +260,7 @@ export default {
         let currentDate = this.$moment(new Date())
           .format("YYYY-MM-DD")
           .split("-")[0];
-        return currentDate - endDate >= 2;
+        return Number(currentDate) - Number(endDate) >= 2;
       });
     },
   },

@@ -99,7 +99,7 @@
           </p>
         </div>
 
-        <div v-if="programme?.uploadedVideoUrl">
+        <div v-if="programme?.uploadedVideoUrl !== 'null'">
           <video-player :src="programme?.uploadedVideoUrl" />
         </div>
 
@@ -154,7 +154,7 @@ import VideoPlayer from "nuxt-video-player";
 require("nuxt-video-player/src/assets/css/main.css");
 export default {
   scrollToTop: true,
-  auth: false,
+  // auth: false,
   data() {
     return {
       loading: true,

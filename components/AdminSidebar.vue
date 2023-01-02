@@ -17,20 +17,15 @@
           lg:pb-0
         "
       >
-        <nuxt-link class="flex items-center lg:space-x-2" to="/">
+        <nuxt-link class="flex items-center lg:space-x-3" to="/">
           <img
             :class="[isOpen ? 'lg:visible lg:h-6 lg:w-6' : 'hidden']"
             class="h-10 w-10"
-            src="~/static/icon.png"
-          />
-          <span class="text-xs md:text-md lg:text-lg lg:font-bold"
-            >PANAFSTRAG</span
-          ></nuxt-link
-        >
+            src="@/static/panaafricalogo.png"
+          /><span class="font-bold">PANAFSTRAG</span>
+        </nuxt-link>
       </div>
-      <hr />
-
-      <div class="px-3">
+      <section class="space-y-6 mt-6 px-3">
         <button
           :class="[
             isHomeActive
@@ -56,11 +51,6 @@
           </svg>
           <span class="sm:text-sm"> Dashboard</span>
         </button>
-      </div>
-
-      <p class="text-gray-400 text-sm pt-6 pb-2 px-3">Config</p>
-      <hr class="" />
-      <section class="space-y-6 mt-6 px-3">
         <button
           :class="[
             isMembersActive
@@ -153,48 +143,22 @@
           <span class="sm:text-sm"> Responsibilities</span>
         </button>
       </section>
-      <div
-        @click="handleLogout"
-        class="flex justify-center items-center cursor-pointer"
+      <button
+        class="
+          absolute
+          bottom-2
+          left-5
+          rounded-md
+          text-red-500
+          bg-red-200
+          px-3
+          py-2
+          w-10/12
+        "
+        @click="handleLogout()"
       >
-        <div
-          class="
-            absolute
-            bottom-3
-            flex
-            justify-between
-            space-x-6
-            items-center
-            px-2
-            bg-green-400
-            text-white
-            rounded-lg
-            py-2
-          "
-        >
-          <div class="flex items-center space-x-1">
-            <svg
-              class="cursor-pointer"
-              xmlns="http://www.w3.org/2000/svg"
-              width="31"
-              height="31"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#747070"
-              stroke-width="1.5"
-              stroke-linecap="square"
-              stroke-linejoin="bevel"
-            >
-              <path
-                d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3"
-              />
-              <circle cx="12" cy="10" r="3" />
-              <circle cx="12" cy="12" r="10" /></svg
-            ><span class="text-sm">{{ username ? username : "Admin" }}</span>
-          </div>
-          <button @click="handleLogout" class="text-sm">Logout</button>
-        </div>
-      </div>
+        Logout
+      </button>
     </div>
 
     <div
@@ -236,7 +200,6 @@
             </svg>
           </div>
         </div>
-        <!-- <hr :class="[isOpen ? 'hidden' : 'visible']" /> -->
         <div
           :class="[isOpen ? 'visible' : 'hidden']"
           class="container mx-auto px-6 pt-2 md:px-0 space-y-1"
@@ -244,7 +207,6 @@
           <p class="text-gray-400 text-xs">OVERVIEW</p>
           <p class="font-bold text-xl">{{ currentTitle }}</p>
         </div>
-        <!-- <hr :class="[isOpen ? 'hidden' : 'visible']" /> -->
 
         <div>
           <b-sidebar
@@ -435,7 +397,7 @@ export default {
       this.onResize();
     });
     window.addEventListener("resize", this.onResize);
-    this.getLoggedUser();
+    // this.getLoggedUser();
   },
   destroyed() {
     window.removeEventListener("resize", this.onResize);
@@ -515,9 +477,9 @@ export default {
     },
   },
   methods: {
-    getLoggedUser() {
-      this.username = localStorage.getItem("user");
-    },
+    // getLoggedUser() {
+    //   this.username = localStorage.getItem("user");
+    // },
     onResize() {
       this.window.width = window.innerWidth;
       this.window.height = window.innerHeight;
@@ -548,7 +510,8 @@ export default {
       });
     },
     async Logout() {
-      await this.$auth.logout();
+      // await this.$auth.logout();
+      localStorage.removeItem("userId");
       this.$router.push("/login");
       this.$swal("Logged Out!", "You have successfully logged out.", "success");
     },

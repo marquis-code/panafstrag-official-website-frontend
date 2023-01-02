@@ -78,7 +78,7 @@
             class="
               w-full
               rounded-lg
-              ring-1 ring-gray-300
+             border
               outline-none
               p-3
               text-sm
@@ -98,7 +98,7 @@
                 class="
                   w-full
                   rounded-lg
-                  ring-1 ring-gray-300
+                  border
                   outline-none
                   p-3
                   text-sm
@@ -113,7 +113,7 @@
               class="
                 w-full
                 rounded-lg
-                ring-1 ring-gray-300
+                    border
                 outline-none
                 p-3
                 text-sm
@@ -134,7 +134,7 @@
               class="
                 w-full
                 rounded-lg
-                ring-1 ring-gray-300
+                     border
                 outline-none
                 p-3
                 text-sm
@@ -170,7 +170,7 @@
               class="
                 w-full
                 rounded-lg
-                ring-1 ring-gray-300
+                     border
                 outline-none
                 p-3
                 text-sm
@@ -190,7 +190,7 @@
               class="
                 w-full
                 rounded-lg
-                ring-1 ring-gray-300
+                   border
                 outline-none
                 p-3
                 text-sm
@@ -208,7 +208,7 @@
               class="
                 w-full
                 rounded-lg
-                ring-1 ring-gray-300
+                     border
                 outline-none
                 p-3
                 text-sm
@@ -227,7 +227,7 @@
             class="
               w-full
               rounded-lg
-              ring-1 ring-gray-300
+                border
               outline-none
               p-3
               text-sm

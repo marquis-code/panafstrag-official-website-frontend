@@ -1,5 +1,5 @@
 <template>
-  <section class="relative flex flex-wrap lg:h-screen lg:items-center">
+  <section class="grid place-items-center lg:h-screen lg:items-center">
     <div
       class="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24 mt-28"
     >
@@ -139,13 +139,13 @@
       </form>
     </div>
 
-    <div class="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2 lg:flex hidden">
+    <!-- <div class="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2 lg:flex hidden">
       <img
         alt="Welcome"
         src="@/assets/signup.jpeg"
         class="absolute inset-0 h-full w-full object-cover"
       />
-    </div>
+    </div> -->
   </section>
 </template>
 <script>
@@ -153,12 +153,13 @@ import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
 export default {
   name: "login",
-  auth: false,
+  // auth: false,
   layout: "errorLayout",
   data() {
     return {
       loading: false,
       showPassword: false,
+      userId: null,
       form: {
         email: "",
         password: "",
@@ -166,10 +167,31 @@ export default {
     };
   },
   created() {
-    if (this.$auth.$state.loggedIn) {
-      this.$router.push("/admin/");
-      return;
+    // if (process.server) {
+    //   return "";
+    // }
+
+    // if (!!localStorage.getItem("userId")) {
+    //   this.$router.push("/admin/");
+    // }
+
+    if (process.server) {
+      return "";
+    } else {
+      this.userId = localStorage.getItem("userId");
     }
+
+    if (this.userId) {
+      this.$router.push("/otp-verification");
+    }
+
+    if (this.userId !== null) {
+      this.$router.push("/admin/");
+    }
+    // if (localStorage.getItem("userId").length) {
+    //   this.$router.push("/admin/");
+    //   return;
+    // }
   },
   methods: {
     togglePassword() {
@@ -183,26 +205,15 @@ export default {
         password: this.form.password,
       };
       this.$axios
-        .post("https://panafstrag.onrender.com/api/admin/signin", payload)
+        .post("https://panafstrag.onrender.com/api/admin/admin-signin", payload)
         .then((resp) => {
-          this.$auth.setToken("local", "Bearer " + resp.data.accessToken);
+          console.log(resp.data);
+          this.$toast.success(resp.data.successMessage).goAway(1500);
           process.server
             ? ""
-            : !!localStorage.setItem(
-                "user",
-                `${resp.data.user.firstName + " " + resp.data.user.lastName}`
-              );
-          this.$axios.setHeader(
-            "Authorization",
-            "Bearer " + resp.data.accessToken
-          );
-          this.$auth.ctx.app.$axios.setHeader(
-            "Authorization",
-            "Bearer " + resp.data.accessToken
-          );
-          window.location.reload(true);
-          this.$router.push({ path: "/admin/" });
-          this.$toast.success("Welcome back!").goAway(1500);
+            : !!localStorage.setItem("userId", `${resp.data.data.userId}`);
+          this.$router.push("/otp-verification");
+
           this.loading = false;
         })
         .catch((error) => {

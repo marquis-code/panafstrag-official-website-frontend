@@ -484,15 +484,36 @@ export default {
       responsibilitiesLength: null,
       archivesLength: null,
       openSidebar: false,
+      userId: ""
     };
   },
   created() {
-    if (!this.$auth.$state.loggedIn) {
+    if (process.server) {
+      return "";
+    } else {
+      this.userId = localStorage.getItem("userId");
+    }
+    console.log(this.userId)
+
+    if (!this.userId) {
       this.$router.push("/login");
-      return;
     }
 
-    this.fetchStatistics();
+    if (this.userId) {
+      this.fetchStatistics();
+    }
+
+    // if (process.server) {
+    //   return "";
+    // } else {
+    //   this.userId = localStorage.getItem("userId");
+    // }
+
+    // if (this.userId === null) {
+    //   this.$router.push({ path: "/login" });
+    // } else {
+    //   this.fetchStatistics();
+    // }
   },
   methods: {
     async fetchStatistics() {
@@ -545,8 +566,7 @@ export default {
       });
     },
     async Logout() {
-      await this.$auth.logout();
-      this.$router.push("/login");
+      localStorage.removeItem("userId");
       this.$swal("Logged Out!", "You have successfully logged out.", "success");
     },
   },

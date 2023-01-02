@@ -90,11 +90,30 @@
               h-96
             "
           >
-            <div class="flex pt-3 justify-center items-center">
+            <div
+              class="flex pt-3 justify-center items-center relative"
+            >
+              <div
+                class="
+                  animate-spin
+                  border-dashed border-2 border-green-500
+                  rounded-full
+                  h-56
+                  w-56
+                "
+              ></div>
               <img
                 alt="board member"
                 :src="member.avatar"
-                class="h-56 object-contain rounded-full ring-1 ring-gray-300"
+                class="
+                  cursor-pointer
+                  object-cover
+                  rounded-full
+                  h-52
+                  w-52
+                  shadow-md
+                  absolute
+                "
               />
             </div>
 
@@ -163,7 +182,7 @@
 export default {
   name: "board-members",
   scrollToTop: true,
-  auth: false,
+  // auth: false,
   data() {
     return {
       boardMembers: [],

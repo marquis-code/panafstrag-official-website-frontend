@@ -211,7 +211,7 @@
 <script>
 export default {
   name: "signup",
-  auth: false,
+  // auth: false,
   layout: "errorLayout",
   data() {
     return {
@@ -236,12 +236,12 @@ export default {
           firstName: this.form.firstName,
           lastName: this.form.lastName,
           email: this.form.email,
-          password: this.form.password,
+          password: this.form.password,                                         
         };
 
-        await this.$axios.post("/admin/signup", payload);
-        this.$router.push("/login");
+        await this.$axios.post("/admin/admin-signup", payload);
         this.$toast.success("signup was successful").goAway(1500);
+          this.$router.push("/otp-verification");
         this.loading = false;
       } catch (error) {
         this.$toast.error("Something went wrong, please try again").goAway(1500);
