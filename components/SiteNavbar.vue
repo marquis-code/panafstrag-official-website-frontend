@@ -18,7 +18,7 @@
           <span class="text-sm md:text-md">PANAFSTRAG</span></nuxt-link
         >
       </h1>
-      <div>
+      <div class="">
         <button
           @click="toggleDropdown()"
           id="mobile-open-button"
@@ -65,7 +65,7 @@
             sm:flex
             justify-between
             items-center
-            md:space-x-6
+            md:space-x-10
             lg:space-x-8
             text-sm
           "
@@ -86,7 +86,7 @@
               class="
                 uppercase
                 hover:opacity-90 hover:text-green-500
-                font-light
+                font-medium
                 text-xs
                 select-none
               "
@@ -108,7 +108,7 @@
                 class="
                   uppercase
                   hover:opacity-90 hover:text-green-500
-                  font-light
+                  font-medium
                   text-xs
                   select-none
                   text-white
@@ -120,6 +120,10 @@
               >Board Members</b-dropdown-item
             >
             <b-dropdown-divider></b-dropdown-divider>
+            <b-dropdown-item @click="handleOrganogram()"
+              >Our Organogram</b-dropdown-item
+            >
+            <b-dropdown-divider></b-dropdown-divider>
             <b-dropdown-item @click="handleMiniCellsDropdown()"
               >PANAFSTRAG Cells</b-dropdown-item
             >
@@ -127,7 +131,12 @@
             <b-dropdown-item @click="handleObjectivesDropdown()"
               >PANAFSTRAG OBJECTIVES</b-dropdown-item
             >
+            <b-dropdown-divider></b-dropdown-divider>
+            <b-dropdown-item @click="handleLanguageGroupsDropdown()"
+              >PANAFSTRAG Language Groups</b-dropdown-item
+            >
           </b-dropdown>
+
           <div
             class="
               uppercase
@@ -141,7 +150,7 @@
             <nuxt-link
               to="/programmes"
               :class="[isProgramActive ? 'text-green-500' : '']"
-              class="hover:opacity-90 hover:text-green-500 font-light text-xs"
+              class="hover:opacity-90 hover:text-green-500 font-medium text-xs"
               >Programme</nuxt-link
             >
           </div>
@@ -159,7 +168,7 @@
             <nuxt-link
               :class="[isArchiveActive ? 'text-green-500' : '']"
               to="/archives"
-              class="hover:opacity-90 hover:text-green-500 font-light text-xs"
+              class="hover:opacity-90 hover:text-green-500 font-medium text-xs"
               >Archives</nuxt-link
             >
           </div>
@@ -178,7 +187,7 @@
             <a
               :class="[isRadioActive ? 'text-green-500' : '']"
               href="https://panafstragradio.com/"
-              class="hover:opacity-90 hover:text-green-500 font-light text-xs"
+              class="hover:opacity-90 hover:text-green-500 font-medium text-xs"
               >Radio</a
             >
           </div>
@@ -204,7 +213,10 @@
           <div class="px-4 py-6">
             <!-- <span class="block h-10 w-32 rounded-lg bg-gray-200"></span> -->
 
-            <nav aria-label="Main Nav" class="mt-14 flex flex-col space-y-4">
+            <nav
+              aria-label="Main Nav"
+              class="mt-14 flex flex-col space-y-4 pb-6"
+            >
               <button
                 @click="handleHome()"
                 :class="[isHome ? 'bg-gray-100' : '']"
@@ -399,6 +411,74 @@
                   ARCHIVES
                 </span>
               </button>
+              <button
+                @click="handleOrganogram()"
+                :class="[isOrganogramActive ? 'bg-gray-100' : '']"
+                class="
+                  flex
+                  items-center
+                  rounded-lg
+                  p-3
+                  text-gray-500
+                  focus:outline-none focus:ring focus:ring-gray-100
+                "
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="29"
+                  height="29"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1"
+                  stroke-linecap="square"
+                  stroke-linejoin="bevel"
+                >
+                  <circle cx="18" cy="5" r="3"></circle>
+                  <circle cx="6" cy="12" r="3"></circle>
+                  <circle cx="18" cy="19" r="3"></circle>
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                </svg>
+
+                <span class="ml-3 text-sm font-medium select-none">
+                  ORGANOGRAM
+                </span>
+              </button>
+
+              <button
+                @click="handleLanguageGroups()"
+                :class="[isLanguageGroupsActive ? 'bg-gray-100' : '']"
+                class="
+                  flex
+                  items-center
+                  rounded-lg
+                  p-3
+                  text-gray-500
+                  focus:outline-none focus:ring focus:ring-gray-100
+                "
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="29"
+                  height="29"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1"
+                  stroke-linecap="square"
+                  stroke-linejoin="bevel"
+                >
+                  <rect x="3" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect>
+                  <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+
+                <span class="ml-3 text-sm font-medium select-none">
+                  LANGUAGE GROUPS
+                </span>
+              </button>
 
               <button
                 @click="handleRadioRedirection"
@@ -452,6 +532,7 @@ export default {
       isReportActive: false,
       isArchiveActive: false,
       isRadioActive: false,
+      isisLanguageGroupsActiveActive: false,
       isMobileBoardMembersActive: false,
       isAboutUs: false,
       isCells: false,
@@ -468,12 +549,20 @@ export default {
       this.$router.push({ path: "/board-members" });
       this.switchDropdown();
     },
+    handleOrganogram() {
+      this.$router.push({ path: "/organogram" });
+      this.switchDropdown();
+    },
     handleMiniCellsDropdown() {
       this.$router.push({ path: "/cells" });
       this.switchDropdown();
     },
     handleObjectivesDropdown() {
       this.$router.push({ path: "/about-us" });
+      this.switchDropdown();
+    },
+    handleLanguageGroupsDropdown() {
+      this.$router.push({ path: "/language-groups" });
       this.switchDropdown();
     },
     handleHome() {
@@ -504,6 +593,14 @@ export default {
       this.$router.push({ path: "/archives" });
       this.toggleDropdown();
     },
+    handleLanguageGroups() {
+      this.$router.push({ path: "/language-groups" });
+      this.toggleDropdown();
+    },
+    handleOrganogram() {
+      this.$router.push({ path: "/organogram" });
+      this.toggleDropdown();
+    },
 
     handleSidebarRadio() {
       this.isRadioActive = true;
@@ -512,6 +609,7 @@ export default {
       this.isMobileBoardMembersActive = false;
       this.isReportActive = false;
       this.isArchiveActive = false;
+      this.isOrganogramActive = false;
       this.isRadioActive = false;
       this.isAboutUs = false;
       this.isCells = false;
@@ -556,6 +654,20 @@ export default {
           this.dropdown = false;
         } else {
           this.isArchiveActive = false;
+        }
+
+        if (value.fullPath === "/organogram") {
+          this.isOrganogramActive = true;
+          this.dropdown = false;
+        } else {
+          this.isOrganogramActive = false;
+        }
+
+        if (value.fullPath === "/language-groups") {
+          this.isLanguageGroupsActive = true;
+          this.dropdown = false;
+        } else {
+          this.isLanguageGroupsActive = false;
         }
 
         if (value.fullPath === "/about-us") {

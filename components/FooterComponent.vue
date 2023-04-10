@@ -67,7 +67,7 @@
                     sm:ml-4 sm:mt-0 sm:w-auto sm:flex-shrink-0
                   "
                 >
-                  {{ loading ? "processing..." : "Sign up" }}
+                  {{ loading ? "processing..." : "Subscribe" }}
                 </button>
               </div>
             </form>
@@ -78,7 +78,7 @@
 
             <nav class="mt-6 flex flex-col space-y-4 text-sm text-gray-300">
               <a class="inline-block" href="">
-                302,Iju Road Agege, Iju Lagos, Nigeria.
+                302,Iju-Ishaga Bus stop, Lagos, Nigeria.
               </a>
             </nav>
           </div>
@@ -175,7 +175,17 @@
             </nav>
           </div>
 
-          <div class="col-span-2 flex space-x-3 gap-6 text-gray-500 lg:col-span-5">
+          <div
+            class="
+              col-span-2
+              pl-3
+              flex
+              space-x-3
+              gap-6
+              text-gray-500
+              lg:col-span-5
+            "
+          >
             <a
               class="hover:opacity-75"
               href="https://www.linkedin.com/in/panafstrag/"
@@ -188,7 +198,7 @@
 
             <a
               class="hover:opacity-75"
-              href=""
+              href="https://web.facebook.com/panafstrag/"
               target="_blank"
               rel="noreferrer"
             >
@@ -197,7 +207,7 @@
               <b-icon icon="facebook" scale="2" variant=""></b-icon>
             </a>
 
-            <a
+            <!-- <a
               class="hover:opacity-75"
               href=""
               target="_blank"
@@ -206,7 +216,7 @@
               <span class="sr-only"> Twitter </span>
 
               <b-icon icon="twitter" scale="2" variant=""></b-icon>
-            </a>
+            </a> -->
           </div>
         </div>
       </div>

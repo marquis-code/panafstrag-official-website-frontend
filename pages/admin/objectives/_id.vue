@@ -1,100 +1,77 @@
 <template>
-  <section class="">
-    <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-      <button
-        @click="goBack()"
-        class="
-          outline-none
-          mt-2
-          border
-          bg-gray-200
-          text-black
-          px-3
-          py-1
-          rounded-md
-          text-sm
-        "
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="23"
-          height="23"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#747070"
-          stroke-width="2"
-          stroke-linecap="square"
-          stroke-linejoin="bevel"
+  <Transition name="fade">
+    <section class="">
+      <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <button
+          @click="goBack()"
+          class="outline-none mt-2 border bg-gray-200 text-black px-3 py-1 rounded-md text-sm"
         >
-          <path d="M19 12H6M12 5l-7 7 7 7" />
-        </svg>
-      </button>
-      <h2 class="text-xl my-6 font-medium text-black">Update objective</h2>
-      <div
-        class="
-          md:bg-white md:p-7 md:w-9/12
-          shadow-md
-          rounded-md
-          border
-          mt-4
-          p-3
-          mb-6
-        "
-      >
-        <form @submit.prevent="handleSubmit" action="" class="space-y-6 w-full">
-          <div>
-            <label class="sr-only" for="description">Description</label>
-            <textarea
-              class="w-full rounded-lg border outline-none p-3 text-sm"
-              placeholder="Enter objectives description here..."
-              rows="8"
-              id="description"
-              v-model="form.description"
-            ></textarea>
-          </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="23"
+            height="23"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#747070"
+            stroke-width="2"
+            stroke-linecap="square"
+            stroke-linejoin="bevel"
+          >
+            <path d="M19 12H6M12 5l-7 7 7 7" />
+          </svg>
+        </button>
+        <h2 class="text-xl my-6 font-medium text-black">Update objective</h2>
+        <div
+          class="md:bg-white md:p-7 md:w-9/12 md:shadow-md md:rounded-md md:border lg:mt-4 mb-6 p-3 pb-6 lg:p-6 mt-6"
+        >
+          <form
+            @submit.prevent="handleSubmit"
+            action=""
+            class="space-y-6 w-full"
+          >
+            <div>
+              <label class="sr-only" for="description">Description</label>
+              <textarea
+                class="w-full rounded-lg border outline-none p-3 text-sm"
+                placeholder="Enter objectives description here..."
+                rows="8"
+                id="description"
+                v-model="form.description"
+              ></textarea>
+            </div>
 
-          <div class="mt-3 flex justify-end items-center">
-            <button
-              :disabled="loading"
-              type="submit"
-              :class="[loading ? 'cursor-not-allowed opacity-20' : '']"
-              class="
-                inline-flex
-                items-center
-                justify-center
-                rounded-lg
-                bg-black
-                px-3
-                py-2
-                w-full
-                md:w-3/12
-                text-white
-              "
-            >
-              <span class="font-medium">
-                {{ loading ? "processing..." : "Continue" }}</span
+            <div class="mt-3 flex justify-end items-center">
+              <button
+                :disabled="loading"
+                type="submit"
+                :class="[loading ? 'cursor-not-allowed opacity-20' : '']"
+                class="inline-flex items-center justify-center rounded-lg bg-black px-3 py-2 w-full md:w-3/12 text-white"
               >
+                <span class="font-medium">
+                  {{ loading ? "processing..." : "Continue" }}</span
+                >
 
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="ml-3 h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                />
-              </svg>
-            </button>
-          </div>
-        </form>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="ml-3 h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </Transition>
 </template>
 
 <script>
@@ -135,6 +112,7 @@ export default {
       }
     },
     async fetchObjective() {
+      this.loading = true;
       try {
         let response = await this.$axios.get(
           `https://panafstrag.onrender.com/api/panAfrica/objective/${this.$route.params.id}`
@@ -144,11 +122,27 @@ export default {
         this.$toast
           .error("Something went wrong, please try again.")
           .goAway(1500);
+      } finally {
+        this.loading = false;
       }
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
+.fade-enter-active {
+  transition: all 0.3s cubic-bezier(0.52, 0.02, 0.19, 1.02) 0.15s;
+}
+.fade-leave-active {
+  transition: all 0.3s cubic-bezier(0.52, 0.02, 0.19, 1.02);
+}
+.fade-enter-from {
+  opacity: 0;
+  transform: scale(0.8);
+}
+.fade-leave-to {
+  transform: scale(0.8);
+}
 </style>
+

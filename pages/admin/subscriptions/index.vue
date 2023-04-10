@@ -3,6 +3,9 @@
     <b-container>
       <section class="text-white">
         <div class="flex items-center justify-between my-3">
+          <!-- <h2 class="text-xl my-6 font-medium text-black">
+          PANAFSTRAG programmes
+        </h2> -->
           <button
             @click="goBack()"
             class="outline-none border bg-gray-200 text-black px-3 py-1 rounded-md text-sm"
@@ -20,13 +23,6 @@
             >
               <path d="M19 12H6M12 5l-7 7 7 7" />
             </svg>
-          </button>
-
-          <button
-            @click="$router.push('/admin/responsibilities/create')"
-            class="text-gray-400 rounded-md border bg-black text-white text-sm px-3 py-2"
-          >
-            Create Responsibilities
           </button>
         </div>
 
@@ -46,7 +42,7 @@
             striped
             show-empty
             responsive
-            :items="filteredResponsibilities"
+            :items="filteredSubscriptions"
             :fields="fields"
             :busy="loading"
             :current-page="currentPage"
@@ -60,11 +56,11 @@
             </template>
 
             <template #empty>
-              <p class="text-center text-secondary py-2">
+              <p class="text-center text-sm text-secondary py-2">
                 {{
                   search
-                    ? `No responsibilities found for search value: "${search}"`
-                    : "No responsibilities available"
+                    ? `No Subscription found for search value: "${search}"`
+                    : "No subscription available"
                 }}
               </p>
             </template>
@@ -75,66 +71,27 @@
               >
             </template>
 
-            <template #cell(responsibility)="data">
-              <span class="font-light py-2 text-sm">
-                {{
-                  data.item.description && data.item.description.length > 100
-                    ? data.item.description.slice(0, 100) + "..."
-                    : data.item.description
-                }}
+            <template #cell(email)="data">
+              <span class="font-medium py-2 text-sm">
+                {{ data?.item?.email ?? "N/A" }}
               </span>
             </template>
 
+            <template #cell(status)="data">
+              <span
+                @click="view(data)"
+                class="font-medium py-2 text-sm text-green-500 font-medium"
+              >
+                subscribed
+              </span>
+            </template>
             <template #cell(created_at)="data">
               <span class="font-light py-2 text-sm">{{
                 $moment(data.item.createdAt).format("L")
-              }}</span
-              >`
-            </template>
-
-            <template #cell(actions)="data">
-              <div class="flex items-center space-x-3 py-2">
-                <svg
-                  @click="handleEdit(data.item._id)"
-                  class="cursor-pointer"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="23"
-                  height="23"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#74d321"
-                  stroke-width="2"
-                  stroke-linecap="square"
-                  stroke-linejoin="bevel"
-                >
-                  <path
-                    d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"
-                  ></path>
-                  <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
-                </svg>
-                <svg
-                  @click="handleDelete(data.item._id)"
-                  class="cursor-pointer"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="23"
-                  height="23"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#d33a21"
-                  stroke-width="2"
-                  stroke-linecap="square"
-                  stroke-linejoin="bevel"
-                >
-                  <polyline points="3 6 5 6 21 6"></polyline>
-                  <path
-                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
-                  ></path>
-                  <line x1="10" y1="11" x2="10" y2="17"></line>
-                  <line x1="14" y1="11" x2="14" y2="17"></line>
-                </svg>
-              </div>
+              }}</span>
             </template>
           </b-table>
+
           <div class="flex justify-end items-end">
             <b-pagination
               v-model="currentPage"
@@ -153,11 +110,8 @@
 
 
 <script>
-import Swal from "sweetalert2/dist/sweetalert2.js";
-import "sweetalert2/src/sweetalert2.scss";
-
 export default {
-  name: "index",
+  name: "subscriptions",
   scrollToTop: true,
   layout: "admin",
   data() {
@@ -169,22 +123,22 @@ export default {
           class: "font-medium text-gray-400 text-sm",
         },
         {
-          key: "responsibility",
-          label: "Responsibility",
+          key: "email",
+          label: "Email",
+          class: "font-medium text-gray-400 text-sm",
+        },
+        {
+          key: "status",
+          label: "Status",
           class: "font-medium text-gray-400 text-sm",
         },
         {
           key: "created_at",
-          label: "Date Created",
+          label: "Created At",
           class: "font-medium text-gray-400 text-sm",
         },
-        {
-          key: "actions",
-          label: "Actions",
-          class: "font-medium text-end text-gray-400 text-sm",
-        },
       ],
-      responsibilities: [],
+      subscriptions: [],
       currentPage: 1,
       perPage: 5,
       search: "",
@@ -192,7 +146,7 @@ export default {
       totalRows: 1,
       loading: true,
       isDeleting: false,
-      title: "Pan Africa Board Members",
+      title: "Pan Africa Subscriptions",
       description:
         "Pan Africa; Original thinking, research help add to human knowledge",
       image:
@@ -251,21 +205,21 @@ export default {
     };
   },
   created() {
-    this.fetchResponsibilities();
+    this.fetchSubscriptions();
   },
   mounted() {
     // Set the initial number of items
-    this.totalRows = this.responsibilities.length;
+    this.totalRows = this.subscriptions.length;
   },
   methods: {
-    async fetchResponsibilities() {
+    async fetchSubscriptions() {
       this.loading = true;
       try {
         this.loading = true;
         let res = await this.$axios.get(
-          `https://panafstrag.onrender.com/api/panAfrica/responsibilities`
+          "https://panafstrag.onrender.com/api/admin/subscription"
         );
-        this.responsibilities = res.data;
+        this.subscriptions = res.data;
         this.totalRows = res.data.length;
       } catch (error) {
         this.$toast
@@ -279,44 +233,44 @@ export default {
     goBack() {
       this.$router.go(-1);
     },
-    handleEdit(id) {
-      this.$router.push(`/admin/responsibilities/${id}`);
-    },
-    handleDelete(id) {
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
-      }).then((result) => {
-        if (result.value) {
-          this.triggerDeletion(id);
-        } else {
-          this.$swal("Cancelled", "Your file is still intact", "info");
-        }
-      });
-    },
+    // handleDelete(id) {
+    //   Swal.fire({
+    //     title: "Are you sure?",
+    //     text: "You won't be able to revert this!",
+    //     type: "warning",
+    //     showCancelButton: true,
+    //     confirmButtonColor: "#3085d6",
+    //     cancelButtonColor: "#d33",
+    //     confirmButtonText: "Yes, delete it!",
+    //   }).then((result) => {
+    //     if (result.value) {
+    //       this.triggerDeletion(id);
+    //     } else {
+    //       this.$swal("Cancelled", "Your file is still intact", "info");
+    //     }
+    //   });
+    // },
 
-    async triggerDeletion(id) {
-      try {
-        let res = await this.$axios.delete(
-          `https://panafstrag.onrender.com/api/panAfrica/responsibilities/${id}`
-        );
-        this.$toast.success("Responsibility has been removed").goAway(1500);
-        await this.fetchResponsibilities();
-      } catch (error) {
-        this.$toast.error(error.response.data.errorMessage).goAway(1500);
-      }
-    },
+    // async triggerDeletion(id) {
+    //   try {
+    //     await this.$axios.delete(
+    //       `https://panafstrag.onrender.com/api/panAfrica/programmes/${id}`
+    //     );
+    //     this.$toast.success("Programme has been removed").goAway(1500);
+    //     await this.fetchProgrammes();
+    //   } catch (error) {
+    //     this.$toast.error(error.response.data.errorMessage).goAway(1500);
+    //   }
+    // },
+    // handleEdit(id) {
+    //   this.$router.push(`/admin/programmes/${id}`);
+    // },
   },
   computed: {
-    filteredResponsibilities() {
-      const search = this.search.toLowerCase?.();
-      return this.responsibilities.filter((responsibility) => {
-        return responsibility?.description.toLowerCase?.().includes(search);
+    filteredSubscriptions() {
+      return this.subscriptions.filter((subscription) => {
+        let search = this.search?.toLowerCase?.();
+        return subscription?.email?.toLowerCase?.().includes(search);
       });
     },
   },

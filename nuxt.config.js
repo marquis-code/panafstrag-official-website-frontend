@@ -7,6 +7,7 @@ export default {
   routes: () => {
     return axios.get(`my.own.api.com/getSitemapRoutes`);
   },
+  // version: pkg.version,
   exclude: ["catalog/", "blog-*/", "*.html"],
   head: {
     title: "Original thinking, research help add to human knowledge",
@@ -148,7 +149,7 @@ export default {
           },
         },
       },
-    ],
+    ]
   ],
   googleAnalytics: {
     id: "UA-4362322022",
@@ -176,6 +177,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     "bootstrap-vue/nuxt",
+    "nuxt-mermaid-string",
     "@nuxtjs/toast",
     ["@nuxtjs/dotenv"],
     "nuxt-webfontloader",
@@ -268,6 +270,70 @@ export default {
     icon: {
       filename: "panaafricalogo.png",
     },
+    workbox: {
+      runtimeCaching: [
+        {
+          urlPattern: "https://panafstrag.org/board-members/.*",
+          handler: "networkFirst",
+          method: "GET",
+          strategyOptions: {
+            cacheName: "panafstrag-board-members",
+            cacheableResponse: { statuses: [0, 200] },
+          },
+        },
+        {
+          urlPattern: "https://panafstrag.org/cells/.*",
+          handler: "networkFirst",
+          method: "GET",
+          strategyOptions: {
+            cacheName: "panafstrag-cells",
+            cacheableResponse: { statuses: [0, 200] },
+          },
+        },
+        {
+          urlPattern: "https://panafstrag.org/about-us/.*",
+          handler: "networkFirst",
+          method: "GET",
+          strategyOptions: {
+            cacheName: "panafstrag-objectives",
+            cacheableResponse: { statuses: [0, 200] },
+          },
+        },
+        {
+          urlPattern: "https://panafstrag.org/programmes/.*",
+          handler: "networkFirst",
+          method: "GET",
+          strategyOptions: {
+            cacheName: "panafstrag-programmes",
+            cacheableResponse: { statuses: [0, 200] },
+          },
+        },
+        {
+          urlPattern: "https://panafstrag.org/archives/.*",
+          handler: "networkFirst",
+          method: "GET",
+          strategyOptions: {
+            cacheName: "panafstrag-archives",
+            cacheableResponse: { statuses: [0, 200] },
+          },
+        },
+      ],
+    },
+  },
+  cache: {
+    useHostPrefix: false,
+    pages: [
+      "/board-members",
+      "/archives",
+      "/programmes",
+      "/about-us",
+      "/cells",
+    ],
+    store: {
+      type: "memory",
+      max: 100,
+      ttl: 60,
+    },
   },
   googleAnalytics: {
     id: "G-02WFDSB2TF",
@@ -330,5 +396,10 @@ export default {
         autoFetchUser: false,
       },
     },
+  },
+
+  layoutTransition: {
+    name: "layout",
+    mode: "out-in",
   },
 };

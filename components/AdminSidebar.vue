@@ -1,375 +1,555 @@
 <template>
-  <main class="flex h-screen">
-    <div
-      :class="[isOpen ? 'w-2/12 bg-white border h-full py-6' : 'hidden']"
-      class="relative"
-    >
+  <Transition name="fade">
+    <main class="flex h-screen select-none">
       <div
-        :class="[isOpen ? 'text-sm' : '']"
-        class="
-          flex
-          justify-start
-          items-start
-          font-medium
-          lg:pt-0
-          xl:pt-7
-          px-3
-          lg:pb-0
-        "
+        :class="[isOpen ? 'w-2/12 bg-white border h-full py-6' : 'hidden']"
+        class="relative"
       >
-        <nuxt-link class="flex items-center lg:space-x-3" to="/">
-          <img
-            :class="[isOpen ? 'lg:visible lg:h-6 lg:w-6' : 'hidden']"
-            class="h-10 w-10"
-            src="@/static/panaafricalogo.png"
-          /><span class="font-bold">PANAFSTRAG</span>
-        </nuxt-link>
-      </div>
-      <section class="space-y-6 mt-6 px-3">
-        <button
-          :class="[
-            isHomeActive
-              ? 'bg-black text-white w-full p-2 rounded-md'
-              : 'text-gray-400',
-          ]"
-          class="flex items-center space-x-2 mt-6"
-          @click="$router.push('/admin/')"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="square"
-            stroke-linejoin="bevel"
-          >
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-          </svg>
-          <span class="sm:text-sm"> Dashboard</span>
-        </button>
-        <button
-          :class="[
-            isMembersActive
-              ? 'bg-black text-white w-full p-2 rounded-md'
-              : 'text-gray-400',
-          ]"
-          class="flex items-center space-x-2"
-          @click="$router.push('/admin/board-members/')"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="square"
-            stroke-linejoin="bevel"
-          >
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-          </svg>
-          <span class="sm:text-sm">Members</span>
-        </button>
-
-        <button
-          :class="[
-            isProgramActive
-              ? 'bg-black text-white w-full p-2 rounded-md'
-              : 'text-gray-400',
-          ]"
-          class="flex items-center space-x-2"
-          @click="$router.push('/admin/programmes/')"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="square"
-            stroke-linejoin="bevel"
-          >
-            <polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon>
-            <line x1="3" y1="22" x2="21" y2="22"></line>
-          </svg>
-          <span class="sm:text-sm">Programmes</span>
-        </button>
-
-        <button
-          :class="[
-            isObjectivesActive
-              ? 'bg-black text-white w-full p-2 rounded-md'
-              : 'text-gray-400',
-          ]"
-          class="flex items-center space-x-2"
-          @click="$router.push('/admin/objectives/')"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="square"
-            stroke-linejoin="bevel"
-          >
-            <path d="M3 3v18h18" />
-            <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" />
-          </svg>
-          <span class="sm:text-sm"> Objectives</span>
-        </button>
-        <button
-          :class="[
-            isResponsibilityActive
-              ? 'bg-black text-white w-full p-2 rounded-md'
-              : 'text-gray-400',
-          ]"
-          class="flex items-center space-x-2"
-          @click="$router.push('/admin/responsibilities/')"
-        >
-          <b-icon class="" icon="trophy" variant="secondary"></b-icon>
-          <span class="sm:text-sm"> Responsibilities</span>
-        </button>
-      </section>
-      <button
-        class="
-          absolute
-          bottom-2
-          left-5
-          rounded-md
-          text-red-500
-          bg-red-200
-          px-3
-          py-2
-          w-10/12
-        "
-        @click="handleLogout()"
-      >
-        Logout
-      </button>
-    </div>
-
-    <div
-      :class="[
-        isOpen
-          ? 'w-10/12 bg-white border h-full py-6 overflow-scroll'
-          : 'w-full h-full',
-      ]"
-    >
-      <b-container class="">
         <div
-          :class="[
-            isOpen
-              ? 'hidden'
-              : 'visible flex justify-between items-center py-3 w-full',
-          ]"
+          :class="[isOpen ? 'text-sm' : '']"
+          class="
+            flex
+            justify-start
+            items-start
+            font-medium
+            lg:pt-0
+            xl:pt-7
+            px-3
+            lg:pb-0
+          "
         >
-          <h1 class="text-2xl font-medium">
-            <nuxt-link class="flex items-center space-x-1" to="/">
-              <img class="h-10 w-10 objct-cover" src="~/static/icon.png" />
-              <span class="text-lg font-semibold">PANAFSTRAG</span></nuxt-link
-            >
-          </h1>
-          <div class="cursor-pointer">
+          <nuxt-link class="flex items-center lg:space-x-3" to="/">
+            <img
+              :class="[isOpen ? 'lg:visible lg:h-6 lg:w-6' : 'hidden']"
+              class="h-10 w-10"
+              src="@/static/panaafricalogo.png"
+            /><span class="font-bold text-xl">PANAFSTRAG</span>
+          </nuxt-link>
+        </div>
+        <hr class="" />
+        <section class="space-y-6 mt-6 px-3">
+          <button
+            :class="[
+              isHomeActive
+                ? 'bg-black text-white w-full p-2 rounded-md border-l-4 border-green-500'
+                : 'text-gray-400',
+            ]"
+            class="flex items-center space-x-2 mt-6"
+            @click="$router.push('/admin/')"
+          >
             <svg
-              v-b-toggle.sidebar-mobile
-              class="cursor-pointer"
               xmlns="http://www.w3.org/2000/svg"
-              width="27"
-              height="27"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#747070"
+              stroke="currentColor"
               stroke-width="1.5"
               stroke-linecap="square"
               stroke-linejoin="bevel"
             >
-              <path d="M21 9.5H7M21 4.5H3M21 14.5H3M21 19.5H7" />
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
             </svg>
-          </div>
-        </div>
-        <div
-          :class="[isOpen ? 'visible' : 'hidden']"
-          class="container mx-auto px-6 pt-2 md:px-0 space-y-1"
-        >
-          <p class="text-gray-400 text-xs">OVERVIEW</p>
-          <p class="font-bold text-xl">{{ currentTitle }}</p>
-        </div>
-
-        <div>
-          <b-sidebar
-            id="sidebar-mobile"
-            title="Sidebar"
-            no-header
-            backdrop
-            shadow
+            <span class="sm:text-sm"> Dashboard</span>
+          </button>
+          <button
+            :class="[
+              isMembersActive
+                ? 'bg-black text-white w-full p-2 rounded-md border-l-4 border-green-500'
+                : 'text-gray-400',
+            ]"
+            class="flex items-center space-x-2"
+            @click="$router.push('/admin/board-members/')"
           >
-            <div class="px-3 py-2 mt-6">
-              <h1 class="text-2xl font-medium">
-                <nuxt-link class="flex items-center space-x-2" to="/">
-                  <img class="h-10 w-10 objct-cover" src="~/static/icon.png" />
-                  <span class="text-sm md:text-md text-lg font-bold"
-                    >PANAFSTRAG</span
-                  ></nuxt-link
-                >
-              </h1>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="square"
+              stroke-linejoin="bevel"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <span class="sm:text-sm">Members</span>
+          </button>
 
-              <button
-                :class="[
-                  isHomeActive
-                    ? 'bg-black text-white w-full p-2 rounded-md'
-                    : 'text-gray-400',
-                ]"
-                class="flex items-center space-x-2 mt-6"
-                @click="$router.push('/admin/')"
+          <button
+            :class="[
+              isProgramActive
+                ? 'bg-black text-white w-full p-2 rounded-md border-l-4 border-green-500'
+                : 'text-gray-400',
+            ]"
+            class="flex items-center space-x-2"
+            @click="$router.push('/admin/programmes/')"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="square"
+              stroke-linejoin="bevel"
+            >
+              <polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon>
+              <line x1="3" y1="22" x2="21" y2="22"></line>
+            </svg>
+            <span class="sm:text-sm">Programmes</span>
+          </button>
+
+          <button
+            :class="[
+              isMeetingActive
+                ? 'bg-black text-white w-full p-2 rounded-md border-l-4 border-green-500'
+                : 'text-gray-400',
+            ]"
+            class="flex items-center space-x-2"
+            @click="$router.push('/admin/meetings/')"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="square"
+              stroke-linejoin="bevel"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span class="sm:text-sm">Meetings</span>
+          </button>
+
+          <button
+            :class="[
+              isSubscriptionActive
+                ? 'bg-black text-white w-full p-2 rounded-md border-l-4 border-green-500'
+                : 'text-gray-400',
+            ]"
+            class="flex items-center space-x-2"
+            @click="$router.push('/admin/subscriptions/')"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="square"
+              stroke-linejoin="bevel"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              ></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span class="sm:text-sm">Subscriptions</span>
+          </button>
+
+          <button
+            :class="[
+              isObjectivesActive
+                ? 'bg-black text-white w-full p-2 rounded-md border-l-4 border-green-500'
+                : 'text-gray-400',
+            ]"
+            class="flex items-center space-x-2"
+            @click="$router.push('/admin/objectives/')"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="square"
+              stroke-linejoin="bevel"
+            >
+              <path d="M3 3v18h18" />
+              <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" />
+            </svg>
+            <span class="sm:text-sm"> Objectives</span>
+          </button>
+          <button
+            :class="[
+              isResponsibilityActive
+                ? 'bg-black text-white w-full p-2 rounded-md border-l-4 border-green-500'
+                : 'text-gray-400',
+            ]"
+            class="flex items-center space-x-2"
+            @click="$router.push('/admin/responsibilities/')"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="square"
+              stroke-linejoin="bevel"
+            >
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <span class="sm:text-sm"> Responsibilities</span>
+          </button>
+        </section>
+        <button
+          class="
+            absolute
+            bottom-2
+            left-5
+            rounded-md
+            text-red-500
+            shadow-md
+            bg-red-200
+            px-3
+            py-2
+            w-10/12
+            flex
+            justify-center
+            items-center
+          "
+          @click="handleLogout()"
+        >
+          <span class="mr-2"> Logout</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="square"
+            stroke-linejoin="bevel"
+          >
+            <path
+              d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M13.8 12H3"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div
+        :class="[
+          isOpen
+            ? 'w-10/12 bg-white border h-full py-6 overflow-scroll'
+            : 'w-full h-full',
+        ]"
+      >
+        <b-container class="">
+          <div
+            :class="[
+              isOpen
+                ? 'hidden'
+                : 'visible flex justify-between items-center py-3 w-full',
+            ]"
+          >
+            <h1 class="text-2xl font-medium">
+              <nuxt-link class="flex items-center space-x-1" to="/">
+                <img class="h-10 w-10 objct-cover" src="~/static/icon.png" />
+                <span class="text-lg font-semibold">PANAFSTRAG</span></nuxt-link
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="square"
-                  stroke-linejoin="bevel"
-                >
-                  <path
-                    d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
-                  ></path>
-                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                </svg>
-                <span class="text-base"> Dashboard</span>
-              </button>
-
-              <p class="text-gray-400 pt-6">Config</p>
-              <hr class="text-gray-400" />
-              <section class="space-y-6 mt-6">
-                <button
-                  :class="[
-                    isMembersActive
-                      ? 'bg-black text-white w-full p-2 rounded-md'
-                      : 'text-gray-400',
-                  ]"
-                  class="flex items-center space-x-2"
-                  @click="$router.push('/admin/board-members/')"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="square"
-                    stroke-linejoin="bevel"
-                  >
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                  </svg>
-                  <span class="text-base">Board Members</span>
-                </button>
-
-                <button
-                  :class="[
-                    isProgramActive
-                      ? 'bg-black text-white w-full p-2 rounded-md'
-                      : 'text-gray-400',
-                  ]"
-                  class="flex items-center space-x-2"
-                  @click="$router.push('/admin/programmes/')"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="square"
-                    stroke-linejoin="bevel"
-                  >
-                    <polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon>
-                    <line x1="3" y1="22" x2="21" y2="22"></line>
-                  </svg>
-                  <span class="text-base">Programmes</span>
-                </button>
-
-                <button
-                  class="flex items-center space-x-2"
-                  :class="[
-                    isObjectivesActive
-                      ? 'bg-black text-white w-full p-2 rounded-md'
-                      : 'text-gray-400',
-                  ]"
-                  @click="$router.push('/admin/objectives/')"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="square"
-                    stroke-linejoin="bevel"
-                  >
-                    <path d="M3 3v18h18" />
-                    <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" />
-                  </svg>
-                  <span class="text-base"> Objectives</span>
-                </button>
-                <button
-                  :class="[
-                    isResponsibilityActive
-                      ? 'bg-black text-white w-full p-2 rounded-md'
-                      : 'text-gray-400',
-                  ]"
-                  class="flex items-center space-x-2"
-                  @click="$router.push('/admin/responsibilities/')"
-                >
-                  <b-icon class="" icon="trophy" variant="secondary"></b-icon>
-                  <span class="text-base"> Responsibilities</span>
-                </button>
-              </section>
+            </h1>
+            <div class="cursor-pointer">
+              <svg
+                v-b-toggle.sidebar-mobile
+                class="cursor-pointer"
+                xmlns="http://www.w3.org/2000/svg"
+                width="27"
+                height="27"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#747070"
+                stroke-width="1.5"
+                stroke-linecap="square"
+                stroke-linejoin="bevel"
+              >
+                <path d="M21 9.5H7M21 4.5H3M21 14.5H3M21 19.5H7" />
+              </svg>
             </div>
-            <template #footer>
-              <div
-                class="d-flex bg-dark text-light align-items-center px-3 py-2"
-              >
-                <strong class="mr-auto"
-                  ><b-avatar></b-avatar>
-                  <span class="text-xs">
-                    {{ username ? username : "Admin" }}</span
-                  ></strong
+          </div>
+          <div
+            :class="[isOpen ? 'visible' : 'hidden']"
+            class="container mx-auto px-6 pt-2 md:px-0 space-y-1"
+          >
+            <p class="text-gray-400 text-xs">OVERVIEW</p>
+            <p class="font-bold text-xl">{{ currentTitle }}</p>
+          </div>
+
+          <div>
+            <b-sidebar
+              id="sidebar-mobile"
+              title="Sidebar"
+              no-header
+              backdrop
+              shadow
+            >
+              <div class="px-3 py-2 mt-6">
+                <h1 class="text-2xl font-medium">
+                  <nuxt-link class="flex items-center space-x-2" to="/">
+                    <img
+                      class="h-10 w-10 objct-cover"
+                      src="~/static/icon.png"
+                    />
+                    <span class="text-sm md:text-md text-lg font-bold"
+                      >PANAFSTRAG</span
+                    ></nuxt-link
+                  >
+                </h1>
+
+                <button
+                  :class="[
+                    isHomeActive
+                      ? 'bg-black text-white w-full p-2 rounded-md  border-l-4 border-green-500'
+                      : 'text-gray-400',
+                  ]"
+                  class="flex items-center space-x-2 mt-6"
+                  @click="$router.push('/admin/')"
                 >
-                <b-button size="sm" @click="handleLogout">Logout</b-button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="square"
+                    stroke-linejoin="bevel"
+                  >
+                    <path
+                      d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                    ></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                  </svg>
+                  <span class="text-base"> Dashboard</span>
+                </button>
+
+                <p class="text-gray-400 pt-6">Config</p>
+                <hr class="text-gray-400" />
+                <section class="space-y-6 mt-6">
+                  <button
+                    :class="[
+                      isMembersActive
+                        ? 'bg-black text-white w-full p-2 rounded-md border-l-4 border-green-500'
+                        : 'text-gray-400',
+                    ]"
+                    class="flex items-center space-x-2"
+                    @click="$router.push('/admin/board-members/')"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="square"
+                      stroke-linejoin="bevel"
+                    >
+                      <path
+                        d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
+                      ></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span class="text-base">Board Members</span>
+                  </button>
+
+                  <button
+                    :class="[
+                      isProgramActive
+                        ? 'bg-black text-white w-full p-2 rounded-md border-l-4 border-green-500'
+                        : 'text-gray-400',
+                    ]"
+                    class="flex items-center space-x-2"
+                    @click="$router.push('/admin/programmes/')"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="square"
+                      stroke-linejoin="bevel"
+                    >
+                      <polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon>
+                      <line x1="3" y1="22" x2="21" y2="22"></line>
+                    </svg>
+                    <span class="text-base">Programmes</span>
+                  </button>
+
+                  <button
+                    :class="[
+                      isMeetingActive
+                        ? 'bg-black text-white w-full p-2 rounded-md border-l-4 border-green-500'
+                        : 'text-gray-400',
+                    ]"
+                    class="flex items-center space-x-2"
+                    @click="$router.push('/admin/meetings/')"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="square"
+                      stroke-linejoin="bevel"
+                    >
+                      <rect
+                        x="3"
+                        y="4"
+                        width="18"
+                        height="18"
+                        rx="2"
+                        ry="2"
+                      ></rect>
+                      <line x1="16" y1="2" x2="16" y2="6"></line>
+                      <line x1="8" y1="2" x2="8" y2="6"></line>
+                      <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    <span class="text-base">Meetings</span>
+                  </button>
+
+                  <button
+                    :class="[
+                      isSubscriptionActive
+                        ? 'bg-black text-white w-full p-2 rounded-md  border-l-4 border-green-500'
+                        : 'text-gray-400',
+                    ]"
+                    class="flex items-center space-x-2"
+                    @click="$router.push('/admin/subscriptions/')"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="square"
+                      stroke-linejoin="bevel"
+                    >
+                      <path
+                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                      ></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <span class="text-base">Subscriptions</span>
+                  </button>
+
+                  <button
+                    class="flex items-center space-x-2"
+                    :class="[
+                      isObjectivesActive
+                        ? 'bg-black text-white w-full p-2 rounded-md border-l-4 border-green-500'
+                        : 'text-gray-400',
+                    ]"
+                    @click="$router.push('/admin/objectives/')"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="square"
+                      stroke-linejoin="bevel"
+                    >
+                      <path d="M3 3v18h18" />
+                      <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" />
+                    </svg>
+                    <span class="text-base"> Objectives</span>
+                  </button>
+                  <button
+                    :class="[
+                      isResponsibilityActive
+                        ? 'bg-black text-white w-full p-2 rounded-md border-l-4 border-green-500'
+                        : 'text-gray-400',
+                    ]"
+                    class="flex items-center space-x-2"
+                    @click="$router.push('/admin/responsibilities/')"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="square"
+                      stroke-linejoin="bevel"
+                    >
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <span class="text-base"> Responsibilities</span>
+                  </button>
+                </section>
               </div>
-            </template>
-          </b-sidebar>
-        </div>
-      </b-container>
-      <hr :class="[isOpen ? 'visible' : 'hidden']" />
-      <Nuxt />
-    </div>
-  </main>
+              <template #footer>
+                <div
+                  class="
+                    d-flex
+                    bg-dark
+                    text-light
+                    align-items-center
+                    px-3
+                    py-2
+                    shadow-md
+                  "
+                >
+                  <strong class="mr-auto"
+                    ><b-avatar></b-avatar>
+                    <span class="text-xs">
+                      {{ username ? username : "Admin" }}</span
+                    ></strong
+                  >
+                  <b-button size="sm" @click="handleLogout">Logout</b-button>
+                </div>
+              </template>
+            </b-sidebar>
+          </div>
+        </b-container>
+        <hr :class="[isOpen ? 'visible' : 'hidden']" />
+        <Nuxt />
+      </div>
+    </main>
+  </Transition>
 </template>
 
 <script>
@@ -390,6 +570,8 @@ export default {
       isObjectivesActive: false,
       isResponsibilityActive: false,
       isProgramActive: false,
+      isMeetingActive: false,
+      isSubscriptionActive: false,
     };
   },
   mounted() {
@@ -421,6 +603,24 @@ export default {
           this.isMembersActive = true;
         } else {
           this.isMembersActive = false;
+        }
+
+        if (
+          this.currentPath === "/admin/subscriptions/" ||
+          this.currentPath === "/admin/subscriptions/create"
+        ) {
+          this.isSubscriptionActive = true;
+        } else {
+          this.isSubscriptionActive = false;
+        }
+
+        if (
+          this.currentPath === "/admin/meetings/" ||
+          this.currentPath === "/admin/meetings/create"
+        ) {
+          this.isMeetingActive = true;
+        } else {
+          this.isMeetingActive = false;
         }
 
         if (
@@ -473,6 +673,12 @@ export default {
         ? "Create Objective"
         : this.currentPath === "/admin/responsibilities/create"
         ? "Create Responsibilities"
+        : this.currentPath === "/admin/meetings/create"
+        ? "Create Meetings"
+        : this.currentPath === "/admin/subscriptions/"
+        ? "Subscriptions"
+        : this.currentPath === "/admin/meetings/"
+        ? "Meetings"
         : "";
     },
   },
@@ -519,5 +725,19 @@ export default {
 };
 </script>
 
-<style>
+
+<style scoped>
+.fade-enter-active {
+  transition: all 0.3s cubic-bezier(0.52, 0.02, 0.19, 1.02) 0.15s;
+}
+.fade-leave-active {
+  transition: all 0.3s cubic-bezier(0.52, 0.02, 0.19, 1.02);
+}
+.fade-enter-from {
+  opacity: 0;
+  transform: scale(0.8);
+}
+.fade-leave-to {
+  transform: scale(0.8);
+}
 </style>

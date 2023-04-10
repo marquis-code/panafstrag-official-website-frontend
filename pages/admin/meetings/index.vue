@@ -23,10 +23,10 @@
           </button>
 
           <button
-            @click="$router.push('/admin/responsibilities/create')"
+            @click="$router.push('/admin/meetings/create')"
             class="text-gray-400 rounded-md border bg-black text-white text-sm px-3 py-2"
           >
-            Create Responsibilities
+            Create Meeting
           </button>
         </div>
 
@@ -46,14 +46,14 @@
             striped
             show-empty
             responsive
-            :items="filteredResponsibilities"
+            :items="filteredMeetings"
             :fields="fields"
             :busy="loading"
             :current-page="currentPage"
             :per-page="perPage"
           >
             <template #table-busy>
-              <div class="text-center my-2">
+              <div class="text-center py-2">
                 <b-spinner class="align-middle"></b-spinner>
                 <small>Loading...</small>
               </div>
@@ -63,33 +63,59 @@
               <p class="text-center text-secondary py-2">
                 {{
                   search
-                    ? `No responsibilities found for search value: "${search}"`
-                    : "No responsibilities available"
+                    ? `No meeting found for search value: "${search}"`
+                    : "No meetings available"
                 }}
               </p>
             </template>
 
             <template #cell(sn)="data">
-              <span class="font-medium py-2 text-sm">
-                {{ data.index + 1 }}</span
+              <span class="font-light py-2 text-sm"> {{ data.index + 1 }}</span>
+            </template>
+
+            <template #cell(title)="data">
+              <span class="font-light py-2 text-sm">{{
+                data.item.title && data.item.title.length > 30
+                  ? data.item.title.slice(0, 30) + "..."
+                  : data.item.title
+              }}</span>
+            </template>
+
+            <template #cell(description)="data">
+              <span class="font-light py-2 text-sm">{{
+                data.item.description && data.item.description.length > 100
+                  ? data.item.description.slice(0, 70) + "..."
+                  : data.item.description
+              }}</span>
+              <span
+                v-if="!data?.item?.description"
+                class="font-light py-2 text-sm"
+                >N/A</span
               >
             </template>
 
-            <template #cell(responsibility)="data">
-              <span class="font-light py-2 text-sm">
-                {{
-                  data.item.description && data.item.description.length > 100
-                    ? data.item.description.slice(0, 100) + "..."
-                    : data.item.description
-                }}
-              </span>
+            <template #cell(url)="data">
+              <a
+                class="font-medium py-2 text-sm"
+                :href="data.item.url"
+                target="_blank"
+                >{{
+                  data.item.url && data.item.url.length > 100
+                    ? data.item.url.slice(0, 70) + "..."
+                    : data.item.url
+                }}</a
+              >
+              <!-- <span>{{
+                data.item.url && data.item.url.length > 100
+                  ? data.item.url.slice(0, 70) + "..."
+                  : data.item.url
+              }}</span> -->
             </template>
 
             <template #cell(created_at)="data">
               <span class="font-light py-2 text-sm">{{
                 $moment(data.item.createdAt).format("L")
-              }}</span
-              >`
+              }}</span>
             </template>
 
             <template #cell(actions)="data">
@@ -145,7 +171,6 @@
             ></b-pagination>
           </div>
         </template>
-        <!-- </div> -->
       </section>
     </b-container>
   </Transition>
@@ -157,7 +182,7 @@ import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
 
 export default {
-  name: "index",
+  name: "Meeting",
   scrollToTop: true,
   layout: "admin",
   data() {
@@ -169,8 +194,18 @@ export default {
           class: "font-medium text-gray-400 text-sm",
         },
         {
-          key: "responsibility",
-          label: "Responsibility",
+          key: "title",
+          label: "Title",
+          class: "font-medium text-gray-400 text-sm",
+        },
+        {
+          key: "description",
+          label: "Description",
+          class: "font-medium text-gray-400 text-sm",
+        },
+        {
+          key: "url",
+          label: "Meeting Url",
           class: "font-medium text-gray-400 text-sm",
         },
         {
@@ -181,10 +216,10 @@ export default {
         {
           key: "actions",
           label: "Actions",
-          class: "font-medium text-end text-gray-400 text-sm",
+          class: "font-medium text-gray-400 text-sm",
         },
       ],
-      responsibilities: [],
+      meetings: [],
       currentPage: 1,
       perPage: 5,
       search: "",
@@ -192,7 +227,7 @@ export default {
       totalRows: 1,
       loading: true,
       isDeleting: false,
-      title: "Pan Africa Board Members",
+      title: "Pan Africa Board Meetings",
       description:
         "Pan Africa; Original thinking, research help add to human knowledge",
       image:
@@ -251,21 +286,20 @@ export default {
     };
   },
   created() {
-    this.fetchResponsibilities();
+    this.fetchMeetings();
   },
   mounted() {
-    // Set the initial number of items
-    this.totalRows = this.responsibilities.length;
+    this.totalRows = this.meetings.length;
   },
   methods: {
-    async fetchResponsibilities() {
+    async fetchMeetings() {
       this.loading = true;
       try {
         this.loading = true;
         let res = await this.$axios.get(
-          `https://panafstrag.onrender.com/api/panAfrica/responsibilities`
+          "https://panafstrag.onrender.com/api/panAfrica/meeting"
         );
-        this.responsibilities = res.data;
+        this.meetings = res.data;
         this.totalRows = res.data.length;
       } catch (error) {
         this.$toast
@@ -280,7 +314,7 @@ export default {
       this.$router.go(-1);
     },
     handleEdit(id) {
-      this.$router.push(`/admin/responsibilities/${id}`);
+      this.$router.push(`/admin/meetings/${id}`);
     },
     handleDelete(id) {
       Swal.fire({
@@ -302,21 +336,20 @@ export default {
 
     async triggerDeletion(id) {
       try {
-        let res = await this.$axios.delete(
-          `https://panafstrag.onrender.com/api/panAfrica/responsibilities/${id}`
+        await this.$axios.delete(
+          `https://panafstrag.onrender.com/api/panAfrica/meeting/${id}`
         );
-        this.$toast.success("Responsibility has been removed").goAway(1500);
-        await this.fetchResponsibilities();
+        this.$toast.success("Meeting has been removed").goAway(1500);
+        await this.fetchMeetings();
       } catch (error) {
         this.$toast.error(error.response.data.errorMessage).goAway(1500);
       }
     },
   },
   computed: {
-    filteredResponsibilities() {
-      const search = this.search.toLowerCase?.();
-      return this.responsibilities.filter((responsibility) => {
-        return responsibility?.description.toLowerCase?.().includes(search);
+    filteredMeetings() {
+      return this.meetings.filter((meeting) => {
+        return meeting.title.toLowerCase().includes(this.search.toLowerCase());
       });
     },
   },

@@ -45,8 +45,27 @@
           <form
             @submit.prevent="handleSubmit"
             action=""
-            class="space-y-6 w-full"
+            class="space-y-7 w-full"
           >
+            <div>
+              <label class="text-sm text-gray-400" for="title">Title</label>
+              <textarea
+                class="
+                  w-full
+                  rounded-lg
+                  border
+                  outline-none
+                  p-3
+                  resize-none
+                  text-sm
+                "
+                placeholder="Describe programme title..."
+                id="title"
+                v-model="form.title"
+                rows="2"
+              ></textarea>
+            </div>
+
             <div>
               <label class="sr-only" for="description">Description</label>
               <textarea
@@ -56,6 +75,16 @@
                 id="description"
                 v-model="form.description"
               ></textarea>
+            </div>
+
+            <div>
+              <label class="sr-only" for="url">Meeting Url</label>
+              <input
+                class="w-full rounded-lg border outline-none p-3 text-sm"
+                placeholder="Enter meeting url..."
+                id="url"
+                v-model="form.url"
+              />
             </div>
 
             <div class="mt-3 flex justify-end items-end">
@@ -105,12 +134,14 @@
 
 <script>
 export default {
-  name: "archives",
+  name: "create",
   layout: "admin",
   data() {
     return {
       form: {
+        title: "",
         description: "",
+        url: "",
       },
       loading: false,
     };
@@ -118,6 +149,8 @@ export default {
   methods: {
     resetForm() {
       this.form.description = null;
+      this.form.title = null;
+      this.form.url = null;
     },
     goBack() {
       this.$router.go(-1);
@@ -126,11 +159,11 @@ export default {
       this.loading = true;
       try {
         await this.$axios.post(
-          `https://panafstrag.onrender.com/api/panAfrica/objective`,
+          `https://panafstrag.onrender.com/api/panAfrica/meeting`,
           this.form
         );
         this.resetForm();
-        this.$toast.success("Objective was successfully created").goAway(1500);
+        this.$toast.success("Meeting was successfully created").goAway(1500);
         this.loading = false;
       } catch (error) {
         this.$toast.error(error.response.data.errorMessage).goAway(1500);

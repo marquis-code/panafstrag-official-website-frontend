@@ -1,19 +1,9 @@
 <template>
-  <section class="">
-    <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+  <Transition name="fade">
+    <b-container>
       <button
         @click="goBack()"
-        class="
-          outline-none
-          mt-2
-          border
-          bg-gray-200
-          text-black
-          px-3
-          py-1
-          rounded-md
-          text-sm
-        "
+        class="outline-none mt-2 border bg-gray-200 text-black px-3 py-1 rounded-md text-sm"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -31,29 +21,13 @@
       </button>
       <h2 class="text-xl my-6 font-medium text-black">Update programme</h2>
       <div
-        class="
-          md:bg-white md:p-7 md:w-9/12
-          shadow-md
-          rounded-md
-          border
-          mt-4
-          mb-6
-          p-3
-        "
+        class="md:bg-white md:p-7 md:w-9/12 md:shadow-md md:rounded-md md:border md:border-2 lg:mt-4 mb-6 p-3 pb-6 lg:p-6"
       >
         <form @submit.prevent="handleSubmit" action="" class="space-y-6 w-full">
           <div>
-            <label class="sr-only" for="title">Title</label>
+            <label class="text-sm text-gray-400" for="title">Title</label>
             <textarea
-              class="
-                w-full
-                rounded-lg
-                border
-                outline-none
-                p-3
-                resize-none
-                text-sm
-              "
+              class="w-full rounded-lg border border-gray-200 outline-none p-3 resize-none text-sm"
               placeholder="Describe programme title..."
               id="title"
               v-model="form.title"
@@ -62,17 +36,9 @@
           </div>
 
           <div>
-            <label class="sr-only" for="theme">Theme</label>
+            <label class="text-sm text-gray-400" for="theme">Theme</label>
             <textarea
-              class="
-                w-full
-                rounded-lg
-                border
-                outline-none
-                p-3
-                resize-none
-                text-sm
-              "
+              class="w-full rounded-lg border border-gray-200 outline-none p-3 resize-none text-sm"
               placeholder="Describe programme theme..."
               id="theme"
               rows="4"
@@ -80,45 +46,76 @@
             ></textarea>
           </div>
 
+          <div>
+            <label class="text-sm text-gray-400" for="zoomMeetingUrl"
+              >Zoom Meeting Link</label
+            >
+            <input
+              class="w-full rounded-lg border border-gray-200 outline-none p-3 text-sm"
+              pattern="https://.*"
+              type="url"
+              placeholder="Enter programme zoom meeting url"
+              id="zoomMeetingUrl"
+              v-model="form.zoomMeetingUrl"
+            />
+          </div>
+
           <div
-            class="
-              md:flex
-              justify-between
-              items-center
-              space-y-7
-              md:space-y-0 md:space-x-3
-            "
+            class="md:flex justify-between items-center space-y-7 md:space-y-0 md:space-x-3"
           >
             <div class="w-full">
-              <label class="sr-only" for="date">Start date</label>
+              <label class="text-sm text-gray-400" for="date">Start date</label>
               <client-only
                 ><date-picker
-                  class="w-full rounded-lg border outline-none p-3 text-sm"
+                  class="w-full rounded-lg border border-gray-200 outline-none p-3 text-sm"
                   placeholder="Select start date"
                   v-model="form.startDate"
               /></client-only>
             </div>
 
             <div class="w-full">
-              <label class="sr-only" for="date">End date</label>
+              <label class="text-sm text-gray-400" for="date">End date</label>
               <client-only
                 ><date-picker
-                  class="w-full rounded-lg border outline-none p-3 text-sm"
+                  class="w-full rounded-lg border border-gray-200 outline-none p-3 text-sm"
                   placeholder="Select end date"
                   v-model="form.endDate"
               /></client-only>
             </div>
           </div>
 
-          <div class="mb-3">
-            <label class="sr-only" for="uploadedVideoUrl">Video Url</label>
-            <input
-              class="w-full rounded-lg border outline-none p-3 text-sm"
-              type="text"
-              placeholder="https://www.youtube.com...."
-              id="uploadedVideoUrl"
-              v-model="form.uploadedVideoUrl"
-            />
+          <div
+            class="md:flex justify-between items-center space-y-7 md:space-y-0 md:space-x-3"
+          >
+            <div class="mb-3 w-full mt-3">
+              <label class="text-sm text-gray-400" for="uploadedVideoUrl"
+                >Video Url</label
+              >
+              <input
+                class="w-full rounded-lg border border-gray-200 outline-none p-3 text-sm"
+                type="text"
+                placeholder="https://www.youtube.com...."
+                id="uploadedVideoUrl"
+                v-model="form.uploadedVideoUrl"
+              />
+            </div>
+            <div class="mb-3 w-full">
+              <label class="text-sm text-gray-400" for="status"
+                >Program status</label
+              >
+              <br />
+              <small
+                >Accepted values includes: <b>active</b>, <b>pending</b>,
+                <b>completed</b>.</small
+              >
+              <input
+                class="w-full rounded-lg border border-gray-200 outline-none p-3 text-sm"
+                type="text"
+                placeholder="Enter program status"
+                id="status"
+                v-model="form.status"
+              />
+            </div>
           </div>
 
           <div class="flex justify-center items-center flex-col">
@@ -161,6 +158,7 @@
               >
             </div>
             <input
+              disabled="true"
               @change="handleProgrammeUpload"
               multiple
               accept="image/*"
@@ -181,18 +179,7 @@
               :disabled="loading"
               type="submit"
               :class="[loading ? 'cursor-not-allowed opacity-20' : '']"
-              class="
-                inline-flex
-                items-center
-                justify-center
-                rounded-lg
-                bg-black
-                px-3
-                py-2
-                text-white
-                w-full
-                md:w-3/12
-              "
+              class="inline-flex items-center justify-center rounded-lg bg-black px-3 py-2 text-white w-full md:w-3/12"
             >
               <span class="font-medium">
                 {{ loading ? "processing..." : "Continue" }}
@@ -215,8 +202,8 @@
           </div>
         </form>
       </div>
-    </div>
-  </section>
+    </b-container>
+  </Transition>
 </template>
 
 <script>
@@ -232,7 +219,9 @@ export default {
         startDate: "",
         endDate: "",
         uploadedVideoUrl: "",
+        zoomMeetingUrl: "",
         programmes: null,
+        status: "",
       },
       filesLength: null,
       loading: false,
@@ -247,6 +236,7 @@ export default {
       this.form.theme = null;
       this.form.endDate = null;
       this.form.startDate = null;
+      (this.form.zoomMeetingUrl = null), (this.form.status = null);
       (this.form.uploadedVideoUrl = null), (this.form.programmes = null);
       this.filesLength = null;
     },
@@ -261,41 +251,59 @@ export default {
       this.loading = true;
       const formData = new FormData();
       try {
-        for (const i of Object.keys(this.form.programmes)) {
-          formData.append("programmes", this.form.programmes[i]);
-        }
+        // for (const i of Object.keys(this.form.programmes)) {
+        //   formData.append("programmes", this.form.programmes[i]);
+        // }
         formData.append("title", this.form.title);
         formData.append("theme", this.form.theme);
+        formData.append("status", this.form.status);
         formData.append("startDate", this.form.startDate);
+        formData.append("zoomMeetingUrl", this.form.zoomMeetingUrl);
         formData.append("endDate", this.form.endDate);
         formData.append("uploadedVideoUrl", this.form.uploadedVideoUrl);
         await this.$axios.put(
-          `https://panafstrag.onrender.com/api/panAfrica/programmes`,
+          `https://panafstrag.onrender.com/api/panAfrica/programmes/${this.$route.params.id}`,
           formData
         );
         this.$toast.success("Programme was successfully updated").goAway(1500);
         this.$router.push("/admin/programmes");
         this.loading = false;
       } catch (error) {
-        this.$toast.error(error.response.data.errorMessage).goAway(1500);
+        this.$toast.error(error?.response?.data?.errorMessage).goAway(1500);
         this.loading = false;
       }
     },
     async fetchProgram() {
+      this.loading = true;
       try {
         let response = await this.$axios.get(
           `https://panafstrag.onrender.com/api/panAfrica/programmes/${this.$route.params.id}`
         );
-        this.form = response.data;
+        this.form = response?.data;
       } catch (error) {
         this.$toast
           .error("Something went wrong, please try again.")
           .goAway(1500);
+      } finally {
+        this.loading = false;
       }
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
+.fade-enter-active {
+  transition: all 0.3s cubic-bezier(0.52, 0.02, 0.19, 1.02) 0.15s;
+}
+.fade-leave-active {
+  transition: all 0.3s cubic-bezier(0.52, 0.02, 0.19, 1.02);
+}
+.fade-enter-from {
+  opacity: 0;
+  transform: scale(0.8);
+}
+.fade-leave-to {
+  transform: scale(0.8);
+}
 </style>

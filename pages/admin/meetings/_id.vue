@@ -1,20 +1,10 @@
 <template>
   <Transition name="fade">
-    <section class="bg-gray-">
+    <section class="">
       <b-container>
         <button
           @click="goBack()"
-          class="
-            outline-none
-            mt-2
-            border
-            bg-gray-200
-            text-black
-            px-3
-            py-1
-            rounded-md
-            text-sm
-          "
+          class="outline-none mt-2 border bg-gray-200 text-black px-3 py-1 rounded-md text-sm"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -30,17 +20,9 @@
             <path d="M19 12H6M12 5l-7 7 7 7" />
           </svg>
         </button>
-        <!-- <h2 class="text-xl my-6 font-medium text-black">Create new objective</h2> -->
+        <h2 class="text-xl my-6 font-medium text-black">Update meeting</h2>
         <div
-          class="
-            md:bg-white md:p-7 md:w-9/12 md:shadow-md md:rounded-md md:border
-            lg:mt-4
-            mb-6
-            p-3
-            pb-6
-            lg:p-6
-            mt-6
-          "
+          class="md:bg-white md:p-7 md:w-9/12 md:shadow-md md:rounded-md md:border lg:mt-4 mb-6 p-3 pb-6 lg:p-6 mt-6"
         >
           <form
             @submit.prevent="handleSubmit"
@@ -48,33 +30,43 @@
             class="space-y-6 w-full"
           >
             <div>
+              <label class="sr-only" for="title">Description</label>
+              <textarea
+                class="w-full rounded-lg border outline-none p-3 text-sm"
+                placeholder="Enter meeting title here..."
+                rows="2"
+                id="title"
+                v-model="form.title"
+              ></textarea>
+            </div>
+
+            <div>
               <label class="sr-only" for="description">Description</label>
               <textarea
                 class="w-full rounded-lg border outline-none p-3 text-sm"
                 placeholder="Enter objectives description here..."
-                rows="8"
+                rows="3"
                 id="description"
                 v-model="form.description"
               ></textarea>
             </div>
 
-            <div class="mt-3 flex justify-end items-end">
+            <div>
+              <label class="sr-only" for="url">Meeting Url</label>
+              <input
+                class="w-full rounded-lg border outline-none p-3 text-sm"
+                placeholder="Enter meeting url here..."
+                id="url"
+                v-model="form.url"
+              />
+            </div>
+
+            <div class="mt-3 flex justify-end items-center">
               <button
                 :disabled="loading"
                 type="submit"
                 :class="[loading ? 'cursor-not-allowed opacity-20' : '']"
-                class="
-                  inline-flex
-                  w-full
-                  md:w-3/12
-                  items-center
-                  justify-center
-                  rounded-lg
-                  bg-black
-                  px-3
-                  py-2
-                  text-white
-                "
+                class="inline-flex items-center justify-center rounded-lg bg-black px-3 py-2 w-full md:w-3/12 text-white"
               >
                 <span class="font-medium">
                   {{ loading ? "processing..." : "Continue" }}</span
@@ -111,13 +103,20 @@ export default {
     return {
       form: {
         description: "",
+        title: "",
+        url: "",
       },
       loading: false,
     };
   },
+  created() {
+    this.fetchMeeting();
+  },
   methods: {
     resetForm() {
       this.form.description = null;
+      this.form.url = null;
+      this.form.title = null;
     },
     goBack() {
       this.$router.go(-1);
@@ -125,15 +124,30 @@ export default {
     async handleSubmit() {
       this.loading = true;
       try {
-        await this.$axios.post(
-          `https://panafstrag.onrender.com/api/panAfrica/objective`,
+        await this.$axios.put(
+          `https://panafstrag.onrender.com/api/panAfrica/meeting/${this.$route.params.id}`,
           this.form
         );
-        this.resetForm();
-        this.$toast.success("Objective was successfully created").goAway(1500);
+        this.$toast.success("Meeting was successfully updated").goAway(1500);
+        this.$router.push("/admin/meetings");
         this.loading = false;
       } catch (error) {
         this.$toast.error(error.response.data.errorMessage).goAway(1500);
+        this.loading = false;
+      }
+    },
+    async fetchMeeting() {
+      this.loading = true
+      try {
+        let response = await this.$axios.get(
+          `https://panafstrag.onrender.com/api/panAfrica/meeting/${this.$route.params.id}`
+        );
+        this.form = response.data;
+      } catch (error) {
+        this.$toast
+          .error("Something went wrong, please try again.")
+          .goAway(1500);
+      } finally {
         this.loading = false;
       }
     },
@@ -156,3 +170,4 @@ export default {
   transform: scale(0.8);
 }
 </style>
+

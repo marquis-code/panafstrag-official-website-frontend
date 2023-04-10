@@ -5,29 +5,10 @@
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-10"
       >
         <div
-          class="
-            relative
-            block
-            rounded-xl
-            border border-gray-100
-            p-8
-            md:p-4
-            shadow-xl
-          "
+          class="relative block rounded-xl border border-gray-100 p-8 md:p-4 shadow-xl"
         >
           <span
-            class="
-              absolute
-              right-4
-              top-4
-              rounded-full
-              bg-green-100
-              px-3
-              py-1.5
-              text-xs
-              font-medium
-              text-base text-green-600
-            "
+            class="absolute right-4 top-4 rounded-full bg-green-100 px-3 py-1.5 text-xs font-medium text-base text-green-600"
           >
             {{ membersLength ?? "0" }}
           </span>
@@ -61,29 +42,10 @@
         </div>
 
         <div
-          class="
-            relative
-            block
-            rounded-xl
-            border border-gray-100
-            p-8
-            md:p-4
-            shadow-xl
-          "
+          class="relative block rounded-xl border border-gray-100 p-8 md:p-4 shadow-xl"
         >
           <span
-            class="
-              absolute
-              right-4
-              top-4
-              rounded-full
-              bg-green-100
-              px-3
-              py-1.5
-              text-xs
-              font-medium
-              text-green-600 text-base
-            "
+            class="absolute right-4 top-4 rounded-full bg-green-100 px-3 py-1.5 text-xs font-medium text-green-600 text-base"
           >
             {{ objectivesLength ?? "0" }}
           </span>
@@ -113,29 +75,10 @@
         </div>
 
         <div
-          class="
-            relative
-            block
-            rounded-xl
-            border border-gray-100
-            p-8
-            md:p-4
-            shadow-xl
-          "
+          class="relative block rounded-xl border border-gray-100 p-8 md:p-4 shadow-xl"
         >
           <span
-            class="
-              absolute
-              right-4
-              top-4
-              rounded-full
-              bg-green-100
-              px-3
-              py-1.5
-              text-xs
-              font-medium
-              text-green-600 text-base
-            "
+            class="absolute right-4 top-4 rounded-full bg-green-100 px-3 py-1.5 text-xs font-medium text-green-600 text-base"
           >
             {{ programmesLength ?? "0" }}
           </span>
@@ -164,29 +107,10 @@
         </div>
 
         <div
-          class="
-            relative
-            block
-            rounded-xl
-            border border-gray-100
-            p-8
-            md:p-4
-            shadow-xl
-          "
+          class="relative block rounded-xl border border-gray-100 p-8 md:p-4 shadow-xl"
         >
           <span
-            class="
-              absolute
-              right-4
-              top-4
-              rounded-full
-              bg-green-100
-              px-3
-              py-1.5
-              text-xs
-              font-medium
-              text-green-600 text-base
-            "
+            class="absolute right-4 top-4 rounded-full bg-green-100 px-3 py-1.5 text-xs font-medium text-green-600 text-base"
           >
             {{ responsibilitiesLength ?? "0" }}
           </span>
@@ -219,29 +143,10 @@
         </div>
 
         <div
-          class="
-            relative
-            block
-            rounded-xl
-            border border-gray-100
-            p-8
-            md:p-4
-            shadow-xl
-          "
+          class="relative block rounded-xl border border-gray-100 p-8 md:p-4 shadow-xl"
         >
           <span
-            class="
-              absolute
-              right-4
-              top-4
-              rounded-full
-              bg-green-100
-              px-3
-              py-1.5
-              text-xs
-              font-medium
-              text-green-600 text-base
-            "
+            class="absolute right-4 top-4 rounded-full bg-green-100 px-3 py-1.5 text-xs font-medium text-green-600 text-base"
           >
             {{ archivesLength ?? "0" }}
           </span>
@@ -272,29 +177,10 @@
         </div>
 
         <div
-          class="
-            relative
-            block
-            rounded-xl
-            border border-gray-100
-            p-8
-            md:p-4
-            shadow-xl
-          "
+          class="relative block rounded-xl border border-gray-100 p-8 md:p-4 shadow-xl"
         >
           <span
-            class="
-              absolute
-              right-4
-              top-4
-              rounded-full
-              bg-green-100
-              px-3
-              py-1.5
-              text-xs
-              font-medium
-              text-green-600 text-base
-            "
+            class="absolute right-4 top-4 rounded-full bg-green-100 px-3 py-1.5 text-xs font-medium text-green-600 text-base"
           >
             {{
               !membersLength ||
@@ -444,16 +330,7 @@
           </div>
           <template #footer>
             <div
-              class="
-                d-flex
-                w-full
-                bg-gray-400
-                text-light
-                align-items-center
-                px-3
-                py-2
-                w-10/12
-              "
+              class="d-flex w-full bg-gray-400 text-light align-items-center px-3 py-2 w-10/12"
             >
               <!-- <strong class="mr-auto" -->
               <b-avatar></b-avatar>
@@ -484,7 +361,7 @@ export default {
       responsibilitiesLength: null,
       archivesLength: null,
       openSidebar: false,
-      userId: ""
+      userId: "",
     };
   },
   created() {
@@ -493,7 +370,7 @@ export default {
     } else {
       this.userId = localStorage.getItem("userId");
     }
-    console.log(this.userId)
+    console.log(this.userId);
 
     if (!this.userId) {
       this.$router.push("/login");
@@ -503,17 +380,17 @@ export default {
       this.fetchStatistics();
     }
 
-    // if (process.server) {
-    //   return "";
-    // } else {
-    //   this.userId = localStorage.getItem("userId");
-    // }
+    if (process.server) {
+      return "";
+    } else {
+      this.userId = localStorage.getItem("userId");
+    }
 
-    // if (this.userId === null) {
-    //   this.$router.push({ path: "/login" });
-    // } else {
-    //   this.fetchStatistics();
-    // }
+    if (this.userId === null) {
+      this.$router.push({ path: "/login" });
+    } else {
+      this.fetchStatistics();
+    }
   },
   methods: {
     async fetchStatistics() {

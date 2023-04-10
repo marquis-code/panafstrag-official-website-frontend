@@ -1,65 +1,41 @@
 <template>
-  <section class="container mx-auto">
-    <button
-      @click="goBack()"
-      class="
-        outline-none
-        border
-        bg-gray-200
-        text-black
-        px-3
-        py-2
-        rounded-md
-        mt-6
-        ml-6
-        text-sm
-      "
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="23"
-        height="23"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="#747070"
-        stroke-width="2"
-        stroke-linecap="square"
-        stroke-linejoin="bevel"
+  <Transition name="fade">
+    <section class="container mx-auto">
+      <button
+        @click="goBack()"
+        class="outline-none border bg-gray-200 text-black px-3 py-2 rounded-md mt-6 ml-6 text-sm"
       >
-        <path d="M19 12H6M12 5l-7 7 7 7" />
-      </svg>
-    </button>
-    <main
-      v-if="boardMember && !loading"
-      class="md:flex space-y-10 md:space-y-0 space-x-5 lg:p-6 select-none my-6"
-    >
-      <div class="lg:w-3/12 flex justify-center items-center relative">
-        <div
-          class="
-            animate-spin
-            border-dashed border-2 border-green-500
-            rounded-full
-            h-64
-            w-64
-          "
-        ></div>
-        <img
-          :src="boardMember.avatar"
-          class="
-            cursor-pointer
-            object-cover
-            rounded-full
-            h-60
-            w-60
-            shadow-md
-            absolute
-          "
-        />
-      </div>
-      <div class="lg:w-9/12">
-        <div v-if="boardMember?.bio !== ''" class="text-medium">
-          <p>{{ boardMember?.bio }}</p>
-          <!-- <p>{{ splitBio[1] }}.</p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="23"
+          height="23"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#747070"
+          stroke-width="2"
+          stroke-linecap="square"
+          stroke-linejoin="bevel"
+        >
+          <path d="M19 12H6M12 5l-7 7 7 7" />
+        </svg>
+      </button>
+      <main
+        v-if="boardMember && !loading"
+        class="md:flex space-y-10 md:space-y-0 space-x-5 lg:p-6 select-none my-6"
+      >
+        <div class="lg:w-3/12 flex justify-center items-center relative">
+          <div
+            class="animate-spin border-dashed border-2 border-green-500 rounded-full h-64 w-64"
+          ></div>
+          <img
+            :src="boardMember.avatar"
+            class="cursor-pointer object-cover rounded-full h-60 w-60 shadow-md absolute"
+          />
+        </div>
+        <div class="lg:w-9/12">
+          <div v-if="boardMember?.bio !== ''" class="text-medium">
+            <p>{{ boardMember?.bio }}</p>
+            <!-- <p>{{ splitBio[1] }}.</p>
           <p>{{ splitBio[3] }}.</p>
           <p>{{ splitBio[4] }}.</p>
           <p>{{ splitBio[5] }}.</p>
@@ -68,22 +44,22 @@
           <p>{{ splitBio[7] }}.</p>
           <p>{{ splitBio[7] }}.</p>
           <p>{{ splitBio[7] }}.</p> -->
+          </div>
+          <p v-else>OOPS! Board member bio not available..</p>
         </div>
-        <p v-else>OOPS! Board member bio not available..</p>
+      </main>
+      <div v-if="loading" class="text-center py-2">
+        <b-spinner class="align-middle"></b-spinner>
+        <span class="text-lg">Loading...</span>
       </div>
-    </main>
-    <div v-if="loading" class="text-center py-2">
-      <b-spinner class="align-middle"></b-spinner>
-      <span class="text-lg">Loading...</span>
-    </div>
-    <!-- </div> -->
-  </section>
+      <!-- </div> -->
+    </section>
+  </Transition>
 </template>
 
 <script>
 export default {
   scrollToTop: true,
-  // auth: false,
   data() {
     return {
       loading: true,
@@ -162,17 +138,17 @@ export default {
         this.modifyBio(this.splitBioArray.length);
         this.loading = false;
       } catch (err) {
-        console.log(err);
-        // this.$toast
-        //   .error("Something went wrong, please try again.")
-        //   .goAway(1500);
+        this.$toast
+          .error("Something went wrong, please try again.")
+          .goAway(1500);
+      } finally {
         this.loading = false;
       }
     },
     modifyBio(bioLength) {
       for (let index = 0; index <= bioLength; index++) {
-        return this.newBio = this.splitBioArray[index]
-      };
+        return (this.newBio = this.splitBioArray[index]);
+      }
     },
     goBack() {
       this.$router.go(-1);
@@ -180,3 +156,19 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.fade-enter-active {
+  transition: all 0.3s cubic-bezier(0.52, 0.02, 0.19, 1.02) 0.15s;
+}
+.fade-leave-active {
+  transition: all 0.3s cubic-bezier(0.52, 0.02, 0.19, 1.02);
+}
+.fade-enter-from {
+  opacity: 0;
+  transform: scale(0.8);
+}
+.fade-leave-to {
+  transform: scale(0.8);
+}
+</style>

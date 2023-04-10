@@ -4,7 +4,7 @@
     :slides-per-page="1"
     :autoplay-delay="5"
     loop
-    class="h-96"
+    class="h-80"
   >
     <div
       class="slide z-0"
@@ -12,11 +12,13 @@
       :key="index"
       :index="index + 1"
     >
-      <div class="text-white text-center space-y-3 max-w-4xl mx-auto pt-28">
-        <h1 class="text-2xl md:text-3xl lg:text-4xl font-medium">
+      <div
+        class="text-white text-center flex flex-col justify-center space-y-3 max-w-4xl mx-auto"
+      >
+        <h1 class="text-2xl md:text-3xl lg:text-4xl font-medium max-w-prose">
           {{ slide.title }}
         </h1>
-        <p class="text-base lg:text-lg font-medium w-11/12 mx-auto">
+        <p class="text-base lg:text-lg font-light w-11/12 mx-auto">
           {{ slide.description }}
         </p>
       </div>
