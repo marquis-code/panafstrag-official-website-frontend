@@ -4,23 +4,11 @@
       <section class="text-white">
         <div class="flex items-center justify-between my-3">
           <!-- <h2 class="text-xl my-6 font-medium text-black">
-          PANAFSTRAG programmes
+          PANAFRICANA programmes
         </h2> -->
-          <button
-            @click="goBack()"
-            class="outline-none border bg-gray-200 text-black px-3 py-1 rounded-md text-sm"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="23"
-              height="23"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#747070"
-              stroke-width="2"
-              stroke-linecap="square"
-              stroke-linejoin="bevel"
-            >
+          <button @click="goBack()" class="outline-none border bg-gray-200 text-black px-3 py-1 rounded-md text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none"
+              stroke="#747070" stroke-width="2" stroke-linecap="square" stroke-linejoin="bevel">
               <path d="M19 12H6M12 5l-7 7 7 7" />
             </svg>
           </button>
@@ -29,25 +17,12 @@
         <div class="sm:flex-1 pb-0 mt-3">
           <label for="search" class="sr-only">Search</label>
 
-          <input
-            type="text"
-            placeholder="Search.."
-            v-model="search"
-            class="w-full rounded-tr-md rounded-tl-md outline-none bg-white p-3 text-gray-700 transition border focus:border-white focus:outline-none focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-transparent"
-          />
+          <input type="text" placeholder="Search.." v-model="search"
+            class="w-full rounded-tr-md rounded-tl-md outline-none bg-white p-3 text-gray-700 transition border focus:border-white focus:outline-none focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-transparent" />
         </div>
         <template>
-          <b-table
-            outlined
-            striped
-            show-empty
-            responsive
-            :items="filteredSubscriptions"
-            :fields="fields"
-            :busy="loading"
-            :current-page="currentPage"
-            :per-page="perPage"
-          >
+          <b-table outlined striped show-empty responsive :items="filteredSubscriptions" :fields="fields" :busy="loading"
+            :current-page="currentPage" :per-page="perPage">
             <template #table-busy>
               <div class="text-center my-2">
                 <b-spinner class="align-middle"></b-spinner>
@@ -58,17 +33,16 @@
             <template #empty>
               <p class="text-center text-sm text-secondary py-2">
                 {{
-                  search
-                    ? `No Subscription found for search value: "${search}"`
-                    : "No subscription available"
-                }}
+                                search
+                                ? `No Subscription found for search value: "${search}"`
+                                : "No subscription available"
+                                }}
               </p>
             </template>
 
             <template #cell(sn)="data">
               <span class="font-medium py-2 text-sm">
-                {{ data.index + 1 }}</span
-              >
+                {{ data.index + 1 }}</span>
             </template>
 
             <template #cell(email)="data">
@@ -78,28 +52,20 @@
             </template>
 
             <template #cell(status)="data">
-              <span
-                @click="view(data)"
-                class="font-medium py-2 text-sm text-green-500 font-medium"
-              >
+              <span @click="view(data)" class="font-medium py-2 text-sm text-green-500 font-medium">
                 subscribed
               </span>
             </template>
             <template #cell(created_at)="data">
               <span class="font-light py-2 text-sm">{{
-                $moment(data.item.createdAt).format("L")
-              }}</span>
+                              $moment(data.item.createdAt).format("L")
+                              }}</span>
             </template>
           </b-table>
 
           <div class="flex justify-end items-end">
-            <b-pagination
-              v-model="currentPage"
-              :total-rows="totalRows"
-              :per-page="perPage"
-              size="md"
-              class="my-3"
-            ></b-pagination>
+            <b-pagination v-model="currentPage" :total-rows="totalRows" :per-page="perPage" size="md"
+              class="my-3"></b-pagination>
           </div>
         </template>
         <!-- </div> -->
@@ -281,13 +247,16 @@ export default {
 .fade-enter-active {
   transition: all 0.3s cubic-bezier(0.52, 0.02, 0.19, 1.02) 0.15s;
 }
+
 .fade-leave-active {
   transition: all 0.3s cubic-bezier(0.52, 0.02, 0.19, 1.02);
 }
+
 .fade-enter-from {
   opacity: 0;
   transform: scale(0.8);
 }
+
 .fade-leave-to {
   transform: scale(0.8);
 }

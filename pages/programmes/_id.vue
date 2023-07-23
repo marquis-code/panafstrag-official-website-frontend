@@ -69,7 +69,7 @@
               {{ programme.theme === "null" ? "" : programme.theme }}
             </p>
           </div>
-          <div
+          <div v-if="programme?.startDate !== 'null' && programme.endDate !== 'null'"
             :class="[programme.status === 'pending' ? 'hidden' : '']"
             class="flex items-center space-x-2 mt-3"
           >
@@ -94,13 +94,13 @@
             </p>
           </div>
 
-          <div class="pt-4" v-if="programme?.zoomMeetingUrl !== 'undefined'">
+          <!-- <div class="pt-4" v-if="programme?.zoomMeetingUrl !== 'null'">
             <a :href="programme.zoomMeetingUrl" class="text-green-500 text-sm"
               >Click to join programme</a
             >
-          </div>
+          </div> -->
 
-          <div class="pt-4" v-if="programme?.uploadedVideoUrl !== ''">
+          <div class="pt-4" v-if="programme?.uploadedVideoUrl !== 'null'">
             <video-player :src="programme?.uploadedVideoUrl" />
           </div>
 

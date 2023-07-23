@@ -11,7 +11,7 @@ export default {
   exclude: ["catalog/", "blog-*/", "*.html"],
   head: {
     title: "Original thinking, research help add to human knowledge",
-    titleTemplate: "PANAFSTRAG | %s",
+    titleTemplate: "PANAFRICANA | %s",
     meta: [
       { charset: "utf-8" },
       {
@@ -22,7 +22,7 @@ export default {
         hid: "description",
         name: "description",
         content:
-          "PANAFSTRAG was founded in 1992 to provide an in-depth study and analyses of the challenges of political stability, safety and development in Africa and propose policy options and strategies for these issues while synergizing the potentials of its Diaspora for executing these policies.",
+          "PANAFRICANA was founded in 1992 to provide an in-depth study and analyses of the challenges of political stability, safety and development in Africa and propose policy options and strategies for these issues while synergizing the potentials of its Diaspora for executing these policies.",
       },
 
       {
@@ -39,7 +39,7 @@ export default {
       {
         hid: "twitter:title",
         name: "twitter:title",
-        content: "PANAFSTRAG official website",
+        content: "PANAFRICANA official website",
       },
       {
         hid: "twitter:description",
@@ -53,7 +53,7 @@ export default {
           "https://res.cloudinary.com/marquis/image/upload/v1668940037/enagoshtazxadezqqjrj.png",
       },
 
-      { hid: "og:site_name", property: "og:site_name", content: "PANAFSTRAG" },
+      { hid: "og:site_name", property: "og:site_name", content: "PANAFRICANA" },
       { hid: "og:type", property: "og:type", content: "website" },
       {
         hid: "og:url",
@@ -63,13 +63,13 @@ export default {
       {
         hid: "og:title",
         property: "og:title",
-        content: "PANAFSTRAG official website",
+        content: "PANAFRICANA official website",
       },
       {
         hid: "og:description",
         property: "og:description",
         content:
-          "PANAFSTRAG was founded in 1992 to provide an in-depth study and analyses of the challenges of political stability, safety and development in Africa and propose policy options and strategies for these issues while synergizing the potentials of its Diaspora for executing these policies.",
+          "PANAFRICANA was founded in 1992 to provide an in-depth study and analyses of the challenges of political stability, safety and development in Africa and propose policy options and strategies for these issues while synergizing the potentials of its Diaspora for executing these policies.",
       },
       {
         hid: "og:image",
@@ -86,7 +86,7 @@ export default {
       {
         hid: "og:image:alt",
         property: "og:image:alt",
-        content: "PANAFSTRAG",
+        content: "PANAFRICANA",
       },
     ],
     // canonical
@@ -254,13 +254,13 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     meta: {
-      title: "PANAFSTRAG",
+      title: "PANAFRICANA",
       author: "panafstrag website",
     },
     manifest: {
-      name: "PANAFSTRAG",
+      name: "PANAFRICANA",
       short_name: "panafstrag.org",
-      description: "PANAFSTRAG official website",
+      description: "PANAFRICANA official website",
       lang: "en",
       theme_color: "#000000",
       background_color: "#000000",

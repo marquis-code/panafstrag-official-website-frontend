@@ -100,7 +100,7 @@
           </div>
           <!-- {{archive.uploadedVideoUrl}}  -->
           <!-- <lite-youtube :videoid="videoUrl"></lite-youtube> -->
-          <div class="pt-4" v-if="archive?.uploadedVideoUrl !== ''">
+          <div class="pt-4" v-if="archive?.uploadedVideoUrl !== '' && archive.uploadedVideoUrl !== 'null'">
             <video-player :src="archive?.uploadedVideoUrl" />
           </div>
           <!-- <video-player :src="archive.uploadedVideoUrl" /> -->

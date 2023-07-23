@@ -1,9 +1,7 @@
 <template>
   <Transition name="fade">
     <b-container class="pb-6">
-      <button
-        @click="goBack()"
-        class="
+      <button @click="goBack()" class="
           outline-none
           my-3
           border
@@ -13,36 +11,26 @@
           py-2
           rounded-md
           text-sm
-        "
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="23"
-          height="23"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#747070"
-          stroke-width="2"
-          stroke-linecap="square"
-          stroke-linejoin="bevel"
-        >
+        ">
+        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#747070"
+          stroke-width="2" stroke-linecap="square" stroke-linejoin="bevel">
           <path d="M19 12H6M12 5l-7 7 7 7" />
         </svg>
       </button>
-          <div class="mt-6">
-            <h2 class="text-2xl font-bold sm:text-3xl">
-              PANAFSTRAG Language groups.
-            </h2>
+      <div class="mt-6">
+        <h2 class="text-2xl font-bold sm:text-3xl">
+          PANAFRICANA Language groups.
+        </h2>
 
-            <p class="mt-4 text-gray-600">
-              PANAFSTRAG Language Groups brings together Africana people whose
-              countries have that language as one of the official languages or
-              as mother tongue. It is open to all Africana people who are ready
-              as volunteers to offer actionable thoughts and ideas and also work
-              well in one of the PANAFSTRAG Cells with a team to activate these
-              ideas successfully.
-            </p>
-          </div>
+        <p class="mt-4 text-gray-600">
+          PANAFRICANA Language Groups brings together Africana people whose
+          countries have that language as one of the official languages or
+          as mother tongue. It is open to all Africana people who are ready
+          as volunteers to offer actionable thoughts and ideas and also work
+          well in one of the PANAFRICANA Cells with a team to activate these
+          ideas successfully.
+        </p>
+      </div>
 
       <h3 class="text-2xl font-medium pt-4">FUNCTION</h3>
       <p class="text-gray-600 pb-6">
@@ -56,22 +44,16 @@
         and enabler of collaboration through these languages with the official
         languages and the international political groupings; e.g:
       </p>
-      <section
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-3"
-      >
-        <a
-          href="#"
-          class="
+      <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-3">
+        <a href="#" class="
             relative
             block
             overflow-hidden
             rounded-xl
             bg-[url(https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80)]
             bg-cover bg-center bg-no-repeat
-          "
-        >
-          <span
-            class="
+          ">
+          <span class="
               absolute
               right-4
               top-4
@@ -85,19 +67,13 @@
               text-xs
               font-semibold
               text-white
-            "
-          >
+            ">
             <!-- 4.5 -->
 
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="ml-1.5 h-4 w-4 text-green-500"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-1.5 h-4 w-4 text-green-500" viewBox="0 0 20 20"
+              fill="currentColor">
               <path
-                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-              />
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
           </span>
 
@@ -108,19 +84,15 @@
           </div>
         </a>
 
-        <a
-          href="#"
-          class="
+        <a href="#" class="
             relative
             block
             overflow-hidden
             rounded-xl
             bg-[url(https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80)]
             bg-cover bg-center bg-no-repeat
-          "
-        >
-          <span
-            class="
+          ">
+          <span class="
               absolute
               right-4
               top-4
@@ -134,19 +106,13 @@
               text-xs
               font-semibold
               text-white
-            "
-          >
+            ">
             <!-- 4.5 -->
 
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="ml-1.5 h-4 w-4 text-green-500"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-1.5 h-4 w-4 text-green-500" viewBox="0 0 20 20"
+              fill="currentColor">
               <path
-                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-              />
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
           </span>
 
@@ -157,19 +123,15 @@
           </div>
         </a>
 
-        <a
-          href="#"
-          class="
+        <a href="#" class="
             relative
             block
             overflow-hidden
             rounded-xl
             bg-[url(https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80)]
             bg-cover bg-center bg-no-repeat
-          "
-        >
-          <span
-            class="
+          ">
+          <span class="
               absolute
               right-4
               top-4
@@ -183,19 +145,13 @@
               text-xs
               font-semibold
               text-white
-            "
-          >
+            ">
             <!-- 4.5 -->
 
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="ml-1.5 h-4 w-4 text-green-500"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-1.5 h-4 w-4 text-green-500" viewBox="0 0 20 20"
+              fill="currentColor">
               <path
-                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-              />
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
           </span>
 
@@ -206,19 +162,15 @@
           </div>
         </a>
 
-        <a
-          href="#"
-          class="
+        <a href="#" class="
             relative
             block
             overflow-hidden
             rounded-xl
             bg-[url(https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80)]
             bg-cover bg-center bg-no-repeat
-          "
-        >
-          <span
-            class="
+          ">
+          <span class="
               absolute
               right-4
               top-4
@@ -232,19 +184,13 @@
               text-xs
               font-semibold
               text-white
-            "
-          >
+            ">
             <!-- 4.5 -->
 
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="ml-1.5 h-4 w-4 text-green-500"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-1.5 h-4 w-4 text-green-500" viewBox="0 0 20 20"
+              fill="currentColor">
               <path
-                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-              />
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
           </span>
 
@@ -255,19 +201,15 @@
           </div>
         </a>
 
-        <a
-          href="#"
-          class="
+        <a href="#" class="
             relative
             block
             overflow-hidden
             rounded-xl
             bg-[url(https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80)]
             bg-cover bg-center bg-no-repeat
-          "
-        >
-          <span
-            class="
+          ">
+          <span class="
               absolute
               right-4
               top-4
@@ -281,19 +223,13 @@
               text-xs
               font-semibold
               text-white
-            "
-          >
+            ">
             <!-- 4.5 -->
 
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="ml-1.5 h-4 w-4 text-green-500"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-1.5 h-4 w-4 text-green-500" viewBox="0 0 20 20"
+              fill="currentColor">
               <path
-                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-              />
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
           </span>
 
@@ -304,19 +240,15 @@
           </div>
         </a>
 
-        <a
-          href="#"
-          class="
+        <a href="#" class="
             relative
             block
             overflow-hidden
             rounded-xl
             bg-[url(https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80)]
             bg-cover bg-center bg-no-repeat
-          "
-        >
-          <span
-            class="
+          ">
+          <span class="
               absolute
               right-4
               top-4
@@ -330,19 +262,13 @@
               text-xs
               font-semibold
               text-white
-            "
-          >
+            ">
             <!-- 4.5 -->
 
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="ml-1.5 h-4 w-4 text-green-500"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-1.5 h-4 w-4 text-green-500" viewBox="0 0 20 20"
+              fill="currentColor">
               <path
-                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-              />
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
           </span>
 
@@ -458,13 +384,16 @@ export default {
 .fade-enter-active {
   transition: all 0.3s cubic-bezier(0.52, 0.02, 0.19, 1.02) 0.15s;
 }
+
 .fade-leave-active {
   transition: all 0.3s cubic-bezier(0.52, 0.02, 0.19, 1.02);
 }
+
 .fade-enter-from {
   opacity: 0;
   transform: scale(0.8);
 }
+
 .fade-leave-to {
   transform: scale(0.8);
 }
