@@ -122,6 +122,7 @@ export default {
   plugins: [
     "~/plugins/bootstrap-vue.client",
     "~/plugins/youtube.client.js",
+    "~/plugins/enlargeImage.js",
     { src: "~/plugins/vue-datepicker", ssr: false },
   ],
 

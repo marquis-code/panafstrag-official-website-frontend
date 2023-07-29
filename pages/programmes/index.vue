@@ -70,20 +70,20 @@
               <div class="p-4 sm:p-6">
                 <h3 v-if="program.title" class="font-bold text-sm uppercase text-gray-900">
                   {{
-                                    program.title && program.title.length > 100
-                                    ? program.title.slice(0, 100) + "..."
-                                    : program.title
-                                    }}
+                    program.title && program.title.length > 100
+                    ? program.title.slice(0, 100) + "..."
+                    : program.title
+                  }}
                 </h3>
 
                 <p v-if="program.theme" class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
                   {{
-                                    program.theme === "null"
-                                    ? ""
-                                    : program.theme && program.theme.length > 100
-                                    ? program.theme.slice(0, 100).toLowerCase() + "..."
-                                    : program.theme.toLowerCase()
-                                    }}
+                    program.theme === "null"
+                    ? ""
+                    : program.theme && program.theme.length > 100
+                      ? program.theme.slice(0, 100).toLowerCase() + "..."
+                      : program.theme.toLowerCase()
+                  }}
                 </p>
                 <div class="flex items-center space-x-1">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -94,7 +94,7 @@
                     <line x1="3" y1="10" x2="21" y2="10"></line>
                   </svg>
                   <span class="mt-2 text-center text-sm leading-relaxed text-gray-400 line-clamp-3">{{ timeFrame(program)
-                                      }}</span>
+                  }}</span>
                 </div>
               </div>
               <div class="sm:flex sm:items-end sm:justify-end absolute bottom-0 right-0">
@@ -117,20 +117,20 @@
               <div class="p-4 sm:p-6">
                 <h3 v-if="program.title" class="font-bold text-sm uppercase text-gray-900">
                   {{
-                                    program.title && program.title.length > 100
-                                    ? program.title.slice(0, 100) + "..."
-                                    : program.title
-                                    }}
+                    program.title && program.title.length > 100
+                    ? program.title.slice(0, 100) + "..."
+                    : program.title
+                  }}
                 </h3>
 
                 <p v-if="program.theme" class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
                   {{
-                                    program.theme === "null"
-                                    ? ""
-                                    : program.theme && program.theme.length > 100
-                                    ? program.theme.slice(0, 100) + "..."
-                                    : program.theme
-                                    }}
+                    program.theme === "null"
+                    ? ""
+                    : program.theme && program.theme.length > 100
+                      ? program.theme.slice(0, 100) + "..."
+                      : program.theme
+                  }}
                 </p>
                 <div class="flex items-center space-x-1">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -141,7 +141,7 @@
                     <line x1="3" y1="10" x2="21" y2="10"></line>
                   </svg>
                   <span class="mt-2 text-center text-sm leading-relaxed text-gray-400 line-clamp-3">{{ timeFrame(program)
-                                      }}</span>
+                  }}</span>
                 </div>
               </div>
               <div class="sm:flex sm:items-end sm:justify-end absolute bottom-0 right-0">
@@ -164,23 +164,23 @@
               <div class="p-4 sm:p-6">
                 <h3 v-if="program.title" class="font-bold text-sm uppercase text-gray-900">
                   {{
-                                    program.title && program.title.length > 100
-                                    ? program.title.slice(0, 100) + "..."
-                                    : program.title
-                                    }}
+                    program.title && program.title.length > 100
+                    ? program.title.slice(0, 100) + "..."
+                    : program.title
+                  }}
                 </h3>
 
                 <p v-if="program.theme" class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
                   {{
-                                    program.theme === "null"
-                                    ? ""
-                                    : program.theme && program.theme.length > 100
-                                    ? program.theme.slice(0, 100) + "..."
-                                    : program.theme
-                                    }}
+                    program.theme === "null"
+                    ? ""
+                    : program.theme && program.theme.length > 100
+                      ? program.theme.slice(0, 100) + "..."
+                      : program.theme
+                  }}
                 </p>
                 <div class="flex items-center space-x-1"
-                  v-if=" program.startDate !== 'null' && program.endDate !== 'null'">
+                  v-if="program.startDate !== 'null' && program.endDate !== 'null'">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                     stroke="#5bc747" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="bevel">
                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
@@ -189,7 +189,7 @@
                     <line x1="3" y1="10" x2="21" y2="10"></line>
                   </svg>
                   <span class="mt-2 text-center text-sm leading-relaxed text-gray-400 line-clamp-3">{{ timeFrame(program)
-                                      }}</span>
+                  }}</span>
                 </div>
               </div>
               <div class="sm:flex sm:items-end sm:justify-end absolute bottom-0 right-0">
