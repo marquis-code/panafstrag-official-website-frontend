@@ -19,15 +19,15 @@
       </button>
       <div class="mt-6">
         <h2 class="text-2xl font-bold sm:text-3xl">
-          PANAFRICANA Language groups.
+          PANAFSTRAG Language groups.
         </h2>
 
         <p class="mt-4 text-gray-600">
-          PANAFRICANA Language Groups brings together Africana people whose
+          PANAFSTRAG Language Groups brings together Africana people whose
           countries have that language as one of the official languages or
           as mother tongue. It is open to all Africana people who are ready
           as volunteers to offer actionable thoughts and ideas and also work
-          well in one of the PANAFRICANA Cells with a team to activate these
+          well in one of the PANAFSTRAG Cells with a team to activate these
           ideas successfully.
         </p>
       </div>

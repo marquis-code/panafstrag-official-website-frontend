@@ -18,14 +18,14 @@
       </section>
       <section class="w-11/12 sm:max-w-4xl mx-auto space-y-5 py-20">
         <h1 class="text-lg md:text-xl text-gray-500 font-light">
-          PANAFRICANA was founded in 1992 to provide an in-depth study and
+          Pan-Africana Strategic and Policy Research Group was founded in 1992 to provide an in-depth study and
           analyses of the challenges of political stability, safety and
           development in Africa and propose policy options and strategies for
           these issues while synergizing the potentials of its diaspora for
           executing these policies.
         </h1>
         <p class="text-gray-500 text-md md:text-lg font-light">
-          <span class="font-medium">PANAFRICANA</span> as an international
+          <span class="font-medium">PANAFSTRAG</span> as an international
           organization, is managed by a board, the composition of which reflects
           regional, linguistic and gender representation.
         </p>

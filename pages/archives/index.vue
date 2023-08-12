@@ -18,7 +18,7 @@
       </div>
       <hr v-if="$nuxt.isOnline" />
       <h2 v-if="$nuxt.isOnline" class="text-xl font-medium my-6 text-gray-500">
-        PANAFRICANA Archives
+        PANAFSTRAG Archives
       </h2>
       <div v-if="loading && $nuxt.isOnline" class="text-black">
         <p class="font-medium py-3">Loading ....</p>

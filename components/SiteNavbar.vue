@@ -11,7 +11,7 @@
       <h1 class="text-2xl font-medium">
         <nuxt-link class="flex items-center space-x-2" to="/">
           <img class="h-10 w-10 objct-cover" src="~/static/icon.png" />
-          <span class="text-sm md:text-md">PANAFRICANA</span></nuxt-link>
+          <span class="text-sm md:text-md">PANAFSTRAG</span></nuxt-link>
       </h1>
 
 
@@ -73,11 +73,11 @@
             <b-dropdown-divider></b-dropdown-divider>
             <b-dropdown-item @click="handleOrganogram()">Our Organogram</b-dropdown-item>
             <b-dropdown-divider></b-dropdown-divider>
-            <b-dropdown-item @click="handleMiniCellsDropdown()">PANAFRICANA Cells</b-dropdown-item>
+            <b-dropdown-item @click="handleMiniCellsDropdown()">PANAFSTRAG Cells</b-dropdown-item>
             <b-dropdown-divider></b-dropdown-divider>
-            <b-dropdown-item @click="handleObjectivesDropdown()">PANAFRICANA OBJECTIVES</b-dropdown-item>
+            <b-dropdown-item @click="handleObjectivesDropdown()">PANAFSTRAG OBJECTIVES</b-dropdown-item>
             <b-dropdown-divider></b-dropdown-divider>
-            <b-dropdown-item @click="handleLanguageGroupsDropdown()">PANAFRICANA Language Groups</b-dropdown-item>
+            <b-dropdown-item @click="handleLanguageGroupsDropdown()">PANAFSTRAG Language Groups</b-dropdown-item>
           </b-dropdown>
 
           <div class="

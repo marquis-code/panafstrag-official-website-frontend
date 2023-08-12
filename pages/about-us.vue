@@ -9,7 +9,7 @@
       </button>
       <hr />
       <h2 v-if="$nuxt.isOnline" class="text-xl font-medium my-6 text-gray-500">
-        PANAFRICANA Objectives
+        PANAFSTRAG Objectives
       </h2>
       <div v-if="$nuxt.isOffline" class="text-gray-500 text-base relative">
         <img src="@/assets/noInternet.jpeg" class="h-96 w-96" />

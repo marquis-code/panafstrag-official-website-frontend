@@ -19,7 +19,7 @@
         <details class="group rounded-lg shadow-md bg-gray-50 p-6">
           <summary class="flex cursor-pointer items-center justify-between">
             <h2 class="text-sm md:text-base font-medium text-gray-900">
-              PANAFRICANA focus areas for studies and research with actionable
+              PANAFSTRAG focus areas for studies and research with actionable
               Policy Briefs and Recommendations
             </h2>
 
@@ -49,7 +49,7 @@
         </details>
       </div>
       <h2 v-if="$nuxt.isOnline" class="text-xl font-medium my-6 text-gray-500">
-        PANAFRICANA Programmes
+        PANAFSTRAG Programmes
       </h2>
       <div v-if="loading && $nuxt.isOnline" class="text-black">
         <p class="font-medium py-3">Loading ....</p>

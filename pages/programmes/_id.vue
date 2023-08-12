@@ -9,11 +9,6 @@
       </button>
 
       <div v-if="$nuxt.isOffline" class="text-gray-500 text-base relative">
-        <!-- <img src="@/assets/noInternet.jpeg" />
-        <div class="absolute -bottom-14 left-10">
-          <p class="text-center">You are currently offline</p>
-          <p class="text-center">Check your internet connect and try again!</p>
-        </div> -->
       </div>
       <main v-if="$nuxt.isOnline" class="md:w-9/12 rounded-md shadow-md border space-y-5 my-6">
         <div v-if="loading" class="border-green-500 p-6 my-6">
@@ -46,13 +41,15 @@
             <span class="text-sm font-medium text-gray-900 w-2/12">Program details</span>
             <span class="w-10/12 border border-red-500"></span>
           </div>
-          <div class="px-6 space-y-3 grid grid-cols-1 md:grid-cols-2 gap-6">
-
-            <div class="text-xs text-gray-800 flex items-center justify-between border p-3 shadow-sm rounded-md">
+          <div class="mx-6">
+            <div
+              class="text-xs text-gray-800 flex items-center justify-between border p-3 shadow-sm rounded-md divide divide-x-2 space-x-3 mx-auto mb-6">
               <span class="text-gray-500 block">Theme</span>
-              <span class="block text-left">{{ programme.theme }}</span>
+              <span class="block text-left pl-3 text-justify">{{ programme.theme }}</span>
             </div>
+          </div>
 
+          <div class="px-6 space-y-3 grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="text-xs text-gray-800  flex items-center justify-between border p-3 shadow-sm rounded-md"
               v-if="programme.programType === 'single'">
               <span class="text-gray-500 block">Title</span>
@@ -72,12 +69,12 @@
 
             <div class="text-xs text-gray-800  flex items-center justify-between border p-3 shadow-sm rounded-md">
               <span class="text-gray-500 block">Start date</span>
-              <span class="block">{{ programme.startDate ?? 'N/A' }}</span>
+              <span class="block">{{ formattedStartDate ?? 'N/A' }}</span>
             </div>
 
             <div class="text-xs text-gray-800  flex items-center justify-between border p-3 shadow-sm rounded-md">
               <span class="text-gray-500 block">End date</span>
-              <span class="block">{{ programme.startDate ?? 'N/A' }}</span>
+              <span class="block">{{ formattedEndDate ?? 'N/A' }}</span>
             </div>
 
             <div class="text-xs text-gray-800  flex items-center justify-between border p-3 shadow-sm rounded-md">
@@ -108,11 +105,12 @@
             </p>
 
             <div class="text-xs text-gray-800  flex items-center justify-between border p-3 shadow-sm rounded-md">
-            <section v-if="programme.uploadedDocumentFiles" class="grid grid-cols-6 md:grid-cols-10">
-              <a :href="eachFile" class="" v-for="(eachFile, index) in programme.uploadedDocumentFiles" :key="index" download>
-                <img src="@/assets/pdfIcon.svg" class="h-14 w-14" alt="" />
-              </a>
-            </section>
+              <section v-if="programme.uploadedDocumentFiles" class="grid grid-cols-6 md:grid-cols-10">
+                <a :href="eachFile" class="" v-for="(eachFile, index) in programme.uploadedDocumentFiles" :key="index"
+                  download>
+                  <img src="@/assets/pdfIcon.svg" class="h-14 w-14" alt="" />
+                </a>
+              </section>
             </div>
           </div>
 
@@ -124,26 +122,26 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" v-if="showNested">
-              <div v-for="(item, index) in programme.nestedProgrammes" :key="index"
-                class="border bg-white shadow-md rounded-md space-y-2 p-3">
-                <p class="flex justify-between items-center text-xs select-none"><span class="text-gray-400">Title</span>
-                  <span class="text-gray-900">{{ item.title ?? 'N/A' }}</span>
+              <div v-for="(item, index) in programme.nestedProgrammes" :key="index" class="border bg-white shadow-md rounded-md space-y-3 p-3">
+                <p class="flex text-xs select-none flex-col">
+                  <span class="text-gray-400 inline-block">Title</span>
+                  <span class="text-gray-900 inline-block">{{ item.title ?? 'N/A' }}</span>
                 </p>
-                <p class="flex justify-between items-center text-xs select-none"><span class="text-gray-400">Meeting
+                <p class="flex text-xs select-none flex-col"><span class="text-gray-400">Meeting
                     Type</span> <span class="text-gray-900">{{ item.meetingType ?? 'N/A'
                     }}</span></p>
-                <p class="flex justify-between items-center text-xs select-none"><span class="text-gray-400">Program
+                <p class="flex text-xs select-none flex-col"><span class="text-gray-400">Program
                     recording</span> <span title="Copy to clipboard" @click="copyText(item.uploadedVideoUrl)"
                     class="text-gray-900 text-green-600 cursor-pointer font-bold ">{{
                       item.uploadedVideoUrl ?? 'N/A' }}</span></p>
-                <p class="flex justify-between items-center text-xs"><span class="text-gray-400">Live meeting
+                <p class="flex text-xs select-none flex-col"><span class="text-gray-400">Live meeting
                     Url</span> <span @click="copyText(item.zoomMeetingUrl)"
                     class="text-gray-900 text-green-600 cursor-pointer font-bold " title="Copy to clipboard">{{
                       item.zoomMeetingUrl ?? 'N/A' }}</span></p>
-                <p class="flex justify-between items-center text-xs"><span class="text-gray-400">Program
+                <p class="flex text-xs select-none flex-col"><span class="text-gray-400">Program
                     session Form</span> <span class="text-gray-900">{{
                       item.session_form ?? 'N/A' }}</span></p>
-                <p class="font-medium text-xs text-gray-500">
+                <p class="flex text-xs select-none flex-col">
                   {{
                     !item.uploadedDocumentFiles.length ? "" : "Paper download"
                   }}
@@ -252,7 +250,7 @@ export default {
     },
     copyText(item) {
       window.navigator.clipboard.writeText(item).then(() => {
-        alert('Text copied')
+        this.$toastr.s('Youtube Url Copied!', 'Success')
       }).catch(() => {
         alert('somethig went wrong while copying text')
       })
@@ -289,6 +287,12 @@ export default {
         .split("-")[0];
       return `${startDay} to ${endDay}, ${month}, ${year}`;
     },
+    formattedStartDate() {
+      return new Date(this.programme?.startDate).toDateString()
+    },
+    formattedEndDate() {
+      return new Date(this.programme?.endDate).toDateString()
+    }
   },
 };
 </script>

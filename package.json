@@ -53,6 +53,7 @@
     "vue-ssr-carousel": "^1.9.1",
     "vue-sweetalert2": "^5.0.5",
     "vue-template-compiler": "^2.7.10",
+    "vue-toastr": "^2.1.2",
     "vuejs-datepicker": "^1.6.2",
     "vuex-persistedstate": "^4.1.0"
   },

@@ -14,7 +14,7 @@
           ">
           <nuxt-link class="flex items-center lg:space-x-3" to="/">
             <img :class="[isOpen ? 'lg:visible lg:h-6 lg:w-6' : 'hidden']" class="h-10 w-10"
-              src="@/static/panaafricalogo.png" /><span class="font-bold text-xl">PANAFRICANA</span>
+              src="@/static/panaafricalogo.png" /><span class="font-bold text-xl">PANAFSTRAG</span>
           </nuxt-link>
         </div>
         <hr class="" />
@@ -149,7 +149,7 @@
             <h1 class="text-2xl font-medium">
               <nuxt-link class="flex items-center space-x-1" to="/">
                 <img class="h-10 w-10 objct-cover" src="~/static/icon.png" />
-                <span class="text-lg font-semibold">PANAFRICANA</span></nuxt-link>
+                <span class="text-lg font-semibold">PANAFSTRAG</span></nuxt-link>
             </h1>
             <div class="cursor-pointer">
               <svg v-b-toggle.sidebar-mobile class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="27"
@@ -170,7 +170,7 @@
                 <h1 class="text-2xl font-medium">
                   <nuxt-link class="flex items-center space-x-2" to="/">
                     <img class="h-10 w-10 objct-cover" src="~/static/icon.png" />
-                    <span class="text-sm md:text-md text-lg font-bold">PANAFRICANA</span></nuxt-link>
+                    <span class="text-sm md:text-md text-lg font-bold">PANAFSTRAG</span></nuxt-link>
                 </h1>
 
                 <button :class="[

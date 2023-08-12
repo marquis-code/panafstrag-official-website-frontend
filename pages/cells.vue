@@ -12,7 +12,7 @@
         <details class="group rounded-lg shadow-md bg-gray-50 p-6">
           <summary class="flex cursor-pointer items-center justify-between">
             <h2 class="text-sm md:text-base font-medium text-gray-900">
-              PANAFRICANA Language Groups
+              PANAFSTRAG Language Groups
             </h2>
 
             <span class="relative ml-1.5 h-5 w-5 flex-shrink-0">
@@ -41,7 +41,7 @@
         </details>
       </div>
       <h2 v-if="$nuxt.isOnline" class="text-xl font-medium my-6 text-gray-500">
-        PANAFRICANA Cells
+        PANAFSTRAG Cells
       </h2>
       <div v-if="$nuxt.isOffline" class="text-gray-500 text-base relative">
         <img src="@/assets/noInternet.jpeg" />
@@ -54,7 +54,7 @@
         <div class="group relative block bg-gradient-to-r from-green-500 to-black rounded-lg h-72">
           <div class="relative p-8">
             <p class="text-sm font-medium uppercase tracking-widest text-white">
-              PANAFRICANA
+              PANAFSTRAG
             </p>
 
             <p class="text-2xl font-bold text-white">Cell 1</p>
@@ -76,7 +76,7 @@
 
           <div class="relative p-8">
             <p class="text-sm font-medium uppercase tracking-widest text-white">
-              PANAFRICANA
+              PANAFSTRAG
             </p>
 
             <p class="text-2xl font-bold text-white">Cell 2</p>
@@ -87,7 +87,7 @@
                 <p class="text-sm sm:text-md text-white">
                   Soft Power Diplomacy, Africana Public Institutions
                   Representation and Liaisons. All Media, ETC and Awareness
-                  Campaign: “I am an Africana” Establishing PANAFRICANA TV/RADIO
+                  Campaign: “I am an Africana” Establishing PANAFSTRAG TV/RADIO
                   by 2024
                 </p>
               </div>
@@ -98,7 +98,7 @@
         <div class="group relative block bg-gradient-to-r from-green-500 to-black rounded-lg h-72">
           <div class="relative p-8">
             <p class="text-sm font-medium uppercase tracking-widest text-white">
-              PANAFRICANA
+              PANAFSTRAG
             </p>
 
             <p class="text-2xl font-bold text-white">Cell 3</p>
@@ -118,7 +118,7 @@
         <div class="group relative block bg-gradient-to-r from-green-500 to-black rounded-lg h-72">
           <div class="relative p-8">
             <p class="text-sm font-medium uppercase tracking-widest text-white">
-              PANAFRICANA
+              PANAFSTRAG
             </p>
 
             <p class="text-2xl font-bold text-white">Cell 4</p>
@@ -137,7 +137,7 @@
         <div class="group relative block bg-gradient-to-r from-green-500 to-black rounded-lg h-72">
           <div class="relative p-8">
             <p class="text-sm font-medium uppercase tracking-widest text-white">
-              PANAFRICANA
+              PANAFSTRAG
             </p>
 
             <p class="text-2xl font-bold text-white">Cell 5</p>
@@ -157,7 +157,7 @@
         <div class="group relative block bg-gradient-to-r from-green-500 to-black rounded-lg h-72">
           <div class="relative p-8">
             <p class="text-sm font-medium uppercase tracking-widest text-white">
-              PANAFRICANA
+              PANAFSTRAG
             </p>
 
             <p class="text-2xl font-bold text-white">Cell 6</p>

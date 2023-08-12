@@ -124,6 +124,7 @@ export default {
     "~/plugins/youtube.client.js",
     "~/plugins/enlargeImage.js",
     { src: "~/plugins/vue-datepicker", ssr: false },
+    { src: '~/plugins/toastr.js', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
